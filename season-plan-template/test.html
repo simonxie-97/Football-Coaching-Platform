@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腰旗橄榄球教案模版库 - 拔旗 (Flag Pulling) 专项</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --accent: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 24px 16px; line-height: 1.5; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header { background: var(--primary); color: white; padding: 24px; border-radius: var(--radius); margin-bottom: 24px; }
+    header h1 { font-size: 24px; margin-bottom: 8px; }
+    header p { opacity: 0.9; font-size: 14px; }
+    
+    /* 筛选按钮 */
+    .filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .filter-btn { border: 1px solid var(--border); background: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+    .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* 教案网格 */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+    .tag-u6 { background: #fef3c7; color: #b45309; }
+    .tag-u8 { background: #e0e7ff; color: #3730a3; }
+    .tag-u12 { background: #fee2e2; color: #991b1b; }
+    .tag-type { background: #f1f5f9; color: #475569; }
+
+    .card h3 { font-size: 16px; color: var(--primary); }
+    .card p { font-size: 13px; color: #475569; }
+    .coaching-box { background: #eff6ff; border-left: 3px solid var(--accent); padding: 8px 12px; font-size: 12px; border-radius: 0 6px 6px 0; }
+    ol, ul { padding-left: 18px; font-size: 13px; color: #334155; }
+    li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏈 腰旗橄榄球教案库：拔旗 (Flag Pulling) 专项</h1>
+      <p>技术主管标准化 SOP 库 ｜ 支持分年龄梯队（U6 / U8-U10 / U12）筛选使用</p>
+    </header>
+
+    <!-- 筛选工具条 -->
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterAge('all', this)">全部年龄层</button>
+      <button class="filter-btn" onclick="filterAge('u6', this)">U6 启蒙组 (6-7岁)</button>
+      <button class="filter-btn" onclick="filterAge('u8', this)">U8-U10 进阶组 (8-10岁)</button>
+      <button class="filter-btn" onclick="filterAge('u12', this)">U12 竞技组 (10-12岁)</button>
+    </div>
+
+    <!-- 教案卡片展示区 -->
+    <div class="grid">
+      <!-- U6 Cards -->
+      <div class="card u6">
+        <div class="card-tags">
+          <span class="tag tag-u6">U6 启蒙组</span>
+          <span class="tag tag-type">基础 Drill</span>
+        </div>
+        <h3>静态“抓捏提”与拔旗礼仪</h3>
+        <div class="coaching-box"><strong>口诀：</strong>“眼睛看腰带，小手抓根部，用力拉下来，举高大声喊！”</div>
+        <ol>
+          <li>两人一组相距 0.5 米，A 站立不动，B 呈现屈膝降重心。</li>
+          <li>B 注视 A 腰带，向前捏住腰旗根部用力拉下。</li>
+          <li>立刻高举腰旗大喊“Flag!”，双手还旗。</li>
+        </ol>
+      </div>
+
+      <div class="card u6">
+        <div class="card-tags">
+          <span class="tag tag-u6">U6 启蒙组</span>
+          <span class="tag tag-type">趣味游戏</span>
+        </div>
+        <h3>“大逃杀/拔尾巴大赛” (Tail Thief)</h3>
+        <p><strong>目的：</strong>在自由奔跑中建立闪避、低重心压迫与手眼协调。</p>
+        <ul>
+          <li>10x10m 区域内所有人身后插 2 条腰旗。</li>
+          <li>保护自己腰旗的同时，尽可能多地拔下他人腰旗。</li>
+          <li>被拔光者做 5 个深蹲后重新插旗返回。</li>
+        </ul>
+      </div>
+
+      <!-- U8-U10 Cards -->
+      <div class="card u8">
+        <div class="card-tags">
+          <span class="tag tag-u8">U8-U10 进阶组</span>
+          <span class="tag tag-type">动作精细化</span>
+        </div>
+        <h3>全速冲刺 + Breakdown 减速拔旗</h3>
+        <div class="coaching-box"><strong>口诀：</strong>“全速冲刺、两码碎步、沉臀张臂、精准拔旗！”</div>
+        <ol>
+          <li>防守员全速向持球员冲刺。</li>
+          <li>距持球员 1.5-2 米处快速做 Breakdown 碎步。</li>
+          <li>随持球员变向做微调，抓住时机精准拔旗。</li>
+        </ol>
+      </div>
+
+      <div class="card u8">
+        <div class="card-tags">
+          <span class="tag tag-u8">U8-U10 进阶组</span>
+          <span class="tag tag-type">局部攻防</span>
+        </div>
+        <h3>2v2 区域压迫与高低位补位</h3>
+        <p><strong>目的：</strong>建立主防压迫、补防斜向包夹的沟通与补位意识。</p>
+        <ol>
+          <li>主防 Press 快速贴近持球员做 Breakdown 压迫。</li>
+          <li>若持球员过掉主防，补防 Safety 大喊“Help!”斜向切入补位。</li>
+        </ol>
+      </div>
+
+      <!-- U12 Cards -->
+      <div class="card u12">
+        <div class="card-tags">
+          <span class="tag tag-u12">U12 竞技组</span>
+          <span class="tag tag-type">高阶 Drill</span>
+        </div>
+        <h3>7码 Rusher 极速冲刷与高速拔旗</h3>
+        <p><strong>目的：</strong>训练突击手在极速冲刷下识别假交接并瞬间降重拔旗。</p>
+        <ol>
+          <li>Rusher 从 7 码起跑冲刷 QB。</li>
+          <li>识别 Fake Handoff，在接近交接点瞬间减速降重心。</li>
+          <li>不被假动作诱骗，精准拉下腰旗。</li>
+        </ol>
+      </div>
+
+      <div class="card u12">
+        <div class="card-tags">
+          <span class="tag tag-u12">U12 竞技组</span>
+          <span class="tag tag-type">极限扑救</span>
+        </div>
+        <h3>Diving 极限伸手拔旗与落地保护</h3>
+        <div class="coaching-box"><strong>安全重点：</strong>必须用前臂和胸部滑行落地，严禁用手掌直立撑地！</div>
+        <ol>
+          <li>在软垫/草地上，防守员在斜后方跟跑。</li>
+          <li>做低姿态伸展扑救，指尖勾抓腰旗根部。</li>
+          <li>胸部与前臂顺势向前滑行缓冲。</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterAge(ageClass, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (ageClass === 'all' || card.classList.contains(ageClass)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

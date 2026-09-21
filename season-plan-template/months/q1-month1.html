@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 月度进阶大纲 - U6-U7 校队</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!--
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-slate: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-slate);
+      color: var(--text-main);
+      margin: 0;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 📌 1. 独立设计的胶囊式面包屑导航 */
+    .breadcrumb-nav {
+      display: inline-flex;
+      align-items: center;
+      background: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .breadcrumb-nav a:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb-nav .separator {
+      margin: 0 8px;
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .breadcrumb-nav .current {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* 📌 2. 顶部 Banner：季度核心培养方向 */
+    .quarter-summary-header {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .summary-title h1 {
+      margin: 0 0 6px 0;
+      font-size: 22px;
+      color: var(--primary);
+    }
+
+    .summary-title p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .quarter-badges {
+      display: flex;
+      gap: 10px;
+    }
+
+    .q-badge {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid #dbeafe;
+    }
+
+    /* 📌 3. 新排版：月度阶段水平布局 (Phase Block Layout) */
+    .months-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .month-phase-block {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+      overflow: hidden;
+    }
+
+    .phase-header {
+      background: #f1f5f9;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .phase-header .title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .phase-tag {
+      background: var(--primary);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .phase-header h2 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--text-main);
+    }
+
+    .phase-goal {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* 周度目标网格布局 (4 Weeks Grid) */
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .weeks-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .weeks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .week-goal-card {
+      background: var(--bg-slate);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .week-goal-card:hover {
+      background: white;
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .w-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .w-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .w-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--text-main);
+    }
+
+    .w-target-list {
+      margin: 0 0 16px 0;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .w-target-list li {
+      margin-bottom: 4px;
+    }
+
+    .w-action {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+  </style>
+  -->
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 📍 1. 胶囊式面包屑导航 -->
+    <nav class="breadcrumb-nav">
+      <a href="../index.html">🏠 首页</a>
+      <span class="separator">/</span>
+      <a href="../quarters/q1-months.html">Q1 月度大纲</a>
+
+      <span class="separator">/</span>
+
+      <span class="current">Q1 周训练目标大纲</span>
+    </nav>
+
+    <!-- 📍 2. 季度总体培养看板 -->
+    <header class="quarter-summary-header">
+      <div class="summary-title">
+        <h1>Q1 训练大纲：基础姿态与规则习惯</h1>
+        <p>🎯 阶段重点：双手持球保护、降重心拔旗启蒙与场地规则建立，不涉及复杂战术。</p>
+      </div>
+      <div class="quarter-badges">
+        <div class="q-badge">梯队：U6 - U7 校队</div>
+        <div class="q-badge">周期：12 周 (3 个月)</div>
+      </div>
+    </header>
+
+    <!-- 📍 3. 按月排列的阶段与周度目标大纲 (移除具体 Drill 和时间) -->
+    <main class="months-stack">
+
+      <!-- ==================== 第 1 月 ==================== -->
+      <section class="month-phase-block">
+        <div class="phase-header">
+          <div class="title-group">
+            <span class="phase-tag">Month 1</span>
+            <h2>第 1 月：基础动作规范与习惯养成</h2>
+          </div>
+          <span class="phase-goal">🎯 月度目标：建立动作习惯、场地边界感与规则警觉度</span>
+        </div>
+
+        <div class="weeks-grid">
+          <!-- Week 1 -->
+          <a href="../weeks/week-1.html" class="week-goal-card">
+            <div>
+              <div class="w-head">
+                <span class="w-num">Week 1</span>
+              </div>
+              <h3 class="w-title">持球与起跑习惯</h3>
+              <ul class="w-target-list">
+                <li>掌握“包/贴/夹”双手持球</li>
+                <li>建立听到口令起跑习惯[cite: 1, 2, 4]</li>
+              </ul>
+            </div>
+            <div class="w-action">查看第 1 周详细教案 ➔</div>
+          </a>
+
+          <!-- Week 2 -->
+          <a href="../weeks/week-2.html" class="week-goal-card">
+            <div>
+              <div class="w-head">
+                <span class="w-num">Week 2</span>
+              </div>
+              <h3 class="w-title">场地认知与界限</h3>
+              <ul class="w-target-list">
+                <li>认知边线与达阵区概念[cite: 1, 2, 4]</li>
+                <li>练习出界即停的规则习惯[cite: 1, 2, 4]</li>
+              </ul>
+            </div>
+            <div class="w-action">查看第 2 周详细教案 ➔</div>
+          </a>
+
+          <!-- Week 3 -->
+          <a href="../weeks/week-3.html" class="week-goal-card">
+            <div>
+              <div class="w-head">
+                <span class="w-num">Week 3</span>
+              </div>
+              <h3 class="w-title">降重心与拔旗启蒙</h3>
+              <ul class="w-target-list">
+                <li>学会屈膝降重心拔旗姿态[cite: 1, 2, 4]</li>
+                <li>掌握“抓捏提”拔旗手法[cite: 1, 2, 4]</li>
+              </ul>
+            </div>
+            <div class="w-action">查看第 3 周详细教案 ➔</div>
+          </a>
+
+          <!-- Week 4 -->
+          <a href="../weeks/week-4.html" class="week-goal-card">
+            <div>
+              <div class="w-head">
+                <span class="w-num">Week 4</span>
+              </div>
+              <h3 class="w-title">1v1 走廊与礼仪</h3>
+              <ul class="w-target-list">
+                <li>1v1 走廊纯持球闪避体验[cite: 1, 2, 4]</li>
+                <li>拔旗后举旗与归还礼仪[cite: 1, 2, 4]</li>
+              </ul>
+            </div>
+            <div class="w-action">查看第 4 周详细教案 ➔</div>
+          </a>
+        </div>
+      </section>
+
+     
+    </main>
+
+  </div>
+
+</body>
+</html>
