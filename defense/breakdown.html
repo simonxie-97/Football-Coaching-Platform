@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腰旗橄榄球 Breakdown 细化动作与标准训练指南</title>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 顶部渐变看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* 板块卡片通用样式 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    /* 核心生理姿态网格 */
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .standard-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--secondary-color);
+      padding: 12px 15px;
+      border-radius: 6px;
+    }
+
+    .standard-item h4 {
+      margin: 0 0 6px 0;
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .standard-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    /* 阶段表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background-color: #edf2f7;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* 常见错误与纠正卡片 */
+    .errors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      gap: 15px;
+    }
+
+    .error-card {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .error-card h4 {
+      margin: 0 0 6px 0;
+      color: var(--warning-text);
+      font-size: 0.98rem;
+    }
+
+    .error-card p {
+      margin: 3px 0;
+      font-size: 0.88rem;
+      color: #742a2a;
+    }
+
+    .cue-box {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: #fff;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--tip-text);
+      border: 1px dashed var(--tip-border);
+      font-size: 0.88rem;
+    }
+
+    /* Drill 卡片 */
+    .drill-card {
+      border-left: 4px solid var(--accent-color);
+      background: #fffaf0;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .drill-card h4 {
+      margin: 0 0 8px 0;
+      color: var(--accent-color);
+      font-size: 1.05rem;
+    }
+
+    .drill-card p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .errors-grid { grid-template-columns: 1fr; }
+      th, td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- 顶部看板 -->
+  <header>
+    <span class="header-badge">防守核心专项教案</span>
+    <h1>Breakdown（降重心碎步/防守减速控制）技术动作指南</h1>
+    <p><strong>核心本质：</strong> 将向前/向侧的线性高速动能，在最短时间内转化为低重心、多方向可控的平衡姿态。</p>
+    <p><strong>教学核心：</strong> 解决减速太慢撞人、减速太早扑空、重心过高被晃飞等高频问题。</p>
+  </header>
+
+  <!-- 1. 生理姿态标准 -->
+  <div class="section-card">
+    <h2 class="section-title">一、 Breakdown 核心生理姿态与技术标准</h2>
+    <div class="standards-grid">
+      <div class="standard-item">
+        <h4>1. 头部与视线 (Head & Eyes)</h4>
+        <p>双眼死锁持球人腰带中心，头部保持中立不上仰不低头。腰带（重心）绝不做假动作。</p>
+      </div>
+      <div class="standard-item">
+        <h4>2. 上半身与核心 (Upper Body)</h4>
+        <p>胸部稍前倾，核心收紧，双手屈肘张开于前方（手掌朝向持球人），严禁耷拉在腿侧。</p>
+      </div>
+      <div class="standard-item">
+        <h4>3. 下半身与脚步 (Lower Body)</h4>
+        <p>髋关节下沉半蹲，双脚宽于肩宽，用脚掌前掌进行高频极速小碎步打地（Choppy Steps）。</p>
+      </div>
+      <div class="standard-item">
+        <h4>4. 声音与节奏 (Sound & Rhythm)</h4>
+        <p>现场听见“哒哒哒哒”的高频密集击地声，而非重重的踏地声，确保双脚时刻处于弹性启动状态。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 过程四阶段拆解 -->
+  <div class="section-card">
+    <h2 class="section-title">二、 Breakdown 过程四阶段拆解</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">阶段</th>
+          <th style="width: 22%;">触发距离 / 时机</th>
+          <th style="width: 38%;">关键动作细节</th>
+          <th style="width: 22%;">指导提示语 (Cues)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 高速冲刺压迫</strong></td>
+          <td>距离持球人 5 米以外</td>
+          <td>全速向持球人前方预判点冲刺，压缩其空间，不一味追屁股。</td>
+          <td>“全速压迫，缩短距离！”</td>
+        </tr>
+        <tr>
+          <td><strong>2. 刹车与降重心</strong></td>
+          <td>距离持球人 1.5 – 2 米</td>
+          <td>通过 3–4 步连续极速小碎步减速，臀部下沉（屈膝屈髋），切忌一步急停。再次缩短与持球人的距离。准备拔旗</td>
+          <td>“靠近1.5米，屁股下沉！”</td>
+        </tr>
+        <tr>
+          <td><strong>3. 空间控制与横移</strong></td>
+          <td>距离持球人 0.5 – 1.5 米，如果持球人变相移动。</td>
+          <td>双脚保持宽底座，瞬间切换为侧滑步（Slide），用胸口正面挡住通道。</td>
+          <td>“宽底座，胸口堵，别被晃飞！”</td>
+        </tr>
+        <tr>
+          <td><strong>4. 出手精准拔旗</strong></td>
+          <td>半臂距离（拔旗射程）</td>
+          <td>先站稳降重心，再伸双手；爪状抓捏腰旗根部并向上/向外提拉。</td>
+          <td>“看准腰带，抓捏提！”</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. 常见错误与纠正 -->
+  <div class="section-card">
+    <h2 class="section-title">三、 常见错误动作 (Common Errors) 与现场纠正</h2>
+    <div class="errors-grid">
+      <div class="error-card">
+        <h4>❌ 1. 刹车过早</h4>
+        <p><strong>现象：</strong> 距离持球人 3-4 米外就碎步，被持球人轻松加速绕过。</p>
+        <div class="cue-box">💡 纠正：“冲到 2 米内再碎步！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 2. 刹车过晚/直接扑撞）</h4>
+        <p><strong>现象：</strong> 全速冲上去直接伸手，被 Juke 晃飞或直接碰撞犯规。</p>
+        <div class="cue-box">💡 纠正：“先碎步降重心，再伸手！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 3. 重心过高/弯腰不屈膝</h4>
+        <p><strong>现象：</strong> 双腿直立，仅靠弯腰伸手拔旗，导致失去平衡摔倒。</p>
+        <div class="cue-box">💡 纠正：“坐椅子！下沉屁股，屈膝屈髋！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 4. 眼神飘忽</h4>
+        <p><strong>现象：</strong> 看对方的脸、手或脚，被假动作骗跳重心。</p>
+        <div class="cue-box">💡 纠正：“死盯腰带，腰带不移动，身体不动！”</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 细化训练 Drill -->
+  <div class="section-card">
+    <h2 class="section-title">四、 Breakdown 专项精细化 Drill 方案</h2>
+    
+    <div class="drill-card">
+      <h4>Drill 1：视觉反馈 Breakdown 控速（单人控制）</h4>
+      <p><strong>场地：</strong> 设置起点与 7 米外终点 Cone。</p>
+      <p><strong>流程：</strong> 队员全速冲刺，在距终点 2 米时，教练突然举手/吹哨。队员必须在听到信号瞬间做出标准 Breakdown（极速碎步、沉臀降重心、双手张开），并在 Cone 前 0.5 米内彻底控速停稳。</p>
+      <p><strong>进阶：</strong> 做出 Breakdown 瞬间，教练向左/右挥手，队员需在 Breakdown 状态下直接切入防守侧滑步。</p>
+      <p><strong>退阶：</strong> 在2码位置放一个cone，队员主动breakdown后，需要在cone前停下并保持平衡。在小碎步靠近拔旗</p>
+
+    </div>
+
+    <div class="drill-card">
+      <h4>Drill 2：1v1 Breakdown “刹车拔旗”对抗</h4>
+      <p><strong>场地：</strong> 5m x 5m 方格区域。</p>
+      <p><strong>流程：</strong> 持球员在底线，防守员在 6 米外对角起跑。持球员可自由切入突破；防守员全速迎面冲刺，进入 1.5 米范围时做 Breakdown，随持球员变向调整 1-2 步侧滑步，双手精准完成“抓捏提”拔旗。</p>
+      <p><strong>评估指标：</strong> 防守员是否在拔旗前做出了“碎步降重心”减速；是否有身体冲撞犯规。</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
