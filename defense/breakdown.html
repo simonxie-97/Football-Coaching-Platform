@@ -3,203 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>腰旗橄榄球 Breakdown 细化动作与标准训练指南</title>
-  <style>
-    :root {
-      --primary-color: #1a365d;
-      --secondary-color: #2b6cb0;
-      --accent-color: #dd6b20;
-      --bg-color: #f7fafc;
-      --card-bg: #ffffff;
-      --text-color: #2d3748;
-      --border-color: #e2e8f0;
-      --warning-bg: #fff5f5;
-      --warning-border: #feb2b2;
-      --warning-text: #c53030;
-      --tip-bg: #f0fff4;
-      --tip-border: #9ae6b4;
-      --tip-text: #276749;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--bg-color);
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* 顶部渐变看板 */
-    header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      padding: 25px 30px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .header-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    header h1 {
-      margin: 0 0 10px 0;
-      font-size: 1.8rem;
-    }
-
-    header p {
-      margin: 4px 0;
-      opacity: 0.9;
-      font-size: 0.95rem;
-    }
-
-    /* 板块卡片通用样式 */
-    .section-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    }
-
-    .section-title {
-      margin-top: 0;
-      margin-bottom: 16px;
-      color: var(--primary-color);
-      font-size: 1.25rem;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 8px;
-    }
-
-    /* 核心生理姿态网格 */
-    .standards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 15px;
-    }
-
-    .standard-item {
-      background: #f8fafc;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--secondary-color);
-      padding: 12px 15px;
-      border-radius: 6px;
-    }
-
-    .standard-item h4 {
-      margin: 0 0 6px 0;
-      color: var(--secondary-color);
-      font-size: 1rem;
-    }
-
-    .standard-item p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #4a5568;
-    }
-
-    /* 阶段表格 */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      margin-top: 10px;
-    }
-
-    th, td {
-      padding: 12px 15px;
-      border-bottom: 1px solid var(--border-color);
-      vertical-align: top;
-      font-size: 0.92rem;
-    }
-
-    th {
-      background-color: #edf2f7;
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-
-    /* 常见错误与纠正卡片 */
-    .errors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-      gap: 15px;
-    }
-
-    .error-card {
-      background-color: var(--warning-bg);
-      border: 1px solid var(--warning-border);
-      border-radius: 8px;
-      padding: 14px;
-    }
-
-    .error-card h4 {
-      margin: 0 0 6px 0;
-      color: var(--warning-text);
-      font-size: 0.98rem;
-    }
-
-    .error-card p {
-      margin: 3px 0;
-      font-size: 0.88rem;
-      color: #742a2a;
-    }
-
-    .cue-box {
-      margin-top: 8px;
-      padding: 6px 10px;
-      background: #fff;
-      border-radius: 4px;
-      font-weight: bold;
-      color: var(--tip-text);
-      border: 1px dashed var(--tip-border);
-      font-size: 0.88rem;
-    }
-
-    /* Drill 卡片 */
-    .drill-card {
-      border-left: 4px solid var(--accent-color);
-      background: #fffaf0;
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-    }
-
-    .drill-card h4 {
-      margin: 0 0 8px 0;
-      color: var(--accent-color);
-      font-size: 1.05rem;
-    }
-
-    .drill-card p {
-      margin: 4px 0;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .errors-grid { grid-template-columns: 1fr; }
-      th, td { padding: 8px 10px; font-size: 0.85rem; }
-    }
-  </style>
+  <title>Breakdown 细化动作与标准训练指南</title>
+  <link rel="stylesheet" href="../css/drillpage.css">
+  
 </head>
 <body>
 
 <div class="container">
+  <nav class="breadcrumb-nav">
+  <a href="../home.html">🏠 首页</a>
+      <span class="separator">/</span>
+      <a href="index.html">防守基本功</a>
 
+      <span class="separator">/</span>
+
+      <span class="current">breakdown</span>
+      </nav>
   <!-- 顶部看板 -->
   <header>
     <span class="header-badge">防守核心专项教案</span>
@@ -304,6 +123,8 @@
     <h2 class="section-title">四、 Breakdown 专项精细化 Drill 方案</h2>
     
     <div class="drill-card">
+      <div class="drill-tag tag-orange">常规 Drill</div>
+
       <h4>Drill 1：视觉反馈 Breakdown 控速（单人控制）</h4>
       <p><strong>场地：</strong> 设置起点与 7 米外终点 Cone。</p>
       <p><strong>流程：</strong> 队员全速冲刺，在距终点 2 米时，教练突然举手/吹哨。队员必须在听到信号瞬间做出标准 Breakdown（极速碎步、沉臀降重心、双手张开），并在 Cone 前 0.5 米内彻底控速停稳。</p>
@@ -313,6 +134,8 @@
     </div>
 
     <div class="drill-card">
+      <div class="drill-tag tag-orange">实战对抗</div>
+
       <h4>Drill 2：1v1 Breakdown “刹车拔旗”对抗</h4>
       <p><strong>场地：</strong> 5m x 5m 方格区域。</p>
       <p><strong>流程：</strong> 持球员在底线，防守员在 6 米外对角起跑。持球员可自由切入突破；防守员全速迎面冲刺，进入 1.5 米范围时做 Breakdown，随持球员变向调整 1-2 步侧滑步，双手精准完成“抓捏提”拔旗。</p>

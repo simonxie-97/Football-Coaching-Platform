@@ -1,0 +1,276 @@
+    /* Shared breadcrumb */
+  :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent-tech: #3b82f6;
+      --accent-vs: #f59e0b;
+      --accent-green: #10b981;
+      --accent-orange: #f97316;
+      --accent-purple: #8b5cf6;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+ 
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 顶部渐变看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* 板块卡片通用样式 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    /* 核心生理姿态网格 */
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .standard-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--secondary-color);
+      padding: 12px 15px;
+      border-radius: 6px;
+    }
+
+    .standard-item h4 {
+      margin: 0 0 6px 0;
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .standard-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    /* 阶段表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background-color: #edf2f7;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* 常见错误与纠正卡片 */
+    .errors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      gap: 15px;
+    }
+
+    .error-card {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .error-card h4 {
+      margin: 0 0 6px 0;
+      color: var(--warning-text);
+      font-size: 0.98rem;
+    }
+
+    .error-card p {
+      margin: 3px 0;
+      font-size: 0.88rem;
+      color: #742a2a;
+    }
+
+    .cue-box {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: #fff;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--tip-text);
+      border: 1px dashed var(--tip-border);
+      font-size: 0.88rem;
+    }
+
+    /* Drill 卡片与多颜色样式 */
+    .drill-card {
+      position: relative;
+      border-left: 4px solid var(--accent-color);
+      background: #fffaf0;
+      padding: 18px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    .drill-card.regression-drill {
+      border-left-color: var(--secondary-color);
+      background: #ebf8ff;
+    }
+
+    .drill-card h4 {
+      margin: 0 0 8px 0;
+      color: var(--accent-color);
+      font-size: 1.05rem;
+    }
+
+    .drill-card.regression-drill h4 {
+      color: var(--secondary-color);
+    }
+
+    .drill-card p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    .drill-tag {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .tag-orange { background-color: var(--accent-color); }
+    .tag-blue { background-color: var(--secondary-color); }
+
+    @media (max-width: 768px) {
+      .errors-grid { grid-template-columns: 1fr; }
+      th, td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+
+.breadcrumb-nav, .breadcrumb { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 24px; padding: 6px 16px; border: 1px solid var(--border); border-radius: 20px; background: var(--card-bg); box-shadow: 0 2px 4px rgba(0,0,0,.02); list-style: none; }
+.breadcrumb-nav a, .breadcrumb a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; }
+.breadcrumb-nav a:hover, .breadcrumb a:hover { color: var(--primary); }
+.breadcrumb-nav .separator, .breadcrumb span { color: #cbd5e1; font-size: 12px; }
+.breadcrumb-nav .current, .breadcrumb strong { color: var(--primary); font-size: 13px; }
+    
+.breadcrumb-nav {
+  display: inline-flex;
+  align-items: center;
+  background: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .02);
+  margin-bottom: 24px;
+}
+.breadcrumb-nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 500; }
+.breadcrumb-nav a:hover { color: var(--primary); }
+.breadcrumb-nav .separator { margin: 0 8px; color: #cbd5e1; font-size: 12px; }
+.breadcrumb-nav .current { color: var(--primary); font-weight: 700; font-size: 13px; }
+
+/* =========================================================
+   📱 通用响应式修复：卡片标题与右上角标签（Drill Tag）重叠问题
+   ========================================================= */
+
+/* 1. 确保所有 Drill 卡片默认使用 Flex 垂直流式布局 */
+.drill-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 2. 手机端/窄屏设备适配 (小于等于 768px) */
+@media (max-width: 768px) {
+  /* 恢复标签的标准文档流，使标签自动排列在标题正上方 */
+  .drill-card .drill-tag {
+    position: static !important;   /* 强制取消 absolute 绝对定位 */
+    display: inline-block;
+    align-self: flex-start;        /* 靠左对齐 */
+    margin-bottom: 8px;            /* 与下方标题拉开间距 */
+  }
+
+  /* 清除标题可能存在的顶部边距与右侧预留空间 */
+  .drill-card h4 {
+    margin-top: 0;
+    padding-right: 0;
+  }
+}
