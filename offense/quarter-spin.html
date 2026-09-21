@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>持球推进 1/4 转髋过人 (1/4 spin) 标准训练指南</title>
+    <link rel="stylesheet" href="../css/breadcrumb.css">
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 顶部渐变看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* 板块卡片通用样式 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    /* 核心生理姿态网格 */
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .standard-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--secondary-color);
+      padding: 12px 15px;
+      border-radius: 6px;
+    }
+
+    .standard-item h4 {
+      margin: 0 0 6px 0;
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .standard-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    /* 阶段表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background-color: #edf2f7;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* 常见错误与纠正卡片 */
+    .errors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      gap: 15px;
+    }
+
+    .error-card {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .error-card h4 {
+      margin: 0 0 6px 0;
+      color: var(--warning-text);
+      font-size: 0.98rem;
+    }
+
+    .error-card p {
+      margin: 3px 0;
+      font-size: 0.88rem;
+      color: #742a2a;
+    }
+
+    .cue-box {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: #fff;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--tip-text);
+      border: 1px dashed var(--tip-border);
+      font-size: 0.88rem;
+    }
+
+    /* Drill 卡片 */
+    .drill-card {
+      border-left: 4px solid var(--accent-color);
+      background: #fffaf0;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .drill-card h4 {
+      margin: 0 0 8px 0;
+      color: var(--accent-color);
+      font-size: 1.05rem;
+    }
+
+    .drill-card p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .errors-grid { grid-template-columns: 1fr; }
+      th, td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+    /* Drill 标签与多颜色卡片扩展 */
+    .drill-card {
+      position: relative;
+      border-left: 4px solid var(--accent-color);
+      background: #fffaf0;
+      padding: 18px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    /* 降阶训练卡片样式 (蓝色系) */
+    .drill-card.regression-drill {
+      border-left-color: var(--secondary-color);
+      background: #ebf8ff;
+    }
+
+    .drill-tag {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .tag-orange { background-color: var(--accent-color); }
+    .tag-blue { background-color: var(--secondary-color); }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+ <nav class="breadcrumb-nav">
+      <a href="../home.html">🏠 首页</a>
+      <span class="separator">/</span>
+      <a href="index.html">进攻基本功</a>
+
+      <span class="separator">/</span>
+
+      <span class="current">1/4 spin</span>
+    </nav>
+  <!-- 顶部看板 -->
+  <header>
+    <span class="header-badge">进攻核心专项教案</span>
+    <h1>持球推进与 1/4 转髋过人 (Open-Hip Cut) 技术指南</h1>
+    <p><strong>核心本质：</strong> 利用高速直线推进压迫防守者重心，通过外侧扎实踩地与骨盆 1/4 旋转不失速变向突破。</p>
+    <p><strong>教学核心：</strong> 解决变向时甩球失误、仅用脚尖扭转致减速失速、重心过高导致无法爆发生长等高频问题。</p>
+  </header>
+
+  <!-- 1. 生理姿态标准 -->
+  <div class="section-card">
+    <h2 class="section-title">一、 1/4 转髋过人 核心生理姿态与技术标准</h2>
+    <div class="standards-grid">
+      <div class="standard-item">
+        <h4>1. 头部与视线 (Head & Eyes)</h4>
+        <p>双眼观察防守人防守防线与角度，头跟躯干同步转向新切入路线，切忌低头看脚下。</p>
+      </div>
+      <div class="standard-item">
+        <h4>2. 上半身与持球 (Upper Body & Ball Carry)</h4>
+        <p>核心收紧，保持“五点/四点锁定”抱紧橄榄球，转髋瞬间手臂紧贴身体侧腰，严禁甩球外张。</p>
+      </div>
+      <div class="standard-item">
+        <h4>3. 下半身与力角 (Lower Body & Force Angle)</h4>
+        <p>Plant 扎实踩地，膝关节微屈下沉，小腿与地面形成锐角倾斜力角 (Shin Angle)，实现高效反作用力。</p>
+      </div>
+      <div class="standard-item">
+        <h4>4. 骨盆与节奏 (Pelvis & Rhythm)</h4>
+        <p>由核心/骨盆驱动髋关节快速向侧前方旋转约 45°-90°，完成不减速的“零停顿”切入爆发。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 过程四阶段拆解 -->
+  <div class="section-card">
+    <h2 class="section-title">二、 1/4 转髋过人 过程四阶段拆解</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">阶段</th>
+          <th style="width: 22%;">触发距离 / 时机</th>
+          <th style="width: 38%;">关键动作细节</th>
+          <th style="width: 22%;">指导提示语 (Cues)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 直线全速压迫</strong></td>
+          <td>起点至变向点（约 5-8 米）</td>
+          <td>双手锁紧球，高频高步幅直线全速冲刺，诱骗防守人后退或锁定直线防线。</td>
+          <td>“抱紧球，全速压迫！”</td>
+        </tr>
+        <tr>
+          <td><strong>2. Plant 扎实踩地</strong></td>
+          <td>变向点前最后 1 步</td>
+          <td>异侧脚（变向反方向）强有力扎实踩地，屈膝降低重心，建立向内倾斜的侧向力角。</td>
+          <td>“踩实地，降重心！”</td>
+        </tr>
+        <tr>
+          <td><strong>3. 骨盆 1/4 旋转</strong></td>
+          <td>踩地瞬间（极短时间）</td>
+          <td>核心收紧，骨盆驱动髋关节像门铰链般向目标切入方向旋转 45°–90°，带动双脚指向新路线。</td>
+          <td>“转 1/4 髋，打开角度！”</td>
+        </tr>
+        <tr>
+          <td><strong>4. 蹬地爆发冲刺</strong></td>
+          <td>转髋完成瞬间</td>
+          <td>踩地脚外侧爆发推地，同侧脚第一步迅速向前击地，实现斜向/侧向不失速冲刺。</td>
+          <td>“外侧蹬，侧向起飞！”</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. 常见错误与纠正 -->
+  <div class="section-card">
+    <h2 class="section-title">三、 常见错误动作 (Common Errors) 与现场纠正</h2>
+    <div class="errors-grid">
+      <div class="error-card">
+        <h4>❌ 1. 甩球变向（Ball Flying Loose）</h4>
+        <p><strong>现象：</strong> 变向时为了加大摆臂摆幅将球甩离身体，极易被拔旗或掉球失误。</p>
+        <div class="cue-box">💡 纠正口诀：“抱紧球，球贴腰侧！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 2. 扭脚尖不转髋（Twisting Ankle Only）</h4>
+        <p><strong>现象：</strong> 仅依靠脚尖扭转方向，髋关节未打开，导致膝关节受力过大且严重减速。</p>
+        <div class="cue-box">💡 纠正口诀：“骨盆转，转 1/4 髋！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 3. 重心过高踩地松软（Soft High Plant）</h4>
+        <p><strong>现象：</strong> 踩地腿过于直立且未用力，无法形成锐角蹬地力角，缺乏侧向爆发力。</p>
+        <div class="cue-box">💡 纠正口诀：“屁股沉，小腿斜向下推！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 4. 变向停顿减速（Halt before Cut）</h4>
+        <p><strong>现象：</strong> 踩地时产生多余减速碎步，失去线性速度，无法过掉防守人。</p>
+        <div class="cue-box">💡 纠正口诀：“一脚踩定，直接起飞！”</div>
+      </div>
+    </div>
+  </div>
+
+ <!-- 4. 细化训练 Drill -->
+  <div class="section-card">
+    <h2 class="section-title">四、 1/4 转髋过人 专项精细化 Drill 方案</h2>
+    
+    <!-- 降阶训练 1（蓝色主题） -->
+    <div class="drill-card regression-drill">
+      <div class="drill-tag tag-blue">降阶/基础感知</div>
+      <h4>Drill 1：原地 / 微跳 1/4 髋关节旋转感应 (In-Place Hip-Flip Sensing)</h4>
+      <p><strong>训练目的：</strong> 帮学员摆脱“用脚尖扭转”的坏习惯，建立由核心/骨盆驱动 1/4 髋关节快速旋转的肌肉记忆[cite: 1, 2]。</p>
+      <p><strong>场地与准备：</strong> 每人持球在原地，呈低重心屈膝防守/准备姿态（站姿宽于肩宽）[cite: 1, 2]。</p>
+      <p><strong>流程与步态：</strong></p>
+      <ol style="margin: 4px 0; padding-left: 20px; font-size: 0.9rem;">
+        <li><strong>原地双脚弹跳转髋：</strong> 双脚原地轻微高频微跳，听到教练“Hip!”口诀瞬间，核心发力带动骨盆向左或向右快速旋转 45°-90°，双脚顺势落地，上半身与手紧锁球[cite: 1, 2]。</li>
+        <li><strong>单腿蹬地转髋感应：</strong> 异侧脚（如左脚）前掌踩地蓄力，听到信号瞬间，左脚向外侧推地，髋关节向右侧旋转 1/4 圈，右脚向斜前方跨出[cite: 1, 2]。</li>
+      </ol>
+      <div class="cue-box">💡 教学口诀：“骨盆做铰链，核心甩髋，脚随髋转！”[cite: 1, 2]</div>
+    </div>
+
+    <!-- 降阶训练 2（蓝色主题） -->
+    <div class="drill-card regression-drill">
+      <div class="drill-tag tag-blue">降阶/步骤拆解</div>
+      <h4>Drill 2：4 步分解步态切入过人 (4-Step Breakdown Cut)</h4>
+      <p><strong>训练目的：</strong> 将连贯的过人动作拆解为 4 个清晰节奏点，适合初学者建立正确的力角与转髋时机[cite: 1, 2]。</p>
+      <p><strong>场地：</strong> 直线 5 米，摆放 1 个变向标志锥[cite: 1]。屈膝慢跑进场[cite: 1]。</p>
+      <p><strong>四步分解流程：</strong></p>
+      <ul style="margin: 4px 0; padding-left: 20px; font-size: 0.9rem;">
+        <li><strong>Step 1（慢跑压迫）：</strong> 持球全速/慢跑推进至标志锥前 1 米[cite: 1, 2]。</li>
+        <li><strong>Step 2（Plant 扎实踩地）：</strong> 喊“一！”，异侧脚强有力扎实踩地，臀部下沉，小腿形成倾斜角[cite: 1, 2]。</li>
+        <li><strong>Step 3（1/4 转髋开角度）：</strong> 喊“二！”，核心收紧，髋关节向目标方向旋转 45°-90°，双手仍锁紧球[cite: 1, 2]。</li>
+        <li><strong>Step 4（蹬地爆发冲刺）：</strong> 喊“三！”，踩地脚强力推地，同侧脚第一步向前快速击地爆发冲刺 3 米[cite: 1, 2]。</li>
+      </ul>
+      <div class="cue-box">💡 教学口诀：“一踩、二转、三爆发！”[cite: 1, 2]</div>
+    </div>
+
+    <!-- 常规训练 1（橙色/琥珀色主题） -->
+    <div class="drill-card">
+      <div class="drill-tag tag-orange">常规 Drill/机制</div>
+      <h4>Drill 3：标志锥持球推进与 1/4 转髋不失速切入 (Open-Hip Cut Drill)</h4>
+      <p><strong>场地：</strong> 起点 Cone A，距离 5-8 码放置变向点 Cone B， Cone B 斜前方 45°-90° 处 3 码放置目标 Cone C[cite: 1]。</p>
+      <p><strong>流程：</strong> 队员锁紧球从 A 全速冲刺至 B 点，在 B 点使用异侧脚扎实踩地连贯完成 1/4 转髋，调整角度后“零停顿”爆发冲刺至 C 点[cite: 1, 2]。</p>
+      <p><strong>进阶设置：</strong> 教练站在 B 点前方，在队员冲刺接近时随机出示左/右视觉信号，队员需看信号瞬间完成向对应方向的 1/4 转髋切入[cite: 1, 2]。</p>
+      <p><strong>评估指标：</strong> 变向瞬间是否有明显的侧向力角（Shin Angle）；切入时是否保持全速无多余减速碎步[cite: 1, 2]。考查持球稳定性[cite: 1]。放慢速度时可回退至 Drill 2 拆解[cite: 1, 2]。</p>
+    </div>
+
+    <!-- 常规训练 2（橙色/琥珀色主题） -->
+    <div class="drill-card">
+      <div class="drill-tag tag-orange">常规 Drill/实战对抗</div>
+      <h4>Drill 4：1v1 迎面贴防与 1/4 转髋摆脱过人 (1v1 Open-Cut Scrimmage)</h4>
+      <p><strong>场地：</strong> 5m x 8m 长方形狭长走廊区域[cite: 1]。</p>
+      <p><strong>流程：</strong> 持球员在底线持球全速推进，防守员从 6 米外迎面冲刺做 Breakdown 压迫[cite: 1, 2]。持球员在进入防守人半臂距离前瞬间做 1/4 转髋切入，利用角度差不失速摆脱防守人[cite: 1, 2]。</p>
+      <p><strong>评估指标：</strong> 持球员是否在转髋时保持球贴紧躯干[cite: 1]；变向瞬间下肢是否有明显的蹬地倾斜角[cite: 1, 2]；是否成功骗过防守人重心完成不失速过人[cite: 1, 2]。</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

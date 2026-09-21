@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>持球推进 Full Spin 全转体 360° 甩脱过人 标准训练指南</title>
+    <link rel="stylesheet" href="../css/breadcrumb.css">
+
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 顶部渐变看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* 板块卡片通用样式 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    /* 核心生理姿态网格 */
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 15px;
+    }
+
+    .standard-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--secondary-color);
+      padding: 12px 15px;
+      border-radius: 6px;
+    }
+
+    .standard-item h4 {
+      margin: 0 0 6px 0;
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .standard-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    /* 阶段表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background-color: #edf2f7;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* 常见错误与纠正卡片 */
+    .errors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      gap: 15px;
+    }
+
+    .error-card {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .error-card h4 {
+      margin: 0 0 6px 0;
+      color: var(--warning-text);
+      font-size: 0.98rem;
+    }
+
+    .error-card p {
+      margin: 3px 0;
+      font-size: 0.88rem;
+      color: #742a2a;
+    }
+
+    .cue-box {
+      margin-top: 8px;
+      padding: 6px 10px;
+      background: #fff;
+      border-radius: 4px;
+      font-weight: bold;
+      color: var(--tip-text);
+      border: 1px dashed var(--tip-border);
+      font-size: 0.88rem;
+    }
+
+    /* Drill 卡片与多颜色样式 */
+    .drill-card {
+      position: relative;
+      border-left: 4px solid var(--accent-color);
+      background: #fffaf0;
+      padding: 18px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    .drill-card.regression-drill {
+      border-left-color: var(--secondary-color);
+      background: #ebf8ff;
+    }
+
+    .drill-card h4 {
+      margin: 0 0 8px 0;
+      color: var(--accent-color);
+      font-size: 1.05rem;
+    }
+
+    .drill-card.regression-drill h4 {
+      color: var(--secondary-color);
+    }
+
+    .drill-card p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    .drill-tag {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 12px;
+      color: white;
+    }
+
+    .tag-orange { background-color: var(--accent-color); }
+    .tag-blue { background-color: var(--secondary-color); }
+
+    @media (max-width: 768px) {
+      .errors-grid { grid-template-columns: 1fr; }
+      th, td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+<nav class="breadcrumb-nav">
+      <a href="../home.html">🏠 首页</a>
+      <span class="separator">/</span>
+      <a href="index.html">进攻基本功</a>
+
+      <span class="separator">/</span>
+
+      <span class="current">full spin</span>
+    </nav>
+  <!-- 顶部看板 -->
+  <header>
+    <span class="header-badge">进攻核心专项教案</span>
+    <h1>持球推进与 Full Spin（全转体 360° 甩脱过人）技术指南</h1>
+    <p><strong>核心本质：</strong> 利用近距离接触时扎实 Plant 轴心脚与核心暴力的 360° 旋转，快速移走腰旗位置，使防守人拔旗扑空。</p>
+    <p><strong>教学核心：</strong> 解决转体头晕失准、离防守人太远空转、旋转过程脱手掉球、转体后向前线性动能丢失等高频问题。</p>
+  </header>
+
+  <!-- 1. 生理姿态标准 -->
+  <div class="section-card">
+    <h2 class="section-title">一、 Full Spin 全转体 核心生理姿态与技术标准</h2>
+    <div class="standards-grid">
+      <div class="standard-item">
+        <h4>1. 头部与视线 (Head & Eyes)</h4>
+        <p>头部领先于躯干旋转，快速寻路定点（Head Whip / Spotting），防止头晕并快速锁定前冲路线。</p>
+      </div>
+      <div class="standard-item">
+        <h4>2. 上半身与球体 (Upper Body & Ball Tight)</h4>
+        <p>双手紧锁球于胸前/侧腰，核心极速扭转，利用离心力与旋转惯性快速转移腰旗空间。</p>
+      </div>
+      <div class="standard-item">
+        <h4>3. 核心与臀部 (Core & Hips)</h4>
+        <p>核心高度收紧，屈膝降低重心（像“陀螺”底座），由髋关节带动全身完成紧凑的 360° 旋转。</p>
+      </div>
+      <div class="standard-item">
+        <h4>4. 轴心脚与蹬地 (Pivot Foot & Acceleration)</h4>
+        <p>Plant 轴心脚前掌扎实踩地扭转，旋转 360° 后非轴心脚快速前插落地击地，实现连贯爆发加速。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 过程四阶段拆解 -->
+  <div class="section-card">
+    <h2 class="section-title">二、 Full Spin 全转体 过程四阶段拆解</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 18%;">阶段</th>
+          <th style="width: 22%;">触发距离 / 时机</th>
+          <th style="width: 38%;">关键动作细节</th>
+          <th style="width: 22%;">指导提示语 (Cues)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 进击贴近压迫</strong></td>
+          <td>距离防守人 1 – 1.5 米（近距离）</td>
+          <td>全速向防守人侧身冲刺，压缩防守人反应空间，诱使防守人伸手拔旗。</td>
+          <td>“贴近压迫，引诱伸手！”</td>
+        </tr>
+        <tr>
+          <td><strong>2. Plant 轴心脚扎实锁定</strong></td>
+          <td>距离防守人 0.5 – 1 米（半臂距离）</td>
+          <td>异侧脚强有力踩地扎实锁定作为轴心（Pivot），屈膝降重心，准备启动暴转。</td>
+          <td>“扎实踩轴，屈膝降重心！”</td>
+        </tr>
+        <tr>
+          <td><strong>3. 核心驱动 360° 暴转</strong></td>
+          <td>防守人伸手拔旗瞬间</td>
+          <td>核心爆发出力，由髋发力带动躯干快速旋转 360°，头部快速先转定点，腰旗瞬间移走。</td>
+          <td>“快转髋，头部甩定点！”</td>
+        </tr>
+        <tr>
+          <td><strong>4. 重心前倾连贯爆发</strong></td>
+          <td>旋转完成 360° 瞬间</td>
+          <td>躯干恢复向前的攻击姿态，非轴心脚向前迈出爆发第一步，恢复全速直线冲刺。</td>
+          <td>“重心向前，一脚蹬出！”</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3. 常见错误与纠正 -->
+  <div class="section-card">
+    <h2 class="section-title">三、 常见错误动作 (Common Errors) 与现场纠正</h2>
+    <div class="errors-grid">
+      <div class="error-card">
+        <h4>❌ 1. 距离过远“空气 Spin”（Spinning Too Far Out）</h4>
+        <p><strong>现象：</strong> 距离防守人 2-3 米外就开始旋转，防守人只需原地等待即可轻松拔旗。</p>
+        <div class="cue-box">💡 纠正口诀：“看到防守人伸手，贴到 1 米内再转！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 2. 直立“大圆圈”旋转（Wide High Spin）</h4>
+        <p><strong>现象：</strong> 身体直立且旋转半径过大，导致速度严重衰减且容易失去平衡摔倒。</p>
+        <div class="cue-box">💡 纠正口诀：“紧凑像陀螺，沉臀绕轴转！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 3. 旋转时甩球离体（Ball Flying Out）</h4>
+        <p><strong>现象：</strong> 在 360° 旋转惯性下将球离体甩开，导致脱手掉球或被防守人破坏。</p>
+        <div class="cue-box">💡 纠正口诀：“双手锁紧球，球随胸口转！”</div>
+      </div>
+      <div class="error-card">
+        <h4>❌ 4. 转体后头晕减速（Post-Spin Dizziness & Slowdown）</h4>
+        <p><strong>现象：</strong> 旋转时头部没有主动定点寻路，导致转完后方向感缺失、停顿慢跑。</p>
+        <div class="cue-box">💡 纠正口诀：“头先甩过去，眼睛找前方！”</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 细化训练 Drill -->
+  <div class="section-card">
+    <h2 class="section-title">四、 Full Spin 全转体 专项精细化 Drill 方案</h2>
+    
+    <!-- 降阶训练 1 -->
+    <div class="drill-card regression-drill">
+      <div class="drill-tag tag-blue">降阶/基础感知</div>
+      <h4>Drill 1：原地 360° 陀螺转体与头部 Spotting 训练 (In-Place 360 Spin & Spotting)</h4>
+      <p><strong>训练目的：</strong> 建立低重心下双手锁球、核心快速带动 360° 旋转以及头部甩头定点（Spotting）防晕技巧。</p>
+      <p><strong>场地与准备：</strong> 每人持球在原地站立，眼前正前方确定一个视觉参照物（如教练或标志锥）。</p>
+      <p><strong>流程与步态：</strong></p>
+      <ol style="margin: 4px 0; padding-left: 20px; font-size: 0.9rem;">
+        <li><strong>屈膝抱球准备：</strong> 双手双手紧抱球于胸前，屈膝降重心。</li>
+        <li><strong>360° 轴心转体：</strong> 以一脚前掌为轴，核心爆发出力完成 360° 原地快速旋转，旋转中头部尽量滞留，躯干转动后头部快速甩回原点盯住参照物。</li>
+      </ol>
+      <div class="cue-box">💡 教学口诀：“抱紧球，降重心，头甩定点看前方！”</div>
+    </div>
+
+    <!-- 降阶训练 2 -->
+    <div class="drill-card regression-drill">
+      <div class="drill-tag tag-blue">降阶/步骤拆解</div>
+      <h4>Drill 2：4 步分解 360° 转体连续过人 (4-Step Breakdown Full Spin)</h4>
+      <p><strong>训练目的：</strong> 将全速推进中的 360° Spin 拆解为四个节奏连贯的步骤，掌握贴近扎实踩轴与出步爆发的时机。</p>
+      <p><strong>场地：</strong> 放置 1 个标志锥模拟防守人。</p>
+      <p><strong>四步分解流程：</strong></p>
+      <ul style="margin: 4px 0; padding-left: 20px; font-size: 0.9rem;">
+        <li><strong>Step 1（全速贴近）：</strong> 屈膝慢跑/冲刺至标志锥前 1 米。</li>
+        <li><strong>Step 2（Plant 踩轴）：</strong> 喊“一！”，异侧脚强力踩地锁轴，重心下沉。</li>
+        <li><strong>Step 3（360° 暴转）：</strong> 喊“二！”，核心收紧快速带动躯干旋转 360°，双手锁球。</li>
+        <li><strong>Step 4（前插爆发）：</strong> 喊“三！”，非轴心脚向前迈出，重心前倾爆发冲刺 3 米。</li>
+      </ul>
+      <div class="cue-box">💡 教学口诀：“一贴踩轴、二爆转、三前插起飞！”</div>
+    </div>
+
+    <!-- 常规训练 1 -->
+    <div class="drill-card">
+      <div class="drill-tag tag-orange">常规 Drill/机制</div>
+      <h4>Drill 3：标志锥持球推进 Full Spin 连续甩脱 (Cone Full Spin Evasion)</h4>
+      <p><strong>场地：</strong> 起点 A，距离 5 码 B 点（标志锥），距 B 点 5 码 C 点（标志锥）。</p>
+      <p><strong>流程：</strong> 队员全速冲刺至 B 点（模拟防守人），在距离 B 点 1 米内完成 360° Full Spin 甩脱，旋转完成后不停顿迅速加速至 C 点。</p>
+      <p><strong>进阶设置：</strong> 队员在 B 点完成 Spin 后，教练在 C 点随机举起左/右手，队员需在 Spin 结束瞬间看清手势并做 1/4 切入。</p>
+      <p><strong>评估指标：</strong> 旋转触发点是否足够贴近 Cone（1米内）；转体过程是否紧凑无横向漂移；转体后第一步爆发速度。</p>
+    </div>
+
+    <!-- 常规训练 2 -->
+    <div class="drill-card">
+      <div class="drill-tag tag-orange">常规 Drill/实战对抗</div>
+      <h4>Drill 4：1v1 贴身压迫 Full Spin 拔旗甩脱对抗 (1v1 Contact-Zone Full Spin)</h4>
+      <p><strong>场地：</strong> 5m x 8m 正方形区域。</p>
+      <p><strong>流程：</strong> 持球员全速向防守员冲刺，防守员向前推进并在 1 米距离做 Breakdown 伸手拔旗。持球员在防守员伸手瞬间做 360° Full Spin，利用腰旗位置的快速移动避开拔旗并向上码数突破。</p>
+      <p><strong>评估指标：</strong> 旋转时机是否准确诱发防守人扑空；转体时是否维持护球稳定性；是否实现不失速突破。</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
