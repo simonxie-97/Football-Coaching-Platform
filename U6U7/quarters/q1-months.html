@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 月度计划 - U6-U7 校队</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!--
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-orange: #f97316;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-slate: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-slate);
+      color: var(--text-main);
+      margin: 0;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1400px; /* 拓宽最大宽度，让布局更加展开 */
+      margin: 0 auto;
+    }
+
+    /* 📌 1. 胶囊式面包屑导航 */
+    .breadcrumb-nav {
+      display: inline-flex;
+      align-items: center;
+      background: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb-nav a:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb-nav .separator {
+      margin: 0 8px;
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .breadcrumb-nav .current {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* 📌 2. 左右双栏不对称排版（比例调整为 300px : 1fr） */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 1024px) {
+      .content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 左侧：季度核心概览固定卡片（充实更多评估维度） */
+    .overview-sidebar {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+      color: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px -5px rgba(30, 58, 138, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .sidebar-top .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .sidebar-top h1 {
+      font-size: 24px;
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .sidebar-top p {
+      font-size: 14px;
+      opacity: 0.9;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .focus-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 20px;
+    }
+
+    .focus-list li {
+      font-size: 13px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* 侧边栏底部补充季度达标要求 */
+    .sidebar-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 20px;
+      margin-top: 24px;
+    }
+
+    .sidebar-footer h4 {
+      margin: 0 0 8px 0;
+      font-size: 13px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metrics-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metrics-pills span {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    /* 右侧：平铺网格布局 (3-Column Card Grid Layout) */
+    .months-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 1280px) {
+      .months-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .months-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 月度满宽卡片 */
+    .month-card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .month-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -6px rgba(30, 58, 138, 0.12);
+      border-color: var(--accent-blue);
+    }
+
+    .month-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .month-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .m-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .m-title-group h3 {
+      margin: 0;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .m-title-group span {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .status-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .status-tag.active {
+      background: #ecfdf5;
+      color: #047857;
+    }
+
+    .status-tag.next {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .month-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0 0 20px 0;
+    }
+
+    /* 重点目标要点列表 */
+    .objectives-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .objectives-list li {
+      font-size: 13px;
+      color: var(--text-main);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .objectives-list li::before {
+      content: "•";
+      color: var(--accent-blue);
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* 底部标签与操作箭头 */
+    .card-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .pill-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill-tags span {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .enter-btn {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+  -->
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 📍 1. 独立设计的胶囊式面包屑导航 -->
+    <nav class="breadcrumb-nav">
+      <a href="../index.html">🏠 首页</a>
+      <span class="separator">/</span>
+      <span class="current">Q1 月度大纲 (U6-U7)</span>
+    </nav>
+
+    <!-- 📍 2. 双栏满屏网格排版架构 -->
+    <div class="content-layout">
+
+      <!-- 左侧：季度核心导读 -->
+      <aside class="overview-sidebar">
+        <div class="sidebar-top">
+          <span class="badge">Q1 季度规划大纲</span>
+          <h1>基础姿态与习惯</h1>
+          <p>本季度重点在于打牢低龄学员的跑跳、持球习惯与基本对抗认知，不追求复杂战术[cite: 1, 3, 4]。</p>
+          
+          <ul class="focus-list">
+            <li>🏉 双手“包/贴/夹”持球保护[cite: 1, 3, 4]</li>
+            <li>🚩 屈膝降重心与“抓捏提”拔旗[cite: 1, 2, 4]</li>
+            <li>🛑 听到哨音瞬间停止与听指令启动[cite: 1, 2, 4]</li>
+            <li>🤝 赛后礼仪与阵地线规则[cite: 1, 4]</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-footer">
+          <h4>季度评估指标 (Milestones)</h4>
+          <div class="metrics-pills">
+            <span>持球掉球率 &lt; 10%</span>
+            <span>拔旗成功率 &gt; 60%</span>
+            <span>场地规则知晓率 100%</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 右侧：三列平铺的月度卡片网格 (充分填满空间) -->
+      <main class="months-grid">
+
+        <!-- 第 1 月 -->
+        <a href="../months/q1-month1.html" class="month-card">
+          <div>
+            <div class="month-card-header">
+              <div class="month-badge-large">
+                <div class="m-circle">M1</div>
+                <div class="m-title-group">
+                  <h3>第 1 月</h3>
+                  <span>Week 1 - Week 4</span>
+                </div>
+              </div>
+              <span class="status-tag active">阶段一</span>
+            </div>
+
+            <p class="month-desc">建立基本的团队纪律与动作规范，重点建立双手持球习惯与拔旗基础姿态[cite: 1, 2, 4]。</p>
+
+            <ul class="objectives-list">
+              <li>掌握“包/贴/夹”双手持球防掉球[cite: 1, 2, 4]</li>
+              <li>建立听到“Go”极速启动与听哨急停[cite: 1, 2, 4]</li>
+              <li>掌握屈膝降重心“抓捏提”拔旗姿态[cite: 1, 2, 4]</li>
+              <li>认知边线、端区与拔旗举旗礼仪[cite: 1, 2, 4]</li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <div class="pill-tags">
+              <span>包贴夹持球</span>
+              <span>拔尾巴大赛</span>
+            </div>
+            <div class="enter-btn">大纲细节 ➔</div>
+          </div>
+        </a>
+
+        <!-- 第 2 月 -->
+        <a href="../months/q1-month2.html" class="month-card">
+          <div>
+            <div class="month-card-header">
+              <div class="month-badge-large">
+                <div class="m-circle" style="background: #e0f2fe; color: #0284c7;">M2</div>
+                <div class="m-title-group">
+                  <h3>第 2 月</h3>
+                  <span>Week 5 - Week 8</span>
+                </div>
+              </div>
+              <span class="status-tag next">阶段二</span>
+            </div>
+
+            <p class="month-desc">从直线跑动向多向移动过渡，引入单脚蹬地 Juke 变向与“鳄鱼嘴”怀抱接球姿态[cite: 1, 2, 4]。</p>
+
+            <ul class="objectives-list">
+              <li>学习单脚蹬地 Juke 变向与闪避[cite: 1, 2, 4]</li>
+              <li>建立“鳄鱼嘴”双手胸前怀抱接球[cite: 1, 2, 4]</li>
+              <li>掌握防守低重心侧滑步与追踪角度[cite: 2, 4]</li>
+              <li>小范围 1v1 狭长走廊攻防体验[cite: 1, 2, 4]</li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <div class="pill-tags">
+              <span>Juke变向</span>
+              <span>鳄鱼嘴接球</span>
+            </div>
+            <div class="enter-btn">大纲细节 ➔</div>
+          </div>
+        </a>
+
+        <!-- 第 3 月 -->
+        <a href="../months/q1-month3.html" class="month-card">
+          <div>
+            <div class="month-card-header">
+              <div class="month-badge-large">
+                <div class="m-circle" style="background: #dcfce7; color: #16a34a;">M3</div>
+                <div class="m-title-group">
+                  <h3>第 3 月</h3>
+                  <span>Week 9 - Week 12</span>
+                </div>
+              </div>
+              <span class="status-tag next">阶段三</span>
+            </div>
+
+            <p class="month-desc">引入网兜式递交球（Handoff）与基础跑位路线，以 2v2 / 3v3 简化游戏检验阶段成果[cite: 1, 2, 4]。</p>
+
+            <ul class="objectives-list">
+              <li>学习“一上一下”网兜交接球 (Handoff)[cite: 1, 2, 4]</li>
+              <li>认知 Hitch / Go 等简单跑动路线[cite: 1, 2, 4]</li>
+              <li>理解防遮挡腰旗与无碰撞安全规则[cite: 1, 2, 4]</li>
+              <li>2v2 简化半场情境实战与达阵体验[cite: 1, 2, 4]</li>
+            </ul>
+          </div>
+
+          <div class="card-footer">
+            <div class="pill-tags">
+              <span>网兜Handoff</span>
+              <span>2v2实战</span>
+            </div>
+            <div class="enter-btn">大纲细节 ➔</div>
+          </div>
+        </a>
+
+      </main>
+
+    </div>
+  </div>
+
+</body>
+</html>
