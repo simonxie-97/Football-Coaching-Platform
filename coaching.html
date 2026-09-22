@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教练员培训 - 完整可视化思维导图与PPT教案系统</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .mindmap-node {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mindmap-node:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* 背景网格底纹 */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+
+    /* 动态连接线悬停高亮 */
+    .connector-path {
+      transition: stroke-width 0.3s ease, stroke 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* 自定义滚动条样式 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.8);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* PPT 幻灯片过渡与模拟比例 */
+    .slide-aspect {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col bg-grid-pattern selection:bg-indigo-500 selection:text-white">
+
+  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- 品牌标识与主页按钮 -->
+      <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchView('mindmap')">
+        <div class="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-sitemap"></i>
+        </div>
+        <div>
+          <h1 class="font-extrabold text-slate-900 tracking-tight text-lg sm:text-xl flex items-center gap-2">
+            教练员培训
+            <!-- <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-200/60 hidden sm:inline-block">全景可视化版</span> -->
+          </h1>
+          <p class="text-xs text-slate-400 hidden sm:block">少儿腰旗橄榄球及体育教练执教全流程</p>
+        </div>
+      </div>
+
+      <!-- 右侧视图切换与搜索按钮 -->
+      <div class="flex items-center space-x-3">
+        <!-- 视图切换 Tab 按钮 -->
+        <div class="bg-slate-100 p-1 rounded-xl flex items-center space-x-1 text-xs">
+          <button id="tab-btn-mindmap" onclick="switchView('mindmap')" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all bg-white text-indigo-600 shadow-sm font-semibold">
+            <i class="fa-solid fa-sitemap"></i>
+            <span class="hidden sm:inline">思维导图</span>
+          </button>
+          <!-- <button id="tab-btn-ppt" onclick="switchView('ppt')" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 font-medium">
+            <i class="fa-solid fa-file-powerpoint"></i>
+            <span class="hidden sm:inline">PPT 演示</span>
+          </button> -->
+        </div>
+
+        <!-- 搜索按钮 -->
+        <button onclick="openSearchModal()" class="flex items-center space-x-2 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl text-xs font-medium transition">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <span class="hidden md:inline">搜索 </span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8 flex flex-col justify-start relative">
+
+    <!-- 视图 1：互动思维导图界面 -->
+    <div id="view-mindmap" class="w-full relative transition-opacity duration-300">
+
+      <!-- 思维导图网格主结构 -->
+      <div class="relative min-h-[650px] py-4">
+        
+        <!-- 背景 SVG 动态矢量连线画布 -->
+        <svg id="svg-connectors" class="absolute inset-0 w-full h-full pointer-events-none z-0 hidden md:block">
+          <!-- JS 动态插值计算并渲染贝塞尔曲线 -->
+        </svg>
+
+        <!-- 主布局容器：左侧 3 模块 | 中间核心 | 右侧 3 模块 -->
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-6 md:gap-4 items-center relative z-10">
+          
+          <!-- 左侧三大核心模块 (1, 2, 3) -->
+          <div class="md:col-span-2 flex flex-col space-y-6">
+            <div id="wrapper-node-1"></div>
+            <div id="wrapper-node-2"></div>
+            <div id="wrapper-node-3"></div>
+          </div>
+
+          <!-- 中间中心节点 (教练员培训) -->
+          <div class="md:col-span-3 flex justify-center py-6 md:py-0">
+            <div id="center-node" class="bg-gradient-to-b from-slate-900 to-slate-800 text-white px-8 py-7 rounded-3xl shadow-2xl border-4 border-slate-700 text-center transform transition duration-500 hover:scale-105 relative group">
+              <div class="absolute -top-3 -right-3 bg-indigo-500 text-white p-2 rounded-xl text-xs shadow-lg">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-indigo-200">
+                教练员培训
+              </h2>
+              <p class="text-xs text-indigo-300 mt-2 font-medium tracking-wide">
+                少儿腰旗橄榄球全体系执教指南
+              </p>
+              <div class="mt-4 flex justify-center space-x-2 text-[11px] text-slate-400">
+                <span class="bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700">理论 + 实战</span>
+                <span class="bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700">全龄段覆盖</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧三大核心模块 (4, 5, 6) -->
+          <div class="md:col-span-2 flex flex-col space-y-6">
+            <div id="wrapper-node-4"></div>
+            <div id="wrapper-node-5"></div>
+            <div id="wrapper-node-6"></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="view-ppt" class="hidden w-full transition-opacity duration-300">
+      
+      <!-- 顶部控制与面包屑 -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex items-center space-x-3">
+          <button onclick="switchView('mindmap')" class="flex items-center space-x-2 text-slate-600 hover:text-indigo-600 px-3.5 py-2 bg-white rounded-xl shadow-sm border border-slate-200 font-medium text-xs sm:text-sm transition">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>返回思维导图</span>
+          </button>
+          <div class="text-xs sm:text-sm text-slate-400 flex items-center space-x-2">
+            <span>思维导图</span>
+            <span>/</span>
+            <span id="ppt-breadcrumb-module" class="text-slate-700 font-semibold">模块</span>
+            <span>/</span>
+            <span id="ppt-breadcrumb-topic" class="text-indigo-600 font-semibold">具体主题</span>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <!-- <button onclick="togglePPTDarkMode()" id="btn-ppt-darkmode" class="px-3 py-1.5 bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 rounded-xl text-xs font-semibold transition flex items-center space-x-1">
+            <i class="fa-solid fa-moon text-indigo-500"></i>
+            <span>暗黑视角</span>
+          </button> -->
+          <button onclick="toggleFullScreenPPT()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold shadow-sm transition flex items-center space-x-1">
+            <i class="fa-solid fa-expand"></i>
+            <span class="hidden sm:inline">全屏演示</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 双栏响应式 PPT 工作区 -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- 左侧：知识点章节快速导航树 (占据 4 列) -->
+        <div class="lg:col-span-4 bg-white rounded-2xl border border-slate-200 p-4 shadow-sm max-h-[700px] flex flex-col">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+            <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-2">
+              <i class="fa-solid fa-layer-group text-indigo-500"></i>
+              <span>教练员培训目录列表</span>
+            </h3>
+            <span id="ppt-total-count" class="text-[11px] font-medium bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">
+              15 个主题
+            </span>
+          </div>
+
+          <div id="ppt-tree-sidebar" class="overflow-y-auto space-y-2 flex-1 pr-1">
+            <!-- JS 动态渲染侧边栏树 -->
+          </div>
+        </div>
+
+        <!-- 右侧：高保真 16:9 幻灯片渲染区 (占据 8 列) -->
+        <div class="lg:col-span-8 flex flex-col space-y-4">
+          
+          <!-- 模拟 PPT 幻灯片显示容器：取消固定比例限制，使用自适应高度放大展示 -->
+          <div id="ppt-canvas-container" class="w-full min-h-[580px] bg-slate-900 rounded-2xl p-6 sm:p-10 text-white shadow-xl relative flex flex-col justify-between border border-slate-800 transition-colors duration-300">
+            
+            <!-- 顶部装饰栏 -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+              <div class="flex items-center space-x-3">
+                <span id="ppt-slide-category-badge" class="px-3 py-1 bg-indigo-500/20 text-indigo-300 text-xs font-bold rounded-lg border border-indigo-500/30 uppercase tracking-wider">
+                  职业素养与服务意识
+                </span>
+                <span id="ppt-slide-index-indicator" class="text-xs text-slate-400 font-mono">
+                  Slide 1 / 15
+                </span>
+              </div>
+              <div class="text-xs text-slate-400 flex items-center space-x-2">
+                <i class="fa-solid fa-shield-halved text-indigo-400"></i>
+                <span class="hidden sm:inline">教练员培训规范课件</span>
+              </div>
+            </div>
+
+            <!-- 幻灯片主体核心文本 -->
+            <div class="my-auto py-2">
+              <h3 id="ppt-slide-title" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-6 flex items-center gap-3">
+                标题加载中...
+              </h3>
+
+              <div id="ppt-slide-body" class="space-y-4 text-slate-200 text-sm sm:text-base">
+                <!-- 动态解析渲染要点 -->
+              </div>
+            </div>
+
+            <!-- 底部控制与执教提示栏 -->
+            <div class="mt-6 flex flex-col space-y-4">
+              <!-- 翻页控制按钮栏 -->
+              <div class="flex items-center justify-between bg-white/5 border border-white/10 rounded-xl p-3">
+                <button onclick="prevPPT()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-xs font-semibold transition flex items-center space-x-2">
+                  <i class="fa-solid fa-chevron-left"></i>
+                  <span>上一页</span>
+                </button>
+                <div class="text-xs text-slate-300 font-medium">
+                  第 <span id="ppt-curr-num" class="font-bold text-indigo-400">1</span> / <span id="ppt-total-num">1</span> 页
+                </div>
+                <button onclick="nextPPT()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition flex items-center space-x-2 shadow-md">
+                  <span>下一页</span>
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+
+              <!-- 执教实战提示 (Coach Tip Box) -->
+              <div id="ppt-slide-footer" class="bg-indigo-950/60 border border-indigo-500/30 rounded-xl p-4 text-xs sm:text-sm text-indigo-200 flex items-start space-x-3 backdrop-blur-sm">
+                <i class="fa-solid fa-lightbulb text-amber-400 text-lg mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <strong class="font-bold text-amber-300 block mb-1">执教要点提示 (Coach Tip):</strong>
+                  <p id="ppt-coach-tip-text" class="text-slate-300 leading-relaxed">
+                    在实际课堂中，保持清晰的指令与积极的语气。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <div id="search-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-xl overflow-hidden transition-all transform scale-95 opacity-0" id="search-modal-card">
+      <div class="p-4 border-b border-slate-100 flex items-center space-x-3">
+        <i class="fa-solid fa-magnifying-glass text-slate-400 text-lg"></i>
+        <input type="text" id="search-input" oninput="handleSearch()" placeholder="搜索教练培训要点 (如: U10, 拔旗, KISS, 裁判, 赞美...)" class="w-full text-slate-800 text-sm focus:outline-none bg-transparent">
+        <button onclick="closeSearchModal()" class="text-slate-400 hover:text-slate-600 text-sm">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="search-results" class="max-h-80 overflow-y-auto p-3 space-y-2 text-xs">
+        <p class="text-slate-400 text-center py-6">请输入关键词开始搜索...</p>
+      </div>
+
+      <div class="bg-slate-50 px-4 py-2 border-t border-slate-100 text-[11px] text-slate-400 flex justify-between">
+        <span>支持快捷键 ⌘K 唤起搜索</span>
+        <span>按 ESC 退出</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------
+    // 1. 完整数据定义 (100% 对应 PDF 思维导图中的所有结构与文字)
+    // -------------------------------------------------------------
+    const MIND_MAP_DATA = {
+      title: "教练员培训",
+      subtitle: "少儿腰旗橄榄球及体育教练员全流程执教指南",
+      modules: [
+        {
+          id: "m1",
+          title: "职业素养与服务意识",
+          badge: 2,
+          colorTheme: "purple",
+          borderClass: "border-purple-200",
+          bgLight: "bg-purple-50",
+          textClass: "text-purple-600",
+          badgeBg: "bg-purple-100 text-purple-700 border-purple-300",
+          strokeColor: "#c084fc",
+          icon: "fa-user-tie",
+          topics: [
+            {
+              id: "t1-1",
+              title: "教练员形象与言行规范",
+              icon: "fa-id-badge",
+              bullets: [
+                "精神面貌：时刻保持饱满、积极的热情，树立专业教练榜样。",
+                "着装规范：统一穿戴指定的教练员服装与专业装备。",
+                "准时率：提早至少 15 分钟到场完成器材准备与场地巡查。",
+                "禁烟：教练员在教学区域及周边范围内严禁吸烟。"
+              ],
+              tip: "教练员的一言一行都是孩子的直接示范，形象规范是赢得家长信任的第一步。"
+            },
+            {
+              id: "t1-2",
+              title: "家长沟通",
+              icon: "fa-comments",
+              bullets: [
+                "应对“焦虑型”“干预型”家长：如何专业地解答家长对孩子上场时间、位置分配的质疑。",
+                "倾听与同理心：首先认可家长的关切，用专业数据与表现记录说话。",
+                "明确角色边界：引导家长在看台成为支持者，将执教决策留给教练团队。"
+              ],
+              tip: "沟通时保持冷静与专业，用具体的评估指标（如练习专注度、技术掌握度）解答上场时间疑问。"
+            }
+          ]
+        },
+        {
+          id: "m2",
+          title: "风险管理与安全急救",
+          badge: 1,
+          colorTheme: "sky",
+          borderClass: "border-sky-200",
+          bgLight: "bg-sky-50",
+          textClass: "text-sky-600",
+          badgeBg: "bg-sky-100 text-sky-700 border-sky-300",
+          strokeColor: "#60a5fa",
+          icon: "fa-kit-medical",
+          topics: [
+            {
+              id: "t2-1",
+              title: "场地与装备安全检查",
+              icon: "fa-shield-halved",
+              bullets: [
+                "检查场地杂物：清除碎石、积水等隐患，确保边界具备足够的安全缓冲距离，检查草皮平整度。",
+                "检查腰旗穿戴规范：确保尺寸匹配、扣环牢固，严禁佩戴硬物/饰品上场。",
+                "竞技组特别要求：按比赛标准严肃执行装备与隐患检查！"
+              ],
+              tip: "安全是课堂的底线！上课前 5 分钟的场地清查可避免 90% 以上的非接触性运动损伤。"
+            }
+          ]
+        },
+        {
+          id: "m3",
+          title: "儿童心理与行为管理",
+          badge: 3,
+          colorTheme: "teal",
+          borderClass: "border-teal-200",
+          bgLight: "bg-teal-50",
+          textClass: "text-teal-600",
+          badgeBg: "bg-teal-100 text-teal-700 border-teal-300",
+          strokeColor: "#2dd4bf",
+          icon: "fa-child-reaching",
+          topics: [
+            {
+              id: "t3-1",
+              title: "分龄心理特性与沟通策略",
+              icon: "fa-users-between-lines",
+              bullets: [
+                "U6 (5-6岁): 需要极度的具象化指令（如：“像小豹子一样抓住他的尾巴”，而不是“降重心追击”）和高频鼓励。",
+                "U8 (7-8岁): 胜负欲萌芽，需要引导正向竞争，建立规则意识与团队概念。",
+                "U10 (9-10岁): 心理与沟通：自我意识与团队荣誉感增强，开始在意队友认可与自我表现。教练需引导“团队合作大于个人英雄主义”，学习接受失误，并开始培养队长/领袖意识。",
+                "U12 (11-12岁): 青春期前兆，注重同伴认可与平级尊重。教练需给予一定程度的战术自主决策权，采用“平等对话与启发式提问”的沟通方式。"
+              ],
+              tip: "不同年龄段孩子的认知维度差异巨大，切忌用成人化的抽象战术术语对待低龄幼儿。"
+            },
+            {
+              id: "t3-2",
+              title: "课堂行为管理与纪律规范",
+              icon: "fa-gavel",
+              bullets: [
+                "处理孩子走神、打闹、哭闹或拒绝参与：先关注情绪，再引导行为。",
+                "建立“奖励与惩罚机制”：如星级积分、做俯卧撑 vs 暂停游戏（Time-out）。",
+                "规则先行：课前与孩子共同建立“哨响即停”等铁律。"
+              ],
+              tip: "惩罚的目的在于建立规则界限，应以趣味性替代伤害性的惩罚。"
+            },
+            {
+              id: "t3-3",
+              title: "挫折教育与正向鼓励",
+              icon: "fa-heart-circle-check",
+              bullets: [
+                "Sandwich 批评法：赞美 (Positive) — 纠错 (Constructive) — 再鼓励 (Encouraging)。",
+                "赞美“努力过程”而非“天赋”：如夸赞“今天你的防守脚步非常积极”，而非“你太聪明了”。"
+              ],
+              tip: "夸赞过程能培养孩子的成长型思维（Growth Mindset），让他们不怕犯错、勇于挑战。"
+            }
+          ]
+        },
+        {
+          id: "m4",
+          title: "教学法与控场技巧",
+          badge: 4,
+          colorTheme: "rose",
+          borderClass: "border-rose-200",
+          bgLight: "bg-rose-50",
+          textClass: "text-rose-600",
+          badgeBg: "bg-rose-100 text-rose-700 border-rose-300",
+          strokeColor: "#f87171",
+          icon: "fa-chalkboard-user",
+          topics: [
+            {
+              id: "t4-1",
+              title: "标准化课堂流程",
+              icon: "fa-clock",
+              bullets: [
+                "环节时间分配：动态热身 ➔ 专项技能练习 ➔ 战术实战应用 ➔ 总结与结课仪式。",
+                "结课仪式感：建立团队口号 (Break / Huddle)、高光时刻提炼 (Highlight point)、课后作业布置。"
+              ],
+              tip: "严谨的时间分配能防止课堂头重脚轻，仪式感能强化团队凝聚力。"
+            },
+            {
+              id: "t4-2",
+              title: "队形与指令控制",
+              icon: "fa-bullhorn",
+              bullets: [
+                "哨音语言与手势：不同哨声代表的含义（如长哨集结、短哨停止），手势指令统一。",
+                "站位与队伍排列：半圆型（讲解）、矩阵型（做 Drill）、分组列队（效率最大化）。",
+                "教练站位原则：面向所有孩子，确保所有孩子能看见教练，教练面向太阳（让孩子背对阳光）。"
+              ],
+              tip: "教练面向太阳可以让孩子的视线不受强光干扰，大大提升注意力。"
+            },
+            {
+              id: "t4-3",
+              title: "高效精讲多练",
+              icon: "fa-bolt",
+              bullets: [
+                "“KISS”原则：Keep It Simple and Sweet（精炼讲解，每次只讲 1-2 个核心要点，把时间还给孩子练习）。",
+                "减少排队等待：如何通过多组并行提高每个孩子的触球率与练习频次。"
+              ],
+              tip: "废话少说，动起来才是关键！孩子在等待中容易走神发呆。"
+            },
+            {
+              id: "t4-4",
+              title: "渐进式教学法",
+              icon: "fa-chart-line",
+              bullets: [
+                "降低难度 (Regression)：当孩子学不会时，使用降阶训练（如减慢速度、扩大目标范围）。",
+                "增加难度 (Progression)：当孩子觉得无聊或轻松时，增加限制条件（如缩小场地、增加防守人数、限定完成时间）。"
+              ],
+              tip: "始终让训练难度处于孩子的“近侧发展区”（稍微跳一跳能够着）。"
+            }
+          ]
+        },
+        {
+          id: "m5",
+          title: "专项技术与战术拆解",
+          badge: 3,
+          colorTheme: "orange",
+          borderClass: "border-orange-200",
+          bgLight: "bg-orange-50",
+          textClass: "text-orange-600",
+          badgeBg: "bg-orange-100 text-orange-700 border-orange-300",
+          strokeColor: "#fb923c",
+          icon: "fa-chess",
+          topics: [
+            {
+              id: "t5-1",
+              title: "基本功动作标准",
+              icon: "fa-football",
+              bullets: [
+                "拔旗 (Flag Pulling): 眼到手到、屈膝降重心。双手收紧。注意追击角度 (Angle of Pursuit)。",
+                "接球 (Catching): Diamond Hands (胸部以上三角手型)、Basket Catch (低球接球)、Look the ball in (看球入怀)。",
+                "传球 (Passing): 抓球缝线、转体握球、释放点 (Release point)、随贯动作 (Follow-through)。",
+                "跑路线 (Route Running): 起跑准备姿势、切入点 (Break point)、利用步幅与假动作诱骗防守。"
+              ],
+              tip: "细节决定成败！拔旗与接球的基本功细节需要在每节课反复刻意练习。"
+            },
+            {
+              id: "t5-2",
+              title: "位置专项技术",
+              icon: "fa-person-running",
+              bullets: [
+                "QB (四分卫): 脚步口袋移动 (Pocket Movement)、阅读防守阵型、快速出球节奏。",
+                "DB/Rusher (后卫/突击手): 后退步 (Backpedal)、侧滑步、Rusher 冲刷路线与起跳封堵Timing。",
+                "WR (外接手): Release 摆脱防守、空间感辨识、精准脚步控制。"
+              ],
+              tip: "根据每个孩子的性格与身体素质分派位置，激发其专项潜能。"
+            },
+            {
+              id: "t5-3",
+              title: "分龄战术体系",
+              icon: "fa-diagram-project",
+              bullets: [
+                "U6/U8: 1v1 / 2v2 基础空间感、简单交接球 (Handoff)、基础人盯人防守 (Man-to-Man)。",
+                "U10: 重点培训教练如何讲解基础战术跑位配合（如 Mesh/Cross 交叉路线）、基础区域防守（如 2-3 Zone）以及如何通过图形化战术板让 9-10 岁孩子快速理解跑位意图。",
+                "U12: 重点培训教练如何讲解复杂战术（如 Read Options 假跑真传）、区域防守与人盯人防守的实时转换，以及高阶防守侧重 (Blitz / Rusher 冲刷策略)；进攻同战术下可切换战术，培养战术记忆能力。"
+              ],
+              tip: "战术板画得好不如孩子跑得明！战术演练需从慢速跑位逐步过渡到全速实战。"
+            }
+          ]
+        },
+        {
+          id: "m6",
+          title: "临场执教与实战经验",
+          badge: 2,
+          colorTheme: "emerald",
+          borderClass: "border-emerald-200",
+          bgLight: "bg-emerald-50",
+          textClass: "text-emerald-600",
+          badgeBg: "bg-emerald-100 text-emerald-700 border-emerald-300",
+          strokeColor: "#34d399",
+          icon: "fa-trophy",
+          topics: [
+            {
+              id: "t6-1",
+              title: "赛前准备与战术部署",
+              icon: "fa-clipboard-list",
+              bullets: [
+                "战术板的熟练使用与现场画板效率。",
+                "战术制定与轮换名单规划（保障全员上场时间 vs 竞技争取胜利的平衡）。",
+                "研究不同对手的战术习惯，进行针对性布置。"
+              ],
+              tip: "赛前准备越充分，场上指挥越从容。轮换表应提前制定好。"
+            },
+            {
+              id: "t6-2",
+              title: "比赛中的临场应变",
+              icon: "fa-stopwatch",
+              bullets: [
+                "暂停的使用：用于情绪管理（落后或领先时采取不同的管理策略与话术）。",
+                "裁判沟通技巧：如何合规、礼貌地向裁判提出质疑，为球队争取利益，同时给孩子树立尊重裁判的良好榜样。"
+              ],
+              tip: "教练在场边的情绪表现会100%传染给队员，时刻保持冷静客观！"
+            }
+          ]
+        }
+      ]
+    };
+
+    // -------------------------------------------------------------
+    // 2. 全局状态 (独立模块隔离导航)
+    // -------------------------------------------------------------
+    let currentView = 'mindmap'; // 'mindmap' | 'ppt'
+    let currentModuleId = 'm1';
+    let currentModuleTopics = [];
+    let currentTopicIndex = 0;
+    let isPPTDarkMode = true;
+
+    // -------------------------------------------------------------
+    // 3. 思维导图视图渲染（只展示到 2 级目录，取消折叠逻辑）
+    // -------------------------------------------------------------
+    function renderMindMap() {
+      const leftModules = [MIND_MAP_DATA.modules[0], MIND_MAP_DATA.modules[1], MIND_MAP_DATA.modules[2]];
+      const rightModules = [MIND_MAP_DATA.modules[3], MIND_MAP_DATA.modules[4], MIND_MAP_DATA.modules[5]];
+
+      // 渲染左侧三大卡片
+      leftModules.forEach((mod, idx) => {
+        const wrapper = document.getElementById(`wrapper-node-${idx + 1}`);
+        if (wrapper) wrapper.innerHTML = buildModuleCardHTML(mod, 'left');
+      });
+
+      // 渲染右侧三大卡片
+      rightModules.forEach((mod, idx) => {
+        const wrapper = document.getElementById(`wrapper-node-${idx + 4}`);
+        if (wrapper) wrapper.innerHTML = buildModuleCardHTML(mod, 'right');
+      });
+
+      // 延迟重绘 SVG 连接线
+      setTimeout(drawSVGConnectors, 80);
+    }
+
+    function buildModuleCardHTML(mod, direction) {
+      return `
+        <div id="card-${mod.id}" class="mindmap-node bg-white rounded-2xl p-4 border-2 ${mod.borderClass} shadow-sm group">
+          
+          <!-- 模块标头 (1 级目录) -->
+          <div class="flex items-center justify-between pb-2.5 border-b border-slate-100 cursor-pointer" onclick="openModulePPT('${mod.id}', 0)">
+            <div class="flex items-center space-x-2.5">
+              <span class="w-7 h-7 rounded-lg ${mod.badgeBg} flex items-center justify-center text-xs font-bold border shadow-xs">
+                ${mod.badge}
+              </span>
+              <h3 class="font-bold text-slate-800 text-sm group-hover:${mod.textClass} transition-colors">
+                ${mod.title}
+              </h3>
+            </div>
+            <i class="fa-solid fa-arrow-right text-slate-300 group-hover:${mod.textClass} text-xs transition-transform"></i>
+          </div>
+
+          <!-- 子话题列表 (2 级目录 - 清爽展示，无 3 级细则，不可折叠) -->
+          <div id="topics-${mod.id}" class="mt-3 space-y-1.5">
+            ${mod.topics.map((t, topicIdx) => `
+              <div onclick="openModulePPT('${mod.id}', ${topicIdx})" 
+                   class="p-2.5 rounded-xl ${mod.bgLight} hover:bg-slate-100 border border-transparent hover:border-slate-200 cursor-pointer transition flex items-center justify-between group/item">
+                <div class="flex items-center space-x-2.5">
+                  <i class="fa-solid ${t.icon} ${mod.textClass} text-xs group-hover/item:scale-110 transition-transform"></i>
+                  <span class="text-xs font-semibold text-slate-700 leading-snug group-hover/item:${mod.textClass}">
+                    ${t.title}
+                  </span>
+                </div>
+                <i class="fa-solid fa-angle-right text-slate-300 text-[10px] opacity-60 group-hover/item:opacity-100 group-hover/item:translate-x-0.5 transition-all"></i>
+              </div>
+            `).join('')}
+          </div>
+
+        </div>
+      `;
+    }
+
+    // SVG 动态贝塞尔曲线连接线
+    function drawSVGConnectors() {
+      const svg = document.getElementById('svg-connectors');
+      const centerNode = document.getElementById('center-node');
+      if (!svg || !centerNode || currentView !== 'mindmap') return;
+
+      svg.innerHTML = '';
+      const svgRect = svg.getBoundingClientRect();
+      const centerRect = centerNode.getBoundingClientRect();
+
+      const centerLeft = {
+        x: centerRect.left - svgRect.left,
+        y: centerRect.top + centerRect.height / 2 - svgRect.top
+      };
+      const centerRight = {
+        x: centerRect.right - svgRect.left,
+        y: centerRect.top + centerRect.height / 2 - svgRect.top
+      };
+
+      MIND_MAP_DATA.modules.forEach((mod, idx) => {
+        const card = document.getElementById(`card-${mod.id}`);
+        if (!card) return;
+
+        const cardRect = card.getBoundingClientRect();
+        const isLeft = idx < 3;
+
+        const startPt = isLeft ? centerLeft : centerRight;
+        const endPt = {
+          x: isLeft ? (cardRect.right - svgRect.left) : (cardRect.left - svgRect.left),
+          y: cardRect.top + cardRect.height / 2 - svgRect.top
+        };
+
+        const controlX = startPt.x + (endPt.x - startPt.x) * 0.5;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M ${startPt.x} ${startPt.y} C ${controlX} ${startPt.y}, ${controlX} ${endPt.y}, ${endPt.x} ${endPt.y}`;
+
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', mod.strokeColor);
+        path.setAttribute('stroke-width', '2.5');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('class', 'connector-path opacity-60 hover:opacity-100');
+
+        svg.appendChild(path);
+      });
+    }
+
+    // 打开指定模块的 PPT 详情（只包含当前副标题/模块的内容）
+    function openModulePPT(moduleId, topicIndex = 0) {
+      currentModuleId = moduleId;
+      const mod = MIND_MAP_DATA.modules.find(m => m.id === moduleId);
+      if (!mod) return;
+
+      currentModuleTopics = mod.topics.map(t => ({
+        ...t,
+        moduleTitle: mod.title,
+        moduleColor: mod.colorTheme,
+        badgeBg: mod.badgeBg,
+        textClass: mod.textClass,
+        strokeColor: mod.strokeColor
+      }));
+
+      currentTopicIndex = topicIndex >= 0 && topicIndex < currentModuleTopics.length ? topicIndex : 0;
+      switchView('ppt');
+    }
+
+    // 渲染详情页侧边栏（只列出当前选中的副标题模块下的主题）
+    function renderPPTSidebar() {
+      const sidebar = document.getElementById('ppt-tree-sidebar');
+      const totalBadge = document.getElementById('ppt-total-count');
+      if (!sidebar) return;
+
+      const mod = MIND_MAP_DATA.modules.find(m => m.id === currentModuleId);
+      if (!mod) return;
+
+      if (totalBadge) {
+        totalBadge.innerText = `${currentModuleTopics.length} 个副标题主题`;
+      }
+
+      sidebar.innerHTML = `
+        <div class="mb-2">
+          <div class="text-[11px] font-bold text-indigo-600 uppercase tracking-wider px-2.5 py-2 bg-indigo-50/80 rounded-xl flex items-center justify-between mb-2.5 border border-indigo-100">
+            <span class="truncate">${mod.title}</span>
+            <span class="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 py-0.5 rounded-full font-mono">${currentModuleTopics.length}</span>
+          </div>
+          <div class="space-y-1.5">
+            ${currentModuleTopics.map((t, idx) => {
+              const isActive = idx === currentTopicIndex;
+              return `
+                <button onclick="selectPPTTopic(${idx})" 
+                        class="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-medium transition flex items-center justify-between ${
+                          isActive 
+                            ? 'bg-indigo-600 text-white shadow-sm font-semibold' 
+                            : 'text-slate-700 hover:bg-slate-100'
+                        }">
+                  <span class="truncate mr-2">${t.title}</span>
+                  <i class="fa-solid ${t.icon} text-[10px] ${isActive ? 'text-white/80' : 'text-slate-400'}"></i>
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPPTCanvas() {
+      const topic = currentModuleTopics[currentTopicIndex];
+      if (!topic) return;
+
+      // 更新面包屑与底栏指示器
+      const breadcrumbModule = document.getElementById('ppt-breadcrumb-module');
+      if (breadcrumbModule) breadcrumbModule.innerText = topic.moduleTitle;
+      
+      const breadcrumbTopic = document.getElementById('ppt-breadcrumb-topic');
+      if (breadcrumbTopic) breadcrumbTopic.innerText = topic.title;
+
+      const categoryBadge = document.getElementById('ppt-slide-category-badge');
+      if (categoryBadge) categoryBadge.innerText = topic.moduleTitle;
+
+      const indexIndicator = document.getElementById('ppt-slide-index-indicator');
+      if (indexIndicator) indexIndicator.innerText = `Slide ${currentTopicIndex + 1} / ${currentModuleTopics.length}`;
+
+      const currNum = document.getElementById('ppt-curr-num');
+      if (currNum) currNum.innerText = currentTopicIndex + 1;
+
+      const totalNum = document.getElementById('ppt-total-num');
+      if (totalNum) totalNum.innerText = currentModuleTopics.length;
+
+      // 渲染标题
+      const slideTitle = document.getElementById('ppt-slide-title');
+      if (slideTitle) {
+        slideTitle.innerHTML = `
+          <i class="fa-solid ${topic.icon} text-indigo-400"></i>
+          <span>${topic.title}</span>
+        `;
+      }
+
+      // 渲染核心要点
+      const bodyContainer = document.getElementById('ppt-slide-body');
+      if (bodyContainer) {
+        bodyContainer.innerHTML = topic.bullets.map((b) => `
+          <div class="flex items-start space-x-3 bg-white/5 hover:bg-white/10 p-3.5 rounded-xl border border-white/5 transition">
+            <i class="fa-solid fa-circle-check text-indigo-400 text-xs mt-1 flex-shrink-0"></i>
+            <p class="leading-relaxed">${b}</p>
+          </div>
+        `).join('');
+      }
+
+      // 渲染执教 Tips
+      const coachTip = document.getElementById('ppt-coach-tip-text');
+      if (coachTip) coachTip.innerText = topic.tip || "请时刻关注练习者的动作标准与安全。";
+
+      // 重新渲染侧边栏高亮状态
+      renderPPTSidebar();
+    }
+
+    function selectPPTTopic(index) {
+      if (index >= 0 && index < currentModuleTopics.length) {
+        currentTopicIndex = index;
+        renderPPTCanvas();
+      }
+    }
+
+    function prevPPT() {
+      if (currentTopicIndex > 0) {
+        currentTopicIndex--;
+        renderPPTCanvas();
+      }
+    }
+
+    function nextPPT() {
+      if (currentTopicIndex < currentModuleTopics.length - 1) {
+        currentTopicIndex++;
+        renderPPTCanvas();
+      }
+    }
+
+    function jumpToPPTByTopicId(topicId) {
+      for (const mod of MIND_MAP_DATA.modules) {
+        const topicIdx = mod.topics.findIndex(t => t.id === topicId);
+        if (topicIdx !== -1) {
+          openModulePPT(mod.id, topicIdx);
+          break;
+        }
+      }
+    }
+
+    // function togglePPTDarkMode() {
+    //   const container = document.getElementById('ppt-canvas-container');
+    //   const btn = document.getElementById('btn-ppt-darkmode');
+    //   isPPTDarkMode = !isPPTDarkMode;
+
+    //   if (isPPTDarkMode) {
+    //     container.className = container.className.replace('bg-white text-slate-900 border-slate-200', 'bg-slate-900 text-white border-slate-800');
+    //     btn.innerHTML = `<i class="fa-solid fa-moon text-indigo-500"></i><span>暗黑视角</span>`;
+    //   } else {
+    //     container.className = container.className.replace('bg-slate-900 text-white border-slate-800', 'bg-white text-slate-900 border-slate-200');
+    //     btn.innerHTML = `<i class="fa-solid fa-sun text-amber-500"></i><span>明亮视角</span>`;
+    //   }
+    // }
+
+    function toggleFullScreenPPT() {
+      const elem = document.getElementById('ppt-canvas-container');
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => alert(`全屏失败: ${err.message}`));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    function switchView(view) {
+      currentView = view;
+      const mindmapView = document.getElementById('view-mindmap');
+      const pptView = document.getElementById('view-ppt');
+
+      const btnMindmap = document.getElementById('tab-btn-mindmap');
+      const btnPPT = document.getElementById('tab-btn-ppt');
+
+      if (view === 'mindmap') {
+        pptView.classList.add('hidden');
+        mindmapView.classList.remove('hidden');
+
+        if (btnMindmap) btnMindmap.className = "flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all bg-white text-indigo-600 shadow-sm font-semibold";
+        if (btnPPT) btnPPT.className = "flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 font-medium";
+
+        setTimeout(drawSVGConnectors, 60);
+      } else {
+        mindmapView.classList.add('hidden');
+        pptView.classList.remove('hidden');
+
+        if (btnPPT) btnPPT.className = "flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all bg-white text-indigo-600 shadow-sm font-semibold";
+        if (btnMindmap) btnMindmap.className = "flex items-center space-x-2 px-3.5 py-1.5 rounded-lg transition-all text-slate-600 hover:text-slate-900 font-medium";
+
+        renderPPTCanvas();
+      }
+    }
+
+    function openSearchModal() {
+      const modal = document.getElementById('search-modal');
+      const card = document.getElementById('search-modal-card');
+      if (!modal || !card) return;
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+        document.getElementById('search-input')?.focus();
+      }, 10);
+    }
+
+    function closeSearchModal() {
+      const modal = document.getElementById('search-modal');
+      const card = document.getElementById('search-modal-card');
+      if (!modal || !card) return;
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 150);
+    }
+
+    // 快捷键支持 (⌘K 打开搜索, ESC 关闭, ←/→ 键翻页)
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openSearchModal();
+      }
+      if (e.key === 'Escape') {
+        closeSearchModal();
+      }
+      if (currentView === 'ppt') {
+        if (e.key === 'ArrowLeft') prevPPT();
+        if (e.key === 'ArrowRight') nextPPT();
+      }
+    });
+
+    function handleSearch() {
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const resultsContainer = document.getElementById('search-results');
+
+      if (!query) {
+        resultsContainer.innerHTML = `<p class="text-slate-400 text-center py-6">请输入关键词开始搜索...</p>`;
+        return;
+      }
+
+      const matches = [];
+      MIND_MAP_DATA.modules.forEach((mod) => {
+        mod.topics.forEach((topic) => {
+          const titleMatch = topic.title.toLowerCase().includes(query);
+          const bulletMatch = topic.bullets.some((b) => b.toLowerCase().includes(query));
+          if (titleMatch || bulletMatch) {
+            matches.push({ ...topic, moduleTitle: mod.title, moduleId: mod.id });
+          }
+        });
+      });
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = `<p class="text-slate-400 text-center py-6">未找到与 “${query}” 相关的要点</p>`;
+        return;
+      }
+
+      resultsContainer.innerHTML = matches.map((m) => `
+        <div onclick="jumpToPPTByTopicId('${m.id}'); closeSearchModal();" 
+             class="p-3 bg-slate-50 hover:bg-indigo-50 rounded-xl cursor-pointer border border-slate-200/80 transition flex items-center justify-between group">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">${m.moduleTitle}</span>
+              <strong class="text-slate-800 group-hover:text-indigo-600">${m.title}</strong>
+            </div>
+            <p class="text-slate-500 text-[11px] mt-1 line-clamp-1">${m.bullets.join(' | ')}</p>
+          </div>
+          <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-600 text-xs"></i>
+        </div>
+      `).join('');
+    }
+
+    // -------------------------------------------------------------
+    // 入口初始化
+    // -------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      renderMindMap();
+    });
+
+    window.addEventListener('resize', () => {
+      if (currentView === 'mindmap') {
+        drawSVGConnectors();
+      }
+    });
+  </script>
+</body>
+</html>
