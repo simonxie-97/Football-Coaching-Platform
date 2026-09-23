@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>技能教学与认知演进通用框架 (Interactive System)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;800;900&display=swap">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans SC', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fffbebe',
+              100: '#fef3c7',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              900: '#78350f',
+            },
+            slateDark: '#0f172a',
+            slateCard: '#1e293b'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Noto Sans SC', sans-serif; background-color: #0f172a; color: #f8fafc; }
+    .tab-btn.active {
+      background-color: #d97706;
+      color: #ffffff;
+      border-color: #f59e0b;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #475569;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-amber-500 selection:text-slate-900">
+
+  <!-- Top Navigation Header -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50 px-4 lg:px-8 py-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-amber-500/20">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-black tracking-tight text-slate-100">技能教学与认知</h1>
+          <p class="text-xs text-amber-500/90 font-medium">从“遵从范式”到“掌控情境”的升维系统指南</p>
+        </div>
+      </div>
+      
+      <!-- Nav Tabs -->
+      <nav class="flex flex-wrap gap-1 md:gap-2 bg-slate-950/60 p-1.5 rounded-xl border border-slate-800/80 text-xs md:text-sm font-semibold">
+        <button onclick="switchTab('overview')" id="tab-overview" class="tab-btn active px-3.5 py-1.5 rounded-lg border border-transparent transition-all flex items-center gap-2">
+          <i class="fa-solid fa-sitemap"></i> 框架总览
+        </button>
+        <button onclick="switchTab('dimensions')" id="tab-dimensions" class="tab-btn px-3.5 py-1.5 rounded-lg border border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-compass"></i> 底层原理四大维度
+        </button>
+        <button onclick="switchTab('matrix')" id="tab-matrix" class="tab-btn px-3.5 py-1.5 rounded-lg border border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-table-cells"></i> 实战演变矩阵
+        </button>
+        <button onclick="switchTab('diagnostic')" id="tab-diagnostic" class="tab-btn px-3.5 py-1.5 rounded-lg border border-transparent text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-stethoscope"></i> 教学诊断与信号
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 lg:px-8 py-8">
+
+    <!-- ================= TAB 1: FRAMEWORK OVERVIEW ================= -->
+    <section id="content-overview" class="space-y-8">
+      
+      <!-- Core Proposition Banner -->
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-slate-700/60 p-6 md:p-8 shadow-2xl">
+        <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-bolt"></i> 核心主张
+          </div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-100 leading-tight">
+            标准动作是给新手的“拐杖”  <br>原理能够让你“扔掉拐杖”
+          </h2>
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+            教学的终极目标，并非制造一模一样的标准机器，而是培育能够在复杂对抗与不确定性环境中，自如权衡成本收益、做出高效决策的技能主体。
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+            <div class="bg-slate-950/50 rounded-xl p-4 border border-slate-800">
+              <div class="text-amber-400 font-bold text-sm mb-1"><i class="fa-solid fa-shield-halved mr-1"></i> 立基 (Baseline)</div>
+              <p class="text-xs text-slate-400">标准化姿态降解认知负荷，建立安全、高容错、低脑力消耗的动作雏形。</p>
+            </div>
+            <div class="bg-slate-950/50 rounded-xl p-4 border border-slate-800">
+              <div class="text-sky-400 font-bold text-sm mb-1"><i class="fa-solid fa-shuffle mr-1"></i> 破局 (Breakthrough)</div>
+              <p class="text-xs text-slate-400">实战充满压迫与博弈，必须主动牺牲部分标准形态换取速度、隐蔽性或解法。</p>
+            </div>
+            <div class="bg-slate-950/50 rounded-xl p-4 border border-slate-800">
+              <div class="text-emerald-400 font-bold text-sm mb-1"><i class="fa-solid fa-arrow-up-right-dots mr-1"></i> 升维 (Elevation)</div>
+              <p class="text-xs text-slate-400">懂得物理与脑力底层逻辑，才能区分“盲目犯错”与“有意的实战变体”。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three-Stage Evolution Pipeline -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-1.5 h-6 bg-amber-500 rounded-full"></div>
+          <h3 class="text-xl font-bold text-slate-100">认知演进的三阶跃迁流程图 (Evolutionary Pipeline)</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          
+          <!-- Stage 1 -->
+          <div class="bg-slate-900 border border-sky-500/30 rounded-2xl p-6 relative flex flex-col justify-between hover:border-sky-500/60 transition-all shadow-lg">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-400 border border-sky-500/20">阶段 01</span>
+                <i class="fa-solid fa-cube text-sky-400 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-100">建立范式 (Form Compliance)</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                以固定的动作范式为载体。练习者的注意力极度沉浸在自身动作轨迹与形态规范上。
+              </p>
+              <hr class="border-slate-800 my-3">
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-400 mt-0.5"></i> <span><b>单线串行执行：</b>严格遵循 Step-by-Step 指令</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-400 mt-0.5"></i> <span><b>注意力焦点：</b>内部焦点 (关注躯体肌肉)</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-sky-400 mt-0.5"></i> <span><b>教学核心：</b>安全保护、高成功率模板建构</span></li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800 text-right">
+              <span class="text-xs font-semibold text-sky-400">隐喻：看山是山</span>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="bg-slate-900 border border-amber-500/30 rounded-2xl p-6 relative flex flex-col justify-between hover:border-amber-500/60 transition-all shadow-lg">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">阶段 02</span>
+                <i class="fa-solid fa-diagram-project text-amber-400 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-100">理解原理 (Principle Cognition)</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                解构动作背后的物理学与生物力学法则。注意力从躯体解脱，开始观察外部对抗与时空压迫。
+              </p>
+              <hr class="border-slate-800 my-3">
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i> <span><b>多线并行处理：</b>边执行动作边扫描环境</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i> <span><b>注意力焦点：</b>外部焦点 (对手/场地/时空)</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i> <span><b>教学核心：</b>解析因果链，权衡成本收益</span></li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800 text-right">
+              <span class="text-xs font-semibold text-amber-400">隐喻：看山不是山</span>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 relative flex flex-col justify-between hover:border-emerald-500/60 transition-all shadow-lg">
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">阶段 03</span>
+                <i class="fa-solid fa-crown text-emerald-400 text-xl"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-100">打破范式 (Mastery & Context)</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                打破固定教条，根据意图主动伪装、诱导与设计反常规解法，将实战规则转化为优势。
+              </p>
+              <hr class="border-slate-800 my-3">
+              <ul class="text-xs text-slate-300 space-y-2">
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i> <span><b>前瞻与伪装：</b>根据微观线索逆向诱导</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i> <span><b>注意力焦点：</b>全局感知与趋势感知</span></li>
+                <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-0.5"></i> <span><b>教学核心：</b>竞技化解法，意图直接驱动</span></li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800 text-right">
+              <span class="text-xs font-semibold text-emerald-400">隐喻：看山还是山</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 2: FOUR DIMENSIONS ================= -->
+    <section id="content-dimensions" class="hidden space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-6 bg-amber-500 rounded-full"></div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-100">理解底层原理的四大维度 (From Teaching Motion to Teaching Mind)</h3>
+          <p class="text-xs text-slate-400">从“教姿态”升级为“教脑子”的核心认知支柱</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Dimension 1 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 hover:border-amber-500/40 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/20">
+              01
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-slate-100">认知维度：明晰“成本与收益” (Trade-Offs)</h4>
+              <span class="text-xs text-amber-500 font-medium">破除非黑即白的二元对立思维</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            任何所谓“标准动作”都是在特定指标下的权衡（Trade-Offs）。标准动作通常追求最大的安全性与平均成功率，但必然牺牲了极限爆发速度、隐蔽性或突发变化。
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/80 text-xs space-y-1">
+            <span class="font-bold text-slate-200">教学干预要领：</span>
+            <p class="text-slate-400">引导学员思考：“这个变异姿态为你节省了多少反应时间？你为此承担了什么稳定性代价？”</p>
+          </div>
+        </div>
+
+        <!-- Dimension 2 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 hover:border-amber-500/40 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/20">
+              02
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-slate-100">诊断维度：甄别“错误”与“变体” (Diagnostics)</h4>
+              <span class="text-xs text-amber-500 font-medium">具备因材施教与特例识别能力</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            教学者需精准识别：哪些是<b>违背物理学/生物力学的无效错误</b>（需纠正），哪些是<b>因个人体格或战术意图而作出的合理变形</b>（需强化保留）。
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/80 text-xs space-y-1">
+            <span class="font-bold text-slate-200">教学干预要领：</span>
+            <p class="text-slate-400">拒绝死板套用动作模板纠错，尊重符合生物力学效率的个人独特动作风格。</p>
+          </div>
+        </div>
+
+        <!-- Dimension 3 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 hover:border-amber-500/40 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/20">
+              03
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-slate-100">决策维度：升格为“情境决策者” (Context Decision)</h4>
+              <span class="text-xs text-amber-500 font-medium">建立动作与外部环境的因果链</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            动作不仅是躯体肌肉收缩，更是对外部对抗刺激（对手重心、时空空隙）的实时决策回应。懂原理能使学习者从指令被动接收者升级为主动战术解题者。
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/80 text-xs space-y-1">
+            <span class="font-bold text-slate-200">教学干预要领：</span>
+            <p class="text-slate-400">增加开放式情境练习（Open Drills），减少死板的无对抗重复（Closed Reps）。</p>
+          </div>
+        </div>
+
+        <!-- Dimension 4 -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 hover:border-amber-500/40 transition-all">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg border border-amber-500/20">
+              04
+            </div>
+            <div>
+              <h4 class="text-base font-bold text-slate-100">迁移维度：底层逻辑的交叉复用 (Transferability)</h4>
+              <span class="text-xs text-amber-500 font-medium">跨场景的技能自我演变</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            掌握了重心转移、力道传递链以及注意力分配等通用底层机制后，学习者在面对从未接触过的极端复杂新情境时，能自主演化出最佳应对策略。
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800/80 text-xs space-y-1">
+            <span class="font-bold text-slate-200">教学干预要领：</span>
+            <p class="text-slate-400">提取跨领域通用概念（如“创造视线盲区”、“时空停顿”），引导迁移应用。</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 3: EVOLUTION MATRIX ================= -->
+    <section id="content-matrix" class="hidden space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-6 bg-amber-500 rounded-full"></div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-100">动作要求的演变维度对比矩阵 (Evolutionary Matrix)</h3>
+          <p class="text-xs text-slate-400">四项认知与行为参数在三阶段的演化表现</p>
+        </div>
+      </div>
+
+      <!-- Matrix Table Wrapper -->
+      <div class="overflow-x-auto custom-scrollbar rounded-2xl border border-slate-800 bg-slate-900 shadow-xl">
+        <table class="w-full text-left border-collapse text-xs md:text-sm">
+          <thead>
+            <tr class="bg-slate-950 border-b border-slate-800 text-slate-300 font-bold">
+              <th class="p-4 w-1/5 min-w-[140px]">演化维度</th>
+              <th class="p-4 w-1/4 min-w-[180px] text-sky-400"><i class="fa-solid fa-seedling mr-1"></i> 基础阶段 (遵从范式)</th>
+              <th class="p-4 w-1/4 min-w-[180px] text-amber-400"><i class="fa-solid fa-gears mr-1"></i> 进阶阶段 (理解原理)</th>
+              <th class="p-4 w-1/4 min-w-[180px] text-emerald-400"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> 高阶/精英 (打破范式)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-slate-300">
+            <!-- Row 1 -->
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="p-4 font-bold text-slate-100 flex items-center gap-2">
+                <i class="fa-solid fa-eye text-amber-500"></i> 注意力焦点
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">内部焦点 (Internal)</span><br>
+                <span class="text-xs text-slate-400">死盯自身身体姿态、轨迹与力道大小</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">外部焦点 (External)</span><br>
+                <span class="text-xs text-slate-400">关注对手重心、场地空间与进攻路线</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">全局与趋势焦点 (Holistic)</span><br>
+                <span class="text-xs text-slate-400">时空感知预判，关注博弈演化节点</span>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="p-4 font-bold text-slate-100">
+                <i class="fa-solid fa-microchip text-amber-500"></i> 信息处理方式
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">串行处理 (Sequential)</span><br>
+                <span class="text-xs text-slate-400">“观察 ➔ 准备 ➔ 执行”一步步来</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">并行处理 (Parallel)</span><br>
+                <span class="text-xs text-slate-400">边执行基础动作，边实时扫描环境</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">前瞻与诱导 (Predictive)</span><br>
+                <span class="text-xs text-slate-400">利用假动作与微观线索误导对手决策</span>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="p-4 font-bold text-slate-100">
+                <i class="fa-solid fa-ruler-combined text-amber-500"></i> 动作形态约束
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">严格标准化 (Strict Form)</span><br>
+                <span class="text-xs text-slate-400">建立安全高容错的肌肉记忆基准线</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">条件化变异 (Adaptation)</span><br>
+                <span class="text-xs text-slate-400">根据时间与空间压迫作出适度让步</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">反常规设计 (Counter-Norm)</span><br>
+                <span class="text-xs text-slate-400">主动打破常规节奏，构造非对称优势</span>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="p-4 font-bold text-slate-100">
+                <i class="fa-solid fa-bolt-lightning text-amber-500"></i> 动作驱动机制
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">指令/记忆调取</span><br>
+                <span class="text-xs text-slate-400">显性记忆在大脑中按步骤检索提取</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">环境刺激触发</span><br>
+                <span class="text-xs text-slate-400">外部环境变化自动触发动作子程序</span>
+              </td>
+              <td class="p-4">
+                <span class="font-semibold text-slate-200">纯粹意图驱动 (Intent-Driven)</span><br>
+                <span class="text-xs text-slate-400">完全自动化，无招胜有招，意至动随</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 4: DIAGNOSTICS & SIGNALS ================= -->
+    <section id="content-diagnostic" class="hidden space-y-8">
+      
+      <!-- Transition Signals -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-1.5 h-6 bg-amber-500 rounded-full"></div>
+          <div>
+            <h3 class="text-xl font-bold text-slate-100">进入进阶教学的评估信号 (Transition Signals)</h3>
+            <p class="text-xs text-slate-400">判定学习者是否可以从“标准化范式”向“开放实战”过渡的标准</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
+            <div class="flex items-center gap-2 text-sky-400 font-bold text-sm">
+              <i class="fa-solid fa-brain"></i> 核心信号一：认知脑力释放 (Cognitive Offloading)
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              基础动作已经通过高频练习转化为自动化神经反射（肌肉记忆）。执行基础动作不再占用大脑显性注意力算力。
+            </p>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs text-slate-400">
+              <b class="text-slate-200">实操检验方法：</b> 练习者一边进行流畅的技能动作，一边能够准确回答关于外部突发变动的问题，无卡顿迹象。
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3">
+            <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+              <i class="fa-solid fa-bullseye"></i> 核心信号二：目的导向超越姿态导向 (Intent-Driven)
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              练习者的关注焦点从“我的姿态美不美/标准不标准”彻底转向“我的动作是否达成了战术目的”。
+            </p>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs text-slate-400">
+              <b class="text-slate-200">实操检验方法：</b> 当标准动作遭到封堵或干扰时，练习者会自动尝试微调形态继续完成目标，而不是原地愣住。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Scenario Simulator -->
+      <div class="bg-slate-900 border border-amber-500/30 rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-sliders text-amber-500 text-xl"></i>
+            <div>
+              <h4 class="text-base font-bold text-slate-100">教学诊断决策模拟器 (Diagnostic Simulator)</h4>
+              <p class="text-xs text-slate-400">选择学习者的动作表现，获取针对性的教练干预策略</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Scenario Toggle -->
+        <div class="space-y-4">
+          <div class="flex flex-wrap gap-2">
+            <button onclick="runDiagnostic('error')" id="diag-btn-error" class="px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs transition-all">
+              案例 A：学员动作变形，动作极其僵硬且容易受伤
+            </button>
+            <button onclick="runDiagnostic('variant')" id="diag-btn-variant" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all">
+              案例 B：学员未按标准姿态做，但在对抗中成功得分
+            </button>
+            <button onclick="runDiagnostic('stuck')" id="diag-btn-stuck" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all">
+              案例 C：学员标准姿态很美，一旦增加防守人就全盘崩溃
+            </button>
+          </div>
+
+          <div id="diagnostic-output" class="bg-slate-950 rounded-xl p-5 border border-slate-800 text-xs space-y-3">
+            <!-- Dynamic Content Output -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/60 py-6 px-4 lg:px-8 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>技能教学与认知演进通用框架 · 通用教研体系指南</span>
+      <span>遵从范式 ➔ 理解原理 ➔ 打破范式</span>
+    </div>
+  </footer>
+
+  <!-- Script for Interactivity -->
+  <script>
+    function switchTab(tabId) {
+      // Hide all content sections
+      document.querySelectorAll('main > section').forEach(el => el.classList.add('hidden'));
+      // Remove active class from all buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.classList.add('text-slate-400');
+      });
+
+      // Show selected content
+      document.getElementById('content-' + tabId).classList.remove('hidden');
+      
+      // Highlight selected tab button
+      const activeBtn = document.getElementById('tab-' + tabId);
+      activeBtn.classList.add('active');
+      activeBtn.classList.remove('text-slate-400');
+    }
+
+    const diagnosticCases = {
+      error: {
+        title: "诊断结果：无效的力学错误 (Invalid Mechanical Error)",
+        type: "需坚决予以死板修正",
+        color: "text-red-400",
+        analysis: "该表现违反了基本物理学原理或人体生物力学结构，会导致发力效率严重受损，并显著增加关节损伤风险。",
+        action: "<b>教练策略：</b> 迅速暂停练习，回退到【阶段01：建立范式】，使用闭环辅助手段修正基础姿态轨迹，重建安全基准线。"
+      },
+      variant: {
+        title: "诊断结果：有意的实战变体 (Intentional Tactical Variation)",
+        type: "需鼓励保留并深挖其独特性",
+        color: "text-emerald-400",
+        analysis: "动作形态虽不符合教程标准，但底层力学传导依然成立。该变形是学员为了应对时空压迫或配合自身特定身材特长而做出的合理 Trade-Off。",
+        action: "<b>教练策略：</b> 切勿机械纠错！询问学员变异时的感受，帮助其总结变体的适用场景，引导其在合适时机强化使用。"
+      },
+      stuck: {
+        title: "诊断结果：过度沉迷内部焦点的“模板僵局”",
+        type: "需启动“外部焦点”与情境解耦",
+        color: "text-amber-400",
+        analysis: "学员大脑算力仍完全被“姿态标准”占据，缺乏并行处理环境信息的能力，尚未完成向【阶段02：理解原理】的过渡。",
+        action: "<b>教练策略：</b> 停止姿态点评。引入微型对抗情境（如加入随机指令或防守干扰），迫使学员将注意力转移至外部靶点与时空空隙。"
+      }
+    };
+
+    function runDiagnostic(caseKey) {
+      // Button states
+      ['error', 'variant', 'stuck'].forEach(k => {
+        const btn = document.getElementById('diag-btn-' + k);
+        if(k === caseKey) {
+          btn.className = "px-4 py-2 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs transition-all shadow-md";
+        } else {
+          btn.className = "px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all";
+        }
+      });
+
+      const data = diagnosticCases[caseKey];
+      const outputEl = document.getElementById('diagnostic-output');
+      outputEl.innerHTML = `
+        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+          <span class="font-bold ${data.color} text-sm">${data.title}</span>
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">${data.type}</span>
+        </div>
+        <p class="text-slate-300 leading-relaxed">${data.analysis}</p>
+        <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-slate-200">
+          ${data.action}
+        </div>
+      `;
+    }
+
+    // Initialize default diagnostic case
+    document.addEventListener('DOMContentLoaded', () => {
+      runDiagnostic('error');
+    });
+  </script>
+</body>
+</html>
