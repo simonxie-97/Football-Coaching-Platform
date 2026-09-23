@@ -36,3 +36,49 @@ window.addEventListener('blur', function() {
 window.addEventListener('focus', function() {
   document.body.style.filter = 'none';
 });
+
+// 5. 全站动态水印：移动端系统截图无法由网页阻止，水印可明确内容来源并提高外传成本。
+(function addWatermark() {
+  function renderWatermark() {
+    if (document.getElementById('page-security-watermark')) return;
+
+    const watermark = document.createElement('div');
+    watermark.id = 'page-security-watermark';
+    watermark.setAttribute('aria-hidden', 'true');
+    const watermarkText = '内部教学系统 · 仅限授权使用 · ' + new Date().toLocaleDateString('zh-CN');
+    for (let i = 0; i < 12; i += 1) {
+      const item = document.createElement('span');
+      item.textContent = watermarkText;
+      Object.assign(item.style, {
+        display: 'block',
+        padding: '20px',
+        transform: 'rotate(-25deg)',
+        whiteSpace: 'nowrap'
+      });
+      watermark.appendChild(item);
+    }
+    Object.assign(watermark.style, {
+      position: 'fixed',
+      inset: '0',
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+      alignItems: 'center',
+      justifyItems: 'center',
+      color: 'rgba(30, 58, 138, 0.10)',
+      fontSize: 'clamp(12px, 2vw, 22px)',
+      fontWeight: '700',
+      letterSpacing: '0.08em',
+      textAlign: 'center',
+      pointerEvents: 'none',
+      userSelect: 'none',
+      zIndex: '2147483647'
+    });
+    document.body.appendChild(watermark);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderWatermark);
+  } else {
+    renderWatermark();
+  }
+})();
