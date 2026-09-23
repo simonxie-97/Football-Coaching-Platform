@@ -1,0 +1,20 @@
+/* ==========================================
+   🚫 禁用打印与 PDF 导出
+   ========================================== */
+@media print {
+  /* 隐藏页面上的所有内容 */
+  body {
+    display: none !important;
+  }
+  
+  /* 或者不完全隐藏，而是向打印机输出警告页面 */
+  html::after {
+    content: "⚠️ 本教学系统内容为内部资产，严禁打印、导出或外传！";
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 100px;
+  }
+}
