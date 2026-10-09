@@ -111,13 +111,13 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-// 4. 防截图折中技巧：当页面失去焦点（如用户使用截图软件框选）时，自动将内容模糊化
-window.addEventListener('blur', function() {
-  document.body.style.filter = 'blur(15px)';
-});
-window.addEventListener('focus', function() {
-  document.body.style.filter = 'none';
-});
+// // 4. 防截图折中技巧：当页面失去焦点（如用户使用截图软件框选）时，自动将内容模糊化
+// window.addEventListener('blur', function() {
+//   document.body.style.filter = 'blur(15px)';
+// });
+// window.addEventListener('focus', function() {
+//   document.body.style.filter = 'none';
+// });
 
 // 5. 全站动态水印：移动端系统截图无法由网页阻止，水印可明确内容来源并提高外传成本。
 (function addWatermark() {

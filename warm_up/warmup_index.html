@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>橄榄球与青少年训练多维热身项目全集</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/noprint.css">
+  <style>
+    :root {
+      --primary-color: #0f172a;
+      --secondary-color: #2563eb;
+      --accent-color: #ea580c;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #334155;
+      --border-color: #e2e8f0;
+      --tip-bg: #f0fdf4;
+      --tip-border: #86efac;
+      --tip-text: #166534;
+      --game-bg: #fff7ed;
+      --game-border: #fdba74;
+      --game-text: #9a3412;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 顶部头图看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+      color: white;
+      padding: 28px 32px;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 8px 0;
+      font-size: 1.85rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.95;
+      font-size: 0.95rem;
+    }
+
+    /* 模块导航概览 */
+    .module-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .overview-card {
+      background: white;
+      padding: 16px;
+      border-radius: 10px;
+      border-left: 5px solid var(--secondary-color);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .overview-card h3 {
+      margin: 0 0 4px 0;
+      font-size: 1.05rem;
+      color: var(--primary-color);
+    }
+
+    .overview-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    /* 主卡片结构 */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 28px;
+      padding: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+
+    .section-tag {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .tag-static { background-color: #ea580c; }
+    .tag-dynamic { background-color: #2563eb; }
+    .tag-neural { background-color: #7c3aed; }
+    .tag-agility { background-color: #16a34a; }
+
+    /* 训练项表格/网格布局 */
+    .drill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 18px;
+    }
+
+    .drill-item {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .drill-item h4 {
+      margin: 0 0 6px 0;
+      color: var(--primary-color);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .env-badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #475569;
+      font-weight: normal;
+    }
+
+    .drill-desc {
+      margin: 0 0 12px 0;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .coaching-box {
+      background-color: var(--tip-bg);
+      border-left: 4px solid var(--tip-border);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--tip-text);
+      margin-top: 6px;
+    }
+
+    .game-box {
+      background-color: var(--game-bg);
+      border-left: 4px solid var(--game-border);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.88rem;
+      color: var(--game-text);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .drill-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- 固定在顶部的 Header 区域 (包含标题与 Tab) -->
+    <div class="header">
+      <nav class="breadcrumb">
+      <a href="../home.html">🏠 首页</a> &gt; <a href="../skill-library-index.html">技术动作库</a> &gt; <span>热身</span>
+        
+    </nav>
+    <h1>🏈 橄榄球全场景热身项目库</h1>
+    </div>
+
+
+  <!-- 概览栏 -->
+  <div class="module-overview">
+    <div class="overview-card" style="border-color: #ea580c;">
+      <h3>一、静态与关节热身</h3>
+      <p>改善 ROM / 肌肉拉伸 / 深层稳定与激活</p>
+    </div>
+    <div class="overview-card" style="border-color: #2563eb;">
+      <h3>二、动态与游戏热身</h3>
+      <p>升体温 / 低难度游走 / 趣味规则融入</p>
+    </div>
+    <div class="overview-card" style="border-color: #7c3aed;">
+      <h3>三、神经与反应激活</h3>
+      <p>CNS 唤醒 / 听觉与视觉反应 / 快速脚踏频</p>
+    </div>
+    <div class="overview-card" style="border-color: #16a34a;">
+      <h3>四、敏捷与实战爆发</h3>
+      <p>第一步爆发 / 1/4 转髋 / Breakdown 降重心</p>
+    </div>
+  </div>
+
+<!-- 一、静态热身与关节活动 -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">🧘 模块一：静态热身与关节活动（Static & Mobility）</h2>
+      <span class="section-tag tag-static">关节活动度 & 肌肉松解</span>
+    </div>
+
+    <div class="drill-grid">
+      <!-- 1. 基础/关节解离：手指与手腕松解 -->
+      <div class="drill-item">
+        <div>
+          <h4>1. 手指对拉与手腕下折拉伸 (Finger & Wrist Stretch) <span class="env-badge">基础 / 零器材</span></h4>
+          <p class="drill-desc">单臂前举掌心朝外，另一手抓住手指向后轻拉；随后双手掌心相对，手指交叉互扣反推。换方向按压手背下折手腕，各保持 15-20 秒/侧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 放松前臂屈肌与伸肌群，激活手指韧带柔韧性，为接球（手型构建）与传球甩腕提供保护，预防“挫指”。
+        </div>
+      </div>
+
+      <!-- 2. 基础/上肢：肩后侧与肱三头肌拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>2. 交叉手臂与头后肱三头肌拉伸 (Cross-Body & Triceps Stretch) <span class="env-badge">基础 / 任意环境</span></h4>
+          <p class="drill-desc">单臂横过胸前，对侧手扣住肘部向内拉近；随后单臂举起屈肘贴上背部，对侧手抓住肘部向后下方轻压，各保持 15-20 秒/侧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 保持沉肩不耸肩，充分拉伸三角肌后束与肱三头肌，放松摆臂、拔旗与对抗后的上肢肌群。
+        </div>
+      </div>
+
+   
+
+      <!-- 5. 进阶/单关节：腘绳肌与小腿跪姿后拉 -->
+      <div class="drill-item">
+        <div>
+          <h4>5. 腘绳肌与小腿跪姿后拉 (Half-Kneeling Hamstring Stretch) <span class="env-badge">草地 / 场地</span></h4>
+          <p class="drill-desc">单膝跪姿，前腿伸直脚尖勾起。保持脊柱中立，以髋关节为轴臀部向后下压，拉伸前腿后侧腘绳肌与小腿，保持 20 秒/侧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 腹股沟主动折叠屈髋，拒绝弯腰弓背，通过拉长腘绳肌起点实现深层拉伸，预防高速冲刺拉伤。
+        </div>
+      </div>
+
+      <!-- 6. 进阶/单关节：跪姿髂腰肌与股四头肌拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>6. 跪姿髂腰肌与大腿前侧拉伸 (Half-Kneeling Hip Flexor Stretch) <span class="env-badge">垫上 / 草地</span></h4>
+          <p class="drill-desc">呈单腿跪姿，前后腿呈 90°。骨盆后倾（收腹敛臀），重心微微前移，感受后腿大腿前侧与髋前方牵拉感，保持 20-30 秒/侧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 严禁塌腰弯腰；必须先完成骨盆后倾锁死腰椎，再向前移动臀部，深度放松髋屈肌群。
+        </div>
+      </div>
+
+      <!-- 7. 进阶/多关节：蝶式相扑深蹲拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>7. 蝶式相扑深蹲拉伸 (Sumo Squat Elbow-to-Instep) <span class="env-badge">草地 / 场地</span></h4>
+          <p class="drill-desc">双脚宽于肩站立并外展 45°。下蹲至最深处，双手握脚尖，双肘抵住双膝内侧主动向外推，挺胸抬头保持 20 秒。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 双肘外推激活大腿内收肌拉伸，足底与外侧足弓踩实地面，为橄榄球变向与横向滑步提供髋部空间。
+        </div>
+      </div>
+
+      <!-- 8. 进阶/胸椎旋转：跪姿胸椎旋转与伸展 -->
+      <div class="drill-item">
+        <div>
+          <h4>8. 跪姿胸椎旋转与伸展 (Quadruped Thoracic Rotation) <span class="env-badge">垫上 / 草地</span></h4>
+          <p class="drill-desc">四足跪姿，单手扣于脑后。吸气胸椎向内下扣，呼气由胸椎带动身体向侧上方打开，顶点停顿 2 秒。两侧各 8-10 次。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 锁定骨盆与腰椎，严禁塌腰；发力源自中上背部（胸椎）旋转拉伸胸肌与背部。
+        </div>
+      </div>
+
+      <!-- 9. 进阶/深层臀肌：鸽式髋关节外旋拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>9. 鸽式髋关节外旋拉伸 (Pigeon Stretch) <span class="env-badge">垫上 / 草地</span></h4>
+          <p class="drill-desc">前腿屈膝 90° 盘坐，后腿向后伸直，骨盆正对前方。躯干缓慢下压，感受前侧臀大肌与深层外旋肌拉伸，保持 20-30 秒/侧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 骨盆保持中正不倾倒，后腿髋关节主动下沉寻找地面，利用自重压实大腿根部，缓解急停刹车后的臀部紧绷。
+        </div>
+      </div>
+
+      <!-- 10. 复合高阶：站姿交替直腿拔草式拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>10. 站姿交替直腿拔草式拉伸 (Scoop Stretch / Grass Picker) <span class="env-badge">草地 / 场地</span></h4>
+          <p class="drill-desc">单脚向前迈出一小步，前脚跟点地、脚尖勾起；屈后腿、屈髋下沉臀部，双手如“拔草”般从后向前下沿地面拂过，交替进行 10-12 次。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 保持背部平直，通过主动屈髋向后推臀来牵拉腘绳肌与小腿，切忌过度弯曲腰椎。
+        </div>
+      </div>
+
+      <!-- 11. 复合高阶：低位侧向弓步转体拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>11. 低位侧向弓步转体拉伸 (Lateral Lunge Stretch) <span class="env-badge">草地 / 场地</span></h4>
+          <p class="drill-desc">双脚超宽站立，重心向一侧下沉呈侧弓步，伸直腿脚尖向上翻起；同侧手支撑地面，对侧手向上方打开转体，两侧交替 6-8 次。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 屈膝脚全脚掌着地，打开伸直腿的大腿内侧内收肌群，同时利用上肢转体激活胸椎灵活性。
+        </div>
+      </div>
+
+      <!-- 12. 高阶/全能拉伸：弓步转体最伟大拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>12. 弓步转体“最伟大拉伸” (World's Greatest Stretch) <span class="env-badge">草地 / 场地</span></h4>
+          <p class="drill-desc">迈大步呈深弓步，双手撑于前脚内侧；同侧手肘尝试触碰前脚踝，随后顺势向侧上方打开转体指向天空；最后后推髋关节伸直前腿，两侧交替 5-6 次。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 依次激活髋屈肌、大腿内收肌、胸椎旋转度及腘绳肌，是全身上下肢链条整合的终极热身。
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- 动态热身与专项激活 -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">🏃 模块二：动态热身与行进间激活（Dynamic Warm-up）</h2>
+      <span class="section-tag tag-dynamic">升高体温 & 关节多平面动态拉伸</span>
+    </div>
+
+    <div class="drill-grid">
+
+      <!-- 1. 基础矢状面：提踵步与小腿激活 -->
+      <div class="drill-item">
+        <div>
+          <h4>1. 提踵走与脚跟走 (Tip-Toe & Heel Walk) <span class="env-badge">基础 / 10-15码</span></h4>
+          <p class="drill-desc">双脚交替用前脚掌抬高脚跟向前行走 10 码，随后换用脚跟着地、脚尖勾起行走 10 码。保持躯干直立，核心收紧。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 激活跟腱韧带弹性与小腿前/后侧肌群，为橄榄球加速冲刺与急停变向提供踝关节刚度。
+        </div>
+      </div>
+
+      <!-- 2. 矢状面与髋关节：高抬腿抱膝与大腿后侧拉伸 -->
+      <div class="drill-item">
+        <div>
+          <h4>2. 迈步高抬腿抱膝 (High Knee Hug to Chest) <span class="env-badge">基础 / 10-15码</span></h4>
+          <p class="drill-desc">向前迈步，单腿提膝至胸前，双手抱住小腿上方用力向上提拉，顶点停顿 1 秒并提踵支撑腿，左右交替向前推进。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 支撑腿脚掌踩实并蹬地延伸，游离腿提膝拉伸臀大肌，唤醒髋关节下压与提膝动作。
+        </div>
+      </div>
+
+      <!-- 3. 多平面开髋：行进间开髋与闭髋 -->
+      <div class="drill-item">
+        <div>
+          <h4>3. 行进间开髋与闭髋 (Open & Close the Gate) <span class="env-badge">基础 / 10-15码</span></h4>
+          <p class="drill-desc">向前迈步时，单腿提膝向外侧90°旋转画圆打开（开髋）；随后反向由外侧向内侧旋转收回（闭髋），左右交替行进。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 保持骨盆正对前方，依靠髋关节在水平面内解离旋转，为角落后卫（CB）或外接手（WR）开髋转体追击做准备。
+        </div>
+      </div>
+
+      <!-- 4. 跨平面协调性：Karaoke 后交叉步/卡拉OK步 -->
+      <div class="drill-item">
+        <div>
+          <h4>4. 卡拉OK交叉步 (Karaoke / Carioca Step) <span class="env-badge">进阶 / 15-20码</span></h4>
+          <p class="drill-desc">侧向移动，后脚依次交替从前脚的前方与后方跨过（前交叉、后交叉）。上半身与双臂随节奏摆动，保持肩部正对前方。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 强调“骨盆旋转，肩部锁定！”下肢骨盆扭转带动快速交叉，提升下肢协调性与跨步灵活性。
+        </div>
+      </div>
+
+      <!-- 5. 冠状面横向移动：侧滑步 -->
+      <div class="drill-item">
+        <div>
+          <h4>5. 低重心侧向滑步 (Lateral Shuffle) <span class="env-badge">进阶 / 10-15码</span></h4>
+          <p class="drill-desc">屈膝沉臀呈中速运动防守姿态，双手置于胸前。向侧方推地移动，双脚保持宽底座，侧向滑步，切忌双脚交叉碰撞。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 依靠后脚推地（Push-off）而非前脚拉动，激活大腿内收肌与外展肌，保持身体重心平稳无上下起伏。
+        </div>
+      </div>
+
+      <!-- 6. 橄榄球专项步态：低重心后退跑 -->
+      <div class="drill-item">
+        <div>
+          <h4>6. 低重心后退跑 (Backpedal Warm-up) <span class="env-badge">专项 / 10-15码</span></h4>
+          <p class="drill-desc">胸部微前倾、重心置于前脚掌，双脚小步幅快速向后划步跑动，双臂前后自然摆动，保持躯干稳定不后仰。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 视线锁住前方，严禁把重心挂在脚后跟，保持下肢肌肉张力，为后续敏捷模块中的踩地变向做铺垫。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 三、神经激活与反应游戏 -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">⚡ 模块三：神经激活与反应游戏（Neural & Reaction）</h2>
+      <span class="section-tag tag-neural">CNS 唤醒 & 听觉/视觉反应</span>
+    </div>
+
+    <div class="drill-grid">
+      <!-- 扩展：趣味反应1 -->
+      <div class="drill-item">
+        <div>
+          <h4>1. “红绿灯”急停降重心 (Red Light Green Light) <span class="env-badge">基础趣味 / 场地</span></h4>
+          <p class="drill-desc">队员全速/慢跑推进，教练喊“绿灯”前进，“红灯”瞬间双脚宽于肩屈膝急停（Breakdown 降重心位）。</p>
+        </div>
+        <div class="game-box">
+          <strong>🎮 游戏规则与指导：</strong> 纠正直立急停或弯腰不屈膝。要求像“小青蛙落地”一样屈膝弯腰降重心，稳定不倒。
+        </div>
+      </div>
+
+      <!-- 扩展：趣味反应2 -->
+      <div class="drill-item">
+        <div>
+          <h4>2. 极速高频踏步接下沉 (Patter Foot to Drop Squat) <span class="env-badge">专项 / 场地</span></h4>
+          <p class="drill-desc">原地进行极致高频的前脚掌踏步（1秒5-6次），听到口令瞬间极速下沉至低姿态防守准备位。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 前脚掌高频弹性击地，核心收紧；下沉瞬间强力收缩屈髋肌与股四头肌，迅速锁死重心。
+        </div>
+      </div>
+
+      <!-- 扩展：趣味反应3 -->
+      <div class="drill-item">
+        <div>
+          <h4>3. 俯卧/背对听觉极速起步 (Get-Up Reaction Sprint) <span class="env-badge">专项 / 场地</span></h4>
+          <p class="drill-desc">队员俯卧或背对教练，听到哨音/口令（"Hut!"）瞬间极速转头起身，做 3-5 米第一步爆发起步。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 双手胸旁强力爆发推地，脚尖第一时间向下蹬地，躯干保持前倾角（Shin Angle）将推力转化为向前爆发力。
+        </div>
+      </div>
+
+      <!-- 扩展：趣味反应4 -->
+      <div class="drill-item">
+        <div>
+          <h4>4. 视觉手势/看球动反应 (Visual Reaction / Ball Movement) <span class="env-badge">专项 / 标志锥</span></h4>
+          <p class="drill-desc">队员保持低姿态小碎步，看教练手势（左右）或橄榄球离地瞬间，做向对应方向的 1-2 步爆发切入。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 变向瞬间异侧脚强力 Plant（扎实踩地），利用臀中肌与脚踝侧向抗扭发力完成无缝转向。
+        </div>
+      </div>
+
+      <!-- 扩展：简单基础5 -->
+      <div class="drill-item">
+        <div>
+          <h4>5. “抓尾巴/拔尾巴大赛” (Tail Thief Game) <span class="env-badge">腰旗趣味 / 10x10m 区域</span></h4>
+          <p class="drill-desc">队员在腰后插上标志布/腰旗，在指定区域内自由奔跑，既要躲避他人又要拔掉别人的尾巴。</p>
+        </div>
+        <div class="game-box">
+          <strong>🎮 游戏规则与指导：</strong> 强调降重心、看腰带、“抓捏提”。注意保持抬头观察周围，严禁安全碰撞。
+        </div>
+      </div>
+
+      <!-- 扩展：简单基础6 -->
+      <div class="drill-item">
+        <div>
+          <h4>6. 连续跟腱弹跳接抱膝跳 (Pogos to Tuck Jump) <span class="env-badge">基础 / 场地</span></h4>
+          <p class="drill-desc">双脚做 4-5 次快速踝关节弹跳（Pogos），听到口令瞬间接一次爆发力抱膝高跳，落地立刻缓冲。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 利用跟腱与小腿肌群拉伸短缩循环（SSC）的弹性势能，触地极短；抱膝跳时核心与屈髋肌爆发性收缩。
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 脚步敏捷与爆发力激活 -->
+  <div class="section-card">
+    <div class="section-header">
+      <h2 class="section-title">⚡ 模块三：脚步敏捷与爆发力（Agility & SAQ）</h2>
+      <span class="section-tag tag-power">高频神经募集 & 极速刹车变向</span>
+    </div>
+
+    <div class="drill-grid">
+
+      <!-- 1. 新增：沿着白线前前后后跳 -->
+      <div class="drill-item">
+        <div>
+          <h4>1. 沿白线前后极速跳 (Line Hops - Front & Back) <span class="env-badge">高频 / 白线或场地线</span></h4>
+          <p class="drill-desc">双脚并拢（或微开），双脚前脚掌着地，沿着场地白线做前后快速跨线连续跳跃。保持躯干稳定，双手随节奏自然提摆，持续 12-15 秒/组。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 脚后跟严禁着地！利用跟腱弹性快速跳跃，缩短脚掌触地时间（Ground Contact Time），训练踝关节刚度与小腿爆发力。
+        </div>
+      </div>
+
+      <!-- 2. 新增：沿着白线左右转髋跳 -->
+      <div class="drill-item">
+        <div>
+          <h4>2. 沿白线左右转髋跳 (Line Hip Swivels / Twist Line Hops) <span class="env-badge">灵活性 / 白线</span></h4>
+          <p class="drill-desc">双脚横跨白线站立，在白线上进行高频跳跃的同时，下肢骨盆快速左右旋转 90°，肩部与上半身保持锁定正对前方，持续 12-15 秒/组。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> “肩锁定，转骨盆！”解离上体与下肢的连动，大幅提升橄榄球外接手（WR） Release 摆脱和防守后卫（DB）开髋转体追击时的腰髋灵活性。
+        </div>
+      </div>
+
+      <!-- 3. 高频神经激活：绳梯 In-and-Out & Ickey Shuffle -->
+      <div class="drill-item">
+        <div>
+          <h4>3. 绳梯高频脚步 (Ladder Footwork) <span class="env-badge">高频 / 敏捷绳梯</span></h4>
+          <p class="drill-desc">进行“双进双出 (In-And-Out)”或“Ickey Shuffle”横向快速踩步[cite: 2]。前脚掌极速触地，双手自然随节奏提摆，出绳梯后顺势接 3 米爆发出击[cite: 2]。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 抬头不看脚，训练中枢神经的高频信号传导与脚步节奏感，切忌踩线或脚跟落地[cite: 2]。
+        </div>
+      </div>
+
+      <!-- 4. 防守减速与制动：5米 Breakdown 急停刹车 -->
+      <div class="drill-item">
+        <div>
+          <h4>4. 5米全速冲刺与 Breakdown 降重心刹车 (Sprint to Breakdown) <span class="env-badge">爆发 / 10码</span></h4>
+          <p class="drill-desc">全速向前冲刺 5 码，在接近目标前 1.5 米处快速做高频小碎步（Choppy Steps），沉臀降重心，双手呈爪状放在胸前[cite: 1, 2]。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> “全速冲、屁股沉、看腰带！”练习从高速跑动过渡到受控降重心的防守制动能力，防止扑空[cite: 1, 2]。
+        </div>
+      </div>
+
+      <!-- 5. 多方向转换：后退跑转 45° 开髋侧滑步 -->
+      <div class="drill-item">
+        <div>
+          <h4>5. 后退跑转 45° 踩地开髋 (Backpedal to Plant & Drive) <span class="env-badge">高阶 / 15码</span></h4>
+          <p class="drill-desc">低重心后退跑 5 码，看教练手势或信号，后脚踩实（Plant）顺势开髋转体 45°，切入侧向 Shuffle 或全速追击跑动[cite: 1, 2]。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 模拟 DB 应对外接手切路线时的反应！后脚踩实瞬间完成蹬地（Plant & Drive），开髋不犹豫、不踩虚步[cite: 1, 2]。
+        </div>
+      </div>
+
+      <!-- 6. 爆发力神经终极激活：三点起跑与 5米极速突袭 -->
+      <div class="drill-item">
+        <div>
+          <h4>6. 三点起跑/看球动 5米极速爆发加速 (Burst Acceleration) <span class="env-badge">极速 / 5-8码</span></h4>
+          <p class="drill-desc">采用三点姿态（或 7 码 Blitz 压低姿态），看球动瞬间极速向前爆发冲刺 5-8 码，低姿态推进前 3 步后快速做急停制动[cite: 1, 2]。</p>
+        </div>
+        <div class="coaching-box">
+          <strong>💡 专项发力要点：</strong> 开局前 3 步保持低重心向前倾斜压迫（Drive Phase），后脚蹬实地面，把神经中枢激活至最高比赛状态[cite: 1, 2]。
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+</div>
+
+</body>
+</html>

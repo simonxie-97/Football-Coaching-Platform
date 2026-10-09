@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U6-U12 2小时雨天基本功与防守脚步训练计划</title>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.95;
+      font-size: 0.95rem;
+    }
+
+    .key-techniques {
+      background-color: #ebf8ff;
+      border: 1px solid #bee3f8;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 25px;
+    }
+
+    .key-techniques h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .tech-item {
+      background: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .drill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 18px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .drill-time-box {
+      min-width: 120px;
+      text-align: center;
+      background: #edf2f7;
+      padding: 12px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .drill-time {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .drill-type-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: white;
+      background-color: var(--secondary-color);
+    }
+
+    .badge-warmup { background-color: #ed8936; }
+    .badge-agility { background-color: #319795; }
+    .badge-offense { background-color: #3182ce; }
+    .badge-defense { background-color: #38a169; }
+    .badge-cooldown { background-color: #718096; }
+
+    .drill-main { flex: 1; }
+    .drill-main h3 { margin: 0 0 10px 0; color: var(--primary-color); font-size: 1.2rem; }
+    .drill-desc { margin: 0 0 12px 0; font-size: 0.95rem; color: #4a5568; }
+
+    .coaching-point {
+      background-color: var(--tip-bg);
+      border-left: 4px solid var(--tip-border);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: var(--tip-text);
+    }
+
+    .age-diff {
+      background-color: #f7fafc;
+      border-left: 4px solid var(--secondary-color);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+    }
+
+    .age-diff strong { color: var(--primary-color); }
+
+    ul, ol { margin: 6px 0 12px 0; padding-left: 20px; font-size: 0.92rem; color: #2d3748; }
+    li { margin-bottom: 4px; }
+
+    @media (max-width: 650px) {
+      .drill-card { flex-direction: column; gap: 12px; }
+      .drill-time-box { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+      .drill-type-badge { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- <header>
+    <span class="header-badge">U6-U12 </span>
+    <h1>🏈 青少年腰旗橄榄球基本功与防守脚步计划</h1>
+    <p><strong>训练主题：</strong>防滑小碎步控轴、身侧/身背接球修正、Backpedal、侧滑步及对 Hitch / Hitch & Go 的盯防</p>
+  </header> -->
+
+  <!-- <div class="key-techniques">
+    <h3>📌 安全与雨天特别提示 (Rainy Day Adaptation)</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><strong>防滑降重心：</strong>雨天场地湿滑，严禁急停大步变向（Plant），全面改为高频密集小碎步（Choppy Steps）控制身体轴心。</div>
+      <div class="tech-item"><strong>防守 Cushion（缓冲距离）：</strong>CB 盯防时保持 3-4 码 Cushion，通过流畅 Backpedal 与侧滑步平稳跟防，严禁盲目扑撞。</div>
+    </div>
+  </div> -->
+
+  <!-- 1. 热身与神经激活 -->
+  <div class="drill-card">
+    <div class="drill-time-box">
+      <!-- <span class="drill-time">000-015 min</span> -->
+      <span class="drill-type-badge badge-warmup">热身激活</span>
+    </div>
+    <div class="drill-main">
+      <h3>动态热身与 Breakdown / Stance 口令激活</h3>
+      <p class="drill-desc"> 动态拉伸（高抬腿、后踢腿、髋关节内外旋、弓步转体、低重心侧向滑步），防滑碎步降重心练习。</p>
+      
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>做到屈膝降重心，喊出口诀“眼看腰带，小手展开”。</li>
+          <li><strong>U10-U12：</strong>0.5秒内完成极速小碎步刹车降重心，前脚掌高频击地（Choppy Steps）。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> 雨天强调“胸压在脚尖上方（Lean Forward）”，后撤跑（Backpedal）时严禁重心后倒，防止滑倒。
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 绳梯脚步敏捷 -->
+  <div class="drill-card">
+    <div class="drill-time-box">
+      <!-- <span class="drill-time">015-025 min</span> -->
+      <span class="drill-type-badge badge-agility">脚步敏捷</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块一：绳梯脚步与低重心防滑变向</h3>
+      <p class="drill-desc">
+        <strong>Drill A:</strong> 双进双出 (In-And-Out) 与侧向交叉步 (Ickey Shuffle)，强调出绳梯后不依靠大步蹬地，而用小碎步减速调整。<br>
+        <strong>Drill B:</strong> 快速出绳梯后，根据教练手势做低重心侧滑步（Lateral Slide）移动 3 米。
+      </p>
+
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>注重节奏感不踩线，做“一进一出”与平稳侧向跳步。</li>
+          <li><strong>U10-U12：</strong>抬起头观察，前脚掌极速打地，出绳梯后快速转髋进入侧滑步。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> 雨天湿滑，切变向时避免单脚过分发力侧蹬，靠低重心小碎步调整身体朝向。
+      </div>
+    </div>
+  </div>
+<div class="drill-card">
+    <div class="drill-time-box">
+      <span class="drill-time">020-030 min</span>
+      <span class="drill-type-badge badge-offense">灵敏步步与变向</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块二：五步连续单腿跳与外侧脚 90° 强力转髋变向</h3>
+      <p class="drill-desc">
+        1. <strong>单腿跳平衡规范：</strong> 前 4 步使用单脚前掌弹性连续小跳，屈膝屈髋吸收冲击  。<br>
+        2. <strong>第 5 步外侧脚扎实蹬地 (Plant & Hip Drop) :</strong> 第 5 步落脚瞬间，将外侧脚（Plant Foot）向外斜前方 45° 角扎实“踩”入地面，臀部快速下沉（像坐低椅子），用鞋底内侧咬住地面吸收向前冲力   。<br>
+        3. <strong>爆发性转髋 90° 与第一步爆发 (Hip Flip & Explode):</strong> 借助外侧脚蹬地的反作用力，核心快速收紧带脑肚脐眼（骨盆）向新方向爆发性旋转 90°，内侧脚低轨道横向刮过地面迈出第一步，恢复低姿加速冲刺 3-5 米   。
+      </p>
+
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>大声喊出“1, 2, 3, 4, 刹车(5)！”；重点强调第 5 步要脚掌扎实踩稳“发出清脆踏地声”，双手顺势转向新方向   。</li>
+          <li><strong>U10-U12：</strong>做到“第 5 步蹬地-骨盆转髋 90°-低姿内侧脚爆发刮地”一气呵成，转髋变向瞬间不出现高抬腿或向上跳跃   。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> 低年龄练习时切忌速度过快导致摔倒。，第 5 步踩地时膝盖一定要朝向脚尖（严禁内扣），用“用肚脐眼去指新的方向”引导小朋友完成 90° 转髋   。
+      </div>
+    </div>
+  </div>
+  <!-- 3. 外接手与接球（雨天特化修改） -->
+  <div class="drill-card">
+    <div class="drill-time-box">
+      <!-- <span class="drill-time">025-090 min</span> -->
+      <span class="drill-type-badge badge-offense">进攻脚步与接球</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块三：外接手脚步、侧面接球与身后落点接球（65分钟）</h3>
+      <p class="drill-desc">
+        1. <strong>接球手型规范：</strong> 钻石手型（Diamond Hands）、低位球小指相靠。<br>
+        2. <strong>移动中侧面接球 (20min):</strong> 侧向移动中如果场地较滑，要求队员使用高频<strong>小碎步（Choppy Steps）</strong>保持身体平衡，手部向侧前方伸出摘球，接球瞬间立即合抱锁球。<br>
+        3. <strong>侧面接穿在身后的球 (Catching Behind) (20min):</strong> 模拟传球落点靠后，WR 在横向跑动中不减速，通过主动**转髋/转体**、双手向身后伸手接并迅速用躯干保护球。<br>
+        4. <strong>随机接球，身后和身前</strong> 判断球的落地用对应的方式接球<br>
+
+      </p>
+
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>重点练习身侧与身后的静止/慢跑接球，接球后立刻收球护球
+          <li><strong>U10-U12：</strong>跑动中面对落点靠后的球，做到“快速转髋-双手身侧后方摘球-小碎步控轴-继续前进”连贯完成。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> 接身后的球时，提醒队员用眼睛死锁球轨迹，“用手找球，身体顺应转髋”，严禁硬扭膝盖变向以防滑倒。
+      </div>
+    </div>
+  </div><!-- 防守脚步：DB Shuffle Back + Weave & 防 Hitch / Hitch & Go 路线 -->
+  <div class="drill-card">
+    <div class="drill-time-box">
+      <!-- <span class="drill-time">090-115 min</span> -->
+      <span class="drill-type-badge badge-defense">防守脚步</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块四：防守脚步专项：Shuffle Back / Weave 与 Hitch / Hitch & Go 盯防（25分钟）</h3>
+      <p class="drill-desc">
+        1. <strong>Shuffle Back 基础与视角控制 (8min):</strong><br>    
+        &nbsp;&nbsp;• <strong>滑步后退：</strong> 低重心做高频 Shuffle Back（侧滑步后退），确保双脚宽于肩且<strong>绝对不交叉</strong>、重心不向后倒仰。<br>
+        2. <strong>Shuffle 应对 Hitch 路线（Plant & Drive 压迫与拍球/拔旗） (8min):</strong><br>
+        &nbsp;&nbsp;• CB 在 Shuffle Back 后退中识别 WR 做出 Hitch 骤停（Hook）动作，球传出手后后脚踩实（Plant）、前脚收回蹬地，身体向内转正并爆发向前冲刺（Drive on the ball） 。<br>
+        &nbsp;&nbsp;• <strong>细节破坏：</strong> 若传球球速较慢，靠近 WR 时用相对于 WR 的<strong>外侧手去拍球破坏</strong>，<strong>内侧手精准找旗拔旗</strong>；靠近 1.5 米处做 Breakdown 减速控制 。<br>
+        3. <strong>Shuffle 应对 Hitch & Go 路线（刹车制动与二次转身追击） (9min):</strong><br>
+        &nbsp;&nbsp;• 当 WR 做出 Hitch 假动作，CB 完成与上述相同的后脚踩实、前脚收回准备向前切入 ；<br>
+        &nbsp;&nbsp;• 当识别到 WR 突然转化为 Go 路线二次启动时，CB 依靠后脚向前蹬地制动刹车，转身，前脚收回蹬地，全速追击，在贴紧外接手的同时用合理站位与身体挤压其接球空间 。
+      </p>
+
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>重点练习 Shuffle Back 侧滑步时的身体平衡与节奏，做到“眼睛看前方、双脚不交叉、滑步平稳不倒” 。</li>
+          <li><strong>U10-U12：</strong>提高对 Hitch & Go 假动作的反应与识别能力，做 Plant 伪装时不丢失控制力，做到“快速转体追击 + 贴身限制接球空间” 。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> 
+        做 Shuffle 时强调**“沉臀低重心，双脚绝对不交叉”** ！防守 Hitch 时要“见球出手再全速 Plant & Drive”，注意**“外侧手打球，内侧手拉旗”** ；防守 Hitch & Go 时提示队员：只要 WR 重心没有下沉减速，后脚踩实制动后要立刻开髋转体，用身体占据有利身位 ！
+      </div>
+    </div>
+  </div>
+  <div class="drill-card">
+    <div class="drill-time-box">
+      <!-- <span class="drill-time">020-035 min</span> -->
+      <span class="drill-type-badge badge-offense">进攻脚步与 Release</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块五：外接手水平对齐与攻击外侧肩膀 Release（30分钟）</h3>
+      <p class="drill-desc">
+        1. <strong>对齐姿态规范：</strong> 保持垂直压迫速度不减，目视前方。<br>
+        2. <strong>水平拉平与压迫重心 (Level Cross & Stack Angle) (10min):</strong> 面对站位偏外侧的 DB，WR 启动后不急于切外侧，先向斜外侧全速冲刺“拉平距离”。当与 DB 达到齐平（Hip-to-Hip / Leveraged）瞬间，用眼睛和躯干假装切内侧，诱骗 DB 冻结（Freeze）或向内侧收缩重心[cite: 2, 3]。<br>
+        3. <strong>攻击外侧肩膀与手部打压 (Outside Shoulder Attack & Club/Rip) (10min):</strong> 在与 DB 水平对齐瞬间，WR 迅速向外侧踩出硬刺步（Foot Jab），同时近侧手做强力打手（Club）拍开 DB 的阻挡伸手，远侧手向上掏穿（Rip）侧身贴紧 DB 外侧肩膀强行通过  。<br>
+        4. <strong>外侧路线切入与卡位身前 (Out-Route Restack) (10min):</strong> 成功突破 DB 外侧肩膀后，严禁向外侧跑大圈。使用内侧脚低角度抓地，快速卡回 DB 正前方（Restack），将 DB 封锁在后方后再切出外侧路线（Out / Corner Route）    。
+      </p>
+
+      <div class="age-diff">
+        <strong>年龄分层要求：</strong>
+        <ul>
+          <li><strong>U6-U8：</strong>重点练习直线跑动中向外侧“快速迈一步假动作（Foot Jab）”并绕过标志锥，接球后立刻双手合抱。</li>
+          <li><strong>U10-U12：</strong>做到“压平水平线-硬刺步打手（Club/Rip）-贴紧外肩通过-切回身前（Restack）”的连贯动作，并在突破后完成外侧路线抓球。</li>
+        </ul>
+      </div>
+
+      <div class="coaching-point">
+        <strong>💡 教练指导重点：</strong> DB 站外侧时切忌直接往外跑大圈。提醒队员“先追平，再攻击”，一定要用假动作迫使 DB 停脚或把重心锁在内侧，通过时用肩膀低姿硬贴对手外侧肩膀，不给 DB 伸手横移挤压空间    。
+      </div>
+    </div>
+  </div>
+  <!-- 5. 整理恢复与总结 -->
+  <!-- <div class="drill-card">
+    <div class="drill-time-box">
+      <span class="drill-time">115-120 min</span>
+      <span class="drill-type-badge badge-cooldown">总结拉伸</span>
+    </div>
+    <div class="drill-main">
+      <h3>板块五：静态拉伸与复盘总结（5分钟）</h3>
+      <p class="drill-desc">
+        <strong>静态拉伸 (5min):</strong> 重点拉伸股四头肌、腘绳肌、小腿肌肉及阿基里斯腱，提醒雨天训练后及时擦干身体保暖。<br>
+      </p>
+    </div>
+  </div> -->
+
+</div>
+
+</body>
+</html>

@@ -3,53 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>进攻基本功训练库</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/noprint.css">
+  <style>
+    /* 1. Header 吸顶悬浮设置 */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #ffffff;
+      padding-top: 15px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ebeef5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    /* 2. Tab 选项卡样式 */
+    .tab-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      background-color: #f0f2f5;
+      border: 1px solid #dcdfe6;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      color: #606266;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      background-color: #e4e7ed;
+      color: #409eff;
+    }
+
+    .tab-btn.active {
+      background-color: #409eff;
+      color: #ffffff;
+      border-color: #409eff;
+      box-shadow: 0 3px 8px rgba(64, 158, 255, 0.3);
+    }
+
+    /* 3. 分类板块显示控制 */
+    .category-section {
+      display: none; /* 默认隐藏，由 JS 切换 */
+    }
+
+    .category-section.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .category-title {
+      font-size: 18px;
+      color: #303133;
+      margin: 20px 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #409eff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <nav class="breadcrumb">
+    
+
+    <!-- 固定在顶部的 Header 区域 (包含标题与 Tab) -->
+    <div class="header">
+      <nav class="breadcrumb">
       <a href="../home.html">🏠 首页</a> &gt; <a href="../skill-library-index.html">技术动作库</a> &gt; <span>进攻</span>
     </nav>
-
-    <div class="header">
       <h1>🏃 进攻技术专项教学</h1>
-      <p>包含低龄及基础梯队核心进攻动作拆解与专属 Drill</p>
+
+      <!-- Tab 导航按钮 -->
+      <div class="tab-container">
+        <button class="tab-btn active" onclick="switchTab('all')">🌟 全部显示</button>
+        <button class="tab-btn" onclick="switchTab('ball-control')">🏈 持球与接球</button>
+        <button class="tab-btn" onclick="switchTab('footwork')">⚡ 变向与闪避</button>
+        <button class="tab-btn" onclick="switchTab('spin')">🔄 转身技术专项</button>
+        <button class="tab-btn" onclick="switchTab('passing')">🎯 传球与递球</button>
+      </div>
     </div>
 
-    <div class="grid-container">
-      <a href="ball-security.html" class="card">
-        <h3>1. 持球与保护 (Ball Carrying)</h3>
-        <p><strong>口诀：</strong> “包、贴、夹”[cite: 1]。掌握双手双重保护机制，结合“夺宝奇兵”训练[cite: 1]。</p>
-      </a>
+    <!-- 1. 持球与接球 -->
+    <div id="ball-control" class="category-section active">
+      <h2 class="category-title">持球与接球 (Ball Control)</h2>
+      <div class="grid-container">
+        <a href="ball-security.html" class="card">
+          <h3> 持球与保护 (Ball Carrying)</h3>  
+          <p><strong>口诀：</strong> “包、贴、夹”  。掌握双手双重保护机制，结合“夺宝奇兵”训练  。</p>
+        </a>
 
-      <a href="catching.html" class="card">
-        <h3>2. 接球技术 (Catching Mechanics)</h3>
-        <p><strong>口诀：</strong> “鳄鱼嘴/钻石手”[cite: 1]。胸前怀抱接球与“喂食小鳄鱼”微型游戏[cite: 1]。</p>
-      </a>
+        <a href="handeye_coordination.html" class="card">
+          <h3> 手眼协调</h3>  
+          <p></p>
+        </a>
 
-      <a href="evasion.html" class="card">
-        <h3>3. 变向与闪避 (Evasion & Footwork)</h3>
-        <p><strong>口诀：</strong> “蹬地切入 (Juke)”[cite: 1]。单脚用力蹬地转移重心，结合“躲避大灰狼”练习[cite: 1]。</p>
-      </a>
+        <a href="ball_spot.html" class="card">
+          <h3> 接球落点判断</h3>  
+          <p><strong>口诀：</strong> “看、算、占”  。掌握抛物线落点预判与移动卡位，结合“空中接力赛”训练  .</p>
+        </a>
+        <a href="catching_handsharp.html" class="card">
+          <h3> 接球与手部技巧</h3>  
+          <p></p>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. 变向与闪避 -->
+    <div id="footwork" class="category-section active">
+      <h2 class="category-title">变向与步伐 (Evasion & Footwork)</h2>
+      <div class="grid-container">
+        <a href="evasion.html" class="card">
+          <h3>变向与闪避 (Evasion & Footwork)</h3>  
+          <p><strong>口诀：</strong> “蹬地切入 (Juke)”  。单脚用力蹬地转移重心，结合“躲避大灰狼”练习  。</p>
+        </a>
+        <a href="1step.html" class="card">
+          <h3>1步急停变相</h3>  
+          <p>   </p>
+        </a>
+        <a href="3steps.html" class="card">
+          <h3>3步急停变相</h3>  
+          <p><strong>口诀：</strong> “1-2-3”  。掌握三步急停的节奏与动作要领，结合“三步刹车”练习  。</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. 转身技术（四分之一、半转身、全转身组合） -->
+    <div id="spin" class="category-section active">
+      <h2 class="category-title">转身技术专项 (Spin Moves)</h2>
+      <div class="grid-container">
+        <a href="quarter-spin.html" class="card">
+          <h3>四分之一转身 (Quarter Spin)</h3>  
+          <p><strong>口诀：</strong> “转、蹬、跟”  。利用腰部扭转和脚部动作，结合“旋转木马”练习  。</p>
+        </a>
+
+        <a href="half-spin.html" class="card">
+          <h3> 半转身 (Half Spin)</h3>  
+          <p><strong>口诀：</strong> “转、蹬、跟”  。利用腰部扭转和脚部动作，结合“旋转木马”练习  。</p>
+        </a>
+
+        <a href="full-spin.html" class="card">
+          <h3> 全转身 (Full Spin)</h3>  
+          <p><strong>口诀：</strong> “转、蹬、跟”  。利用腰部扭转和脚部动作，结合“旋转木马”练习  。</p>
+        </a>
+      </div>
+    </div>
     
-      <a href="quarter-spin.html" class="card">
-        <h3>4. 四分之一转身 (Quarter Spin)</h3>
-        <p><strong>口诀：</strong> “转、蹬、跟”。利用腰部扭转和脚部动作，结合“旋转木马”练习[cite: 1]。</p>
-      </a>
-      <a href="half-spin.html" class="card">
-        <h3>5. 半转身 (Half Spin)</h3>
-        <p><strong>口诀：</strong> “转、蹬、跟”。利用腰部扭转和脚部动作，结合“旋转木马”练习[cite: 1]。</p>
-      </a>
-      <a href="full-spin.html" class="card">
-        <h3>6. 全转身 (Full Spin)</h3>
-        <p><strong>口诀：</strong> “转、蹬、跟”。利用腰部扭转和脚部动作，结合“旋转木马”练习[cite: 1]。</p>
+    <!-- 4. 传球与递球 -->
+    <div id="passing" class="category-section active">
+      <h2 class="category-title">战术传配合 (Passing & Handoff)</h2>
+      <div class="grid-container">
+        <a href="quarterback_passing.html" class="card">
+          <h3>传球</h3>  
+          <p><strong>口诀：</strong> “握、引、抬”  。掌握正确的握球、引球和抬肘技术，结合“鞭打”练习  。</p>
+        </a>
 
-      </a>
+        <a href="handoff.html" class="card">
+          <h3>交递球</h3>  
+          <p><strong>口诀：</strong> “建、递、锁”  。掌握正确的口袋搭建、递球和锁球技术，结合“盲眼交接”练习  。</p>
+        </a>
+      </div>
     </div>
+
   </div>
+
   <script src="../js/security.js"></script>
+
+  <!-- JavaScript 切换逻辑 -->
+  <script>
+    function switchTab(categoryId) {
+      // 1. 切换按钮 active 样式
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      // 2. 控制分类区块的显示与隐藏
+      const sections = document.querySelectorAll('.category-section');
+      sections.forEach(section => {
+        if (categoryId === 'all') {
+          section.classList.add('active');
+        } else {
+          if (section.id === categoryId) {
+            section.classList.add('active');
+          } else {
+            section.classList.remove('active');
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>

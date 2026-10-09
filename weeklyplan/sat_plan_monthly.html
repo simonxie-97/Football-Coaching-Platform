@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>月度训练计划（4组别4周滚动看板）</title>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --tip-bg: #eff6ff;
+      --tip-border: #3b82f6;
+      --tip-text: #1e40af;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 { margin: 0 0 10px 0; font-size: 2rem; }
+    header p { margin: 5px 0; opacity: 0.9; }
+
+    /* 顶部固定吸顶 Tabs */
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--bg-color);
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-btn {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border: none;
+      background-color: #e2e8f0;
+      color: var(--text-color);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* 所有内容直接无缝展示 */
+    .tab-content {
+      display: block !important;
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      margin-bottom: 35px;
+      scroll-margin-top: 80px; /* 预留顶部 Sticky 距离 */
+    }
+
+    .day-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .day-header {
+      background-color: #edf2f7;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .day-header h2 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+
+    .time-badge {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f8fafc;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .time-col { width: 10%; font-weight: bold; color: var(--secondary-color); }
+    .group-col { width: 22.5%; }
+
+    .group-tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .tag-u6 { background: #fef3c7; color: #b45309; }
+    .tag-u8 { background: #e0e7ff; color: #3730a3; }
+    .tag-u10 { background: #dcfce7; color: #166534; }
+    .tag-u12 { background: #fee2e2; color: #991b1b; }
+
+    .coaching-point {
+      background-color: var(--tip-bg);
+      border-left: 4px solid var(--tip-border);
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: var(--tip-text);
+    }
+
+    .error-point {
+      background-color: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: var(--warning-text);
+    }
+
+    .key-techniques {
+      background-color: #ebf8ff;
+      border: 1px solid #bee3f8;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 25px;
+    }
+
+    .key-techniques h3 {
+      margin-top: 0;
+      color: #2b6cb0;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 10px; }
+      th, td { padding: 8px; font-size: 0.8rem; }
+      .day-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- 顶栏 Header -->
+  <header>
+    <h1>🏈 青训俱乐部 4 组别月度滚动训练大纲</h1>
+    <p>组别架构：U6（启蒙）｜ U7-U8（基础）｜ U9-U10（进阶）｜ U10+（竞技）</p>
+    <p>说明：4 组别同步轮转 4 大模块；组别间允许保留递进式重复内容以保障动作范式统一。</p>
+  </header>
+
+  <!-- 顶部悬浮 Sticky Tabs 导航 -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="scrollToSection('week1', this)">W1：DB防守主控周</button>
+    <button class="tab-btn" onclick="scrollToSection('week2', this)">W2：WR路线主控周</button>
+    <button class="tab-btn" onclick="scrollToSection('week3', this)">W3：RB持球主控周</button>
+    <button class="tab-btn" onclick="scrollToSection('week4', this)">W4：QB传球主控周</button>
+  </div>
+
+  <!-- KEY TECHNIQUES 概述 -->
+  <div class="key-techniques">
+    <h3>💡 4 个组别分层指导原则（Coaching Principles）</h3>
+    <div class="tech-grid">
+      <div><span class="group-tag tag-u6">U6 启蒙组</span> <br>兴趣与游戏化包裹，建立双手包/贴/夹持球与“抓捏提”拔旗反射。</div>
+      <div><span class="group-tag tag-u8">U7-U8 基础组</span> <br>动作标准化，强调 3 步撤步、Breakdown 降重心与非交叉脚步侧滑。</div>
+      <div><span class="group-tag tag-u10">U9-U10 进阶组</span> <br>引入切点变向（Plant & Cut）、追击角度预判与提前量传球。</div>
+      <div><span class="group-tag tag-u12">U10+ 竞技组</span> <br>高高压对抗、区域/人盯人切换、开球前阅读防守与快速决策。</div>
+    </div>
+  </div>
+
+  <!-- ==================== WEEK 1 ==================== -->
+  <div id="week1" class="tab-content">
+    <div class="day-card">
+      <div class="day-header">
+        <h2>第 1 周：防守与拔旗（DB 模块主控周）</h2>
+        <span class="time-badge">轮转焦点：DB 专项率先切入</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="time-col">轮次与时间</th>
+              <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
+              <td>
+                <strong>DB 防守拔旗</strong><br>
+                • “抓捏提”拔旗三步法<br>
+                • 游戏“拔尾巴大赛”<br>
+                • 原地双手按腰侧拔旗
+              </td>
+              <td>
+                <strong>WR 接球路线</strong><br>
+                • “钻石手”接球姿态<br>
+                • 看球入怀并顺势抱紧<br>
+                • 慢跑跑通 Hitch / Go
+              </td>
+              <td>
+                <strong>RB 持球突破</strong><br>
+                • 锥桶 Z 字形急停变向<br>
+                • Juke 急停摆头闪避<br>
+                • Fake Handoff 假交接
+              </td>
+              <td>
+                <strong>QB 传球决策</strong><br>
+                • 开球前阅读（Pre-snap Read）<br>
+                • 2.5秒内快速出球决策<br>
+                • 面对 Blitz 的 Scramble 抛传
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
+              <td>
+                <strong>WR 接球路线</strong><br>
+                • “鳄鱼嘴”双手怀抱接球<br>
+                • 移动中抓球不落球<br>
+                • 5码直跑回头看球
+              </td>
+              <td>
+                <strong>RB 持球突破</strong><br>
+                • “包、贴、夹”持球保护<br>
+                • 单脚蹬地变向<br>
+                • 网兜式 Handoff 交接
+              </td>
+              <td>
+                <strong>QB 传球决策</strong><br>
+                • 快速找缝线（Laces）<br>
+                • 3步 Dropback 后撤步<br>
+                • 提前量传球（Lead Pass）
+              </td>
+              <td>
+                <strong>DB 防守拔旗</strong><br>
+                • 全速 Breakdown 沉臀控速<br>
+                • 7码 Rusher 爆发启动<br>
+                • 2-3 区域防守轮转
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+                ☕ 80 - 90 min (10分钟)：全员集中补水 + 图形化战术卡片讲解与开球阵型复习
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
+              <td>
+                <strong>RB 持球突破</strong><br>
+                • 抱着球在限定区奔跑<br>
+                • 慢跑避让障碍锥<br>
+                • 静态 Handoff 塞球配合
+              </td>
+              <td>
+                <strong>QB 传球决策</strong><br>
+                • 手指握线与高位出手<br>
+                • 前脚尖指向目标<br>
+                • 5码定点抛传配合
+              </td>
+              <td>
+                <strong>DB 防守拔旗</strong><br>
+                • Breakdown 小碎步降重心<br>
+                • 侧滑步压迫（禁止交叉）<br>
+                • 追击角度斜向切断
+              </td>
+              <td>
+                <strong>WR 接球路线</strong><br>
+                • 切点变向（Plant & Cut）<br>
+                • 高阶路线树（Post / Corner）<br>
+                • 抗贴身压迫摘球
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
+              <td>
+                <strong>QB 传球决策</strong><br>
+                • 双手接 Center Snap<br>
+                • 近距离（3码）双手推抛<br>
+                • 喊“Hut”启动意识
+              </td>
+              <td>
+                <strong>DB 防守拔旗</strong><br>
+                • 低姿态降重心小碎步<br>
+                • 侧滑步不交叉脚<br>
+                • 走廊 1v1 拔旗实战
+              </td>
+              <td>
+                <strong>WR 接球路线</strong><br>
+                • 移动中接球不减速<br>
+                • Out / In 路线切点<br>
+                • 接球后第一步 Juke
+              </td>
+              <td>
+                <strong>RB 持球突破</strong><br>
+                • 高速 Spin Move 转体闪避<br>
+                • 反向走位（Reverse）配合<br>
+                • 阅读 Gap 缝隙爆发推进
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding: 15px;">
+        <div class="coaching-point">
+          <strong>💡 第 1 周教学重点：</strong> 全员重点强化 DB 拔旗基础。U6/U8 强调降重心不摔倒；U10/U10+ 强调 1.5 米内的刹车控速与角度封堵。
+        </div>
+        <div class="error-point">
+          <strong>⚠️ 易错点纠正：</strong> 低龄组拔旗时易低头导致碰撞，要求“胸口抬起、眼睛盯腰带”。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WEEK 2 ==================== -->
+  <div id="week2" class="tab-content">
+    <div class="day-card">
+      <div class="day-header">
+        <h2>第 2 周：接球与路线（WR 模块主控周）</h2>
+        <span class="time-badge">轮转焦点：WR 专项率先切入</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="time-col">轮次与时间</th>
+              <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
+              <td><strong>WR 接球路线</strong><br>• 原地/慢跑钻石手接球<br>• 看球入怀双手盖紧</td>
+              <td><strong>RB 持球突破</strong><br>• “包、贴、夹”持球防护<br>• Z 字形慢跑避让</td>
+              <td><strong>QB 传球决策</strong><br>• 口袋内微动脚步<br>• 提前量子弹球投掷</td>
+              <td><strong>DB 防守拔旗</strong><br>• 人盯人转髋贴身压迫<br>• 防守打球（Deflection）</td>
+            </tr>
+            <tr>
+              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
+              <td><strong>RB 持球突破</strong><br>• 双手抱球奔跑防护<br>• 静态 Handoff 交接</td>
+              <td><strong>QB 传球决策</strong><br>• 握线手型与高位出手<br>• 3步 Dropback 撤步</td>
+              <td><strong>DB 防守拔旗</strong><br>• 追击角度斜向切断<br>• 7码 Rusher 启动</td>
+              <td><strong>WR 接球路线</strong><br>• 高位伸臂摘球<br>• Comeback 路线急停</td>
+            </tr>
+            <tr>
+              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+                ☕ 80 - 90 min (10分钟)：全员集中补水 + 图形化战术卡片讲解（Mesh 交叉路线解析）
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
+              <td><strong>QB 传球决策</strong><br>• 屈膝接 Snap 发球<br>• 近距离（3码）推抛</td>
+              <td><strong>DB 防守拔旗</strong><br>• Breakdown 小碎步降重心<br>• 侧滑步不交叉脚</td>
+              <td><strong>WR 接球路线</strong><br>• 路线切点急停变向<br>• Slant / Out 组合路线</td>
+              <td><strong>RB 持球突破</strong><br>• 观察 A/B Gap 缝隙<br>• 反向走位（Reverse）</td>
+            </tr>
+            <tr>
+              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
+              <td><strong>DB 防守拔旗</strong><br>• 游戏“镜子模仿”<br>• 静态双手拔旗</td>
+              <td><strong>WR 接球路线</strong><br>• 移动中接球不减速<br>• 跑通 Hitch / Out</td>
+              <td><strong>RB 持球突破</strong><br>• Juke 急停摆头<br>• Fake Handoff 配合</td>
+              <td><strong>QB 传球决策</strong><br>• 口袋侧移（Shuffle）<br>• 视线伪装与长短传</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding: 15px;">
+        <div class="coaching-point">
+          <strong>💡 第 2 周教学重点：</strong> WR 接球细节训练。低龄组强调“眼看球入怀”；高龄组强调路线转折点利用降重心、脚尖蹬地实现快速切入。
+        </div>
+        <div class="error-point">
+          <strong>⚠️ 易错点纠正：</strong> 高龄组跑 Out 路线时切忌大圈弧形转弯，要求脚尖扎实踩地切线。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WEEK 3 ==================== -->
+  <div id="week3" class="tab-content">
+    <div class="day-card">
+      <div class="day-header">
+        <h2>第 3 周：持球与过人（RB 模块主控周）</h2>
+        <span class="time-badge">轮转焦点：RB 专项率先切入</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="time-col">轮次与时间</th>
+              <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
+              <td><strong>RB 持球突破</strong><br>• 夺宝奇兵：抱球避让<br>• 慢跑网兜式交接球</td>
+              <td><strong>QB 传球决策</strong><br>• 3步 Dropback 撤步<br>• 5码定向平稳抛传</td>
+              <td><strong>DB 防守拔旗</strong><br>• 7码 Rusher 冲刺启动<br>• 人盯人侧滑跟防</td>
+              <td><strong>WR 接球路线</strong><br>• 抗贴身压迫摘球<br>• 2人 Mesh 路线配合</td>
+            </tr>
+            <tr>
+              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
+              <td><strong>QB 传球决策</strong><br>• 听口令“Hut”发球<br>• 双手近距离送球</td>
+              <td><strong>DB 防守拔旗</strong><br>• Breakdown 降重心<br>• 走廊 1v1 迎面拔旗</td>
+              <td><strong>WR 接球路线</strong><br>• 移动中接球不减速<br>• 接球后第一步 Juke</td>
+              <td><strong>RB 持球突破</strong><br>• 极速 Spin Move 转体<br>• Reverse 反向走位</td>
+            </tr>
+            <tr>
+              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+                ☕ 80 - 90 min (10分钟)：全员集中补水 + 图形化战术卡片讲解（跑球假交接战术演示）
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
+              <td><strong>DB 防守拔旗</strong><br>• 静态双手提拉拔旗<br>• 归还腰旗礼仪</td>
+              <td><strong>WR 接球路线</strong><br>• 钻石手手型巩固<br>• 跑通 Hitch / Go</td>
+              <td><strong>RB 持球突破</strong><br>• Z 字形急停变向<br>• 严禁遮挡腰旗（FG）</td>
+              <td><strong>QB 传球决策</strong><br>• 面对 Blitz 2.5秒决策<br>• Scramble 跑投选择</td>
+            </tr>
+            <tr>
+              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
+              <td><strong>WR 接球路线</strong><br>• 双手怀抱接球<br>• 慢跑顺势向前推进</td>
+              <td><strong>RB 持球突破</strong><br>• 包贴夹三点保护<br>• 动态慢跑 Handoff</td>
+              <td><strong>QB 传球决策</strong><br>• 快速找缝线（Laces）<br>• 提前量领跑传球</td>
+              <td><strong>DB 防守拔旗</strong><br>• 2-3 区域防守轮转<br>• 红区（Redzone）防守</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding: 15px;">
+        <div class="coaching-point">
+          <strong>💡 第 3 周教学重点：</strong> RB 持球与变向摆脱。强调持球“包、贴、夹”三点保护；严禁使用非持球手拍打防守队员的拔旗手（Flag Guarding 犯规）。
+        </div>
+        <div class="error-point">
+          <strong>⚠️ 易错点纠正：</strong> Handoff 交接球时，接球人切忌过早合拢双手，需等 QB 将球塞入腹部后方可抱紧。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WEEK 4 ==================== -->
+  <div id="week4" class="tab-content">
+    <div class="day-card">
+      <div class="day-header">
+        <h2>第 4 周：口袋移动与传球（QB 模块主控周）</h2>
+        <span class="time-badge">轮转焦点：QB 专项率先切入</span>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th class="time-col">轮次与时间</th>
+              <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
+              <td><strong>QB 传球决策</strong><br>• 鳄鱼嘴接 Snap 开球<br>• 近距离（3码）推抛</td>
+              <td><strong>DB 防守拔旗</strong><br>• Breakdown 降重心<br>• 侧滑步不交叉脚</td>
+              <td><strong>WR 接球路线</strong><br>• 切点变向（Plant & Cut）<br>• Slant / Out 组合路线</td>
+              <td><strong>RB 持球突破</strong><br>• 阅读 Gap 缝隙爆发<br>• 战术掩护与假跑</td>
+            </tr>
+            <tr>
+              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
+              <td><strong>DB 防守拔旗</strong><br>• 抓捏提拔旗礼仪<br>• 游戏拔尾巴大赛</td>
+              <td><strong>WR 接球路线</strong><br>• 移动中接球不减速<br>• 跑通 Out / Go</td>
+              <td><strong>RB 持球突破</strong><br>• Juke 急停摆头<br>• Fake Handoff 配合</td>
+              <td><strong>QB 传球决策</strong><br>• Pre-snap 阅读防守<br>• 高吊球/子弹球切换</td>
+            </tr>
+            <tr>
+              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+                ☕ 80 - 90 min (10分钟)：全员集中补水 + 全场战术 Playbook 总结与 5v5 规则预演
+              </td>
+            </tr>
+            <tr>
+              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
+              <td><strong>WR 接球路线</strong><br>• 钻石手手型巩固<br>• 5码直跑回头接球</td>
+              <td><strong>RB 持球突破</strong><br>• 包贴夹三点保护<br>• Z 字形慢跑急停</td>
+              <td><strong>QB 传球决策</strong><br>• 3步 Dropback 撤步<br>• 口袋内脚频调整</td>
+              <td><strong>DB 防守拔旗</strong><br>• 人盯人转髋压迫<br>• 2-3 区域防守轮转</td>
+            </tr>
+            <tr>
+              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
+              <td><strong>RB 持球突破</strong><br>• 抱球在限定区奔跑<br>• 静态 Handoff 配合</td>
+              <td><strong>QB 传球决策</strong><br>• 快速找缝线（Laces）<br>• 5码定向随挥抛传</td>
+              <td><strong>DB 防守拔旗</strong><br>• 追击角度斜向拦截<br>• 7码 Rusher 冲刺</td>
+              <td><strong>WR 接球路线</strong><br>• 进阶路线树（Corner）<br>• 极窄空间摘球控制</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding: 15px;">
+        <div class="coaching-point">
+          <strong>💡 第 4 周教学重点：</strong> QB 口袋脚步与出球机制。强调传球随挥（Follow through），手掌顺势向下划过口袋，确保抛出的球带旋转（Spiral）。
+        </div>
+        <div class="error-point">
+          <strong>⚠️ 易错点纠正：</strong> 高龄组 QB 避免在口袋里停留超过 3 秒，若无空档需果断 Scramble 或安全丢向界外。
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 点击 Tab 按钮平滑滚动定位到指定周
+  function scrollToSection(sectionId, btn) {
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // 监听页面滚动，自动高亮顶部对应的 Tab 按钮
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    
+    let currentId = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (window.scrollY >= sectionTop) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    buttons.forEach((btn, index) => {
+      btn.classList.remove('active');
+      if (currentId && btn.getAttribute('onclick').includes(currentId)) {
+        btn.classList.add('active');
+      } else if (!currentId && index === 0) {
+        btn.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

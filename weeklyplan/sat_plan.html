@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>青训俱乐部周六3小时“4区块/4模块”训练系统看板</title>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --tip-bg: #eff6ff;
+      --tip-border: #3b82f6;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* 给平滑滚动预留偏移量，避免顶部悬浮栏遮挡标题 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 顶部渐变看板 Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 28px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    header h1 { font-size: 1.8rem; margin-bottom: 8px; }
+    header p { opacity: 0.9; font-size: 0.95rem; }
+
+    /* 顶部固定/吸顶 选项卡导航 (Sticky Nav) */
+    .nav-tabs {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-color);
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 2px solid var(--border-color);
+      flex-wrap: wrap;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-btn {
+      background: #edf2f7;
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: bold;
+      color: #4a5568;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .tab-btn.active {
+      background: var(--secondary-color);
+      color: white;
+    }
+
+    /* 所有内容直接全部展示，不隐藏 */
+    .tab-content {
+      display: block !important;
+      padding-top: 20px;
+      margin-bottom: 30px;
+      /* 预留出顶部固定Tab的高度偏移量 */
+      scroll-margin-top: 70px; 
+    }
+
+    /* 区块卡片与概览 */
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .block-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 18px;
+      border-top: 4px solid var(--secondary-color);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+    }
+
+    .block-time {
+      font-weight: bold;
+      color: var(--accent-color);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .block-card h3 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 8px; }
+    .block-card p { font-size: 0.88rem; color: #4a5568; }
+
+    /* 表格容器 */
+    .table-container {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      overflow-x: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      margin-bottom: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #edf2f7;
+      color: var(--primary-color);
+      padding: 12px 16px;
+      font-weight: bold;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) { background-color: #fcfcfc; }
+
+    /* 模块分类卡片 Grid */
+    .stations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .station-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .station-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+
+    .age-item {
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+
+    .age-tag {
+      display: inline-block;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      margin-right: 6px;
+    }
+
+    .tag-u6 { background: #fef3c7; color: #b45309; }
+    .tag-u8 { background: #e0e7ff; color: #3730a3; }
+    .tag-u10 { background: #dcfce7; color: #166534; }
+    .tag-u12 { background: #fee2e2; color: #991b1b; }
+
+    /* 高亮提示框 */
+    .tip-box {
+      background: var(--tip-bg);
+      border-left: 4px solid var(--tip-border);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 12px 8px; }
+      header { padding: 18px; }
+      .blocks-grid, .stations-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- 顶栏 Header -->
+  <header>
+    <span class="header-badge">周六 3 小时 (180min) 各年龄段统一训练</span>
+    <h1>🏈 先锋者周六训练大纲</h1>
+    <!-- <p>适用对象：U6 / U7-U8 / U9-U10 / U10+ 梯队 </p> -->
+  </header>
+
+  <!-- 顶部悬浮 Tab 导航条 -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="scrollToSection('tab1', this)">1. 周六 3 小时流程</button>
+    <button class="tab-btn" onclick="scrollToSection('tab2', this)">2. 位置专项训练 滚动轮转计划</button>
+    <button class="tab-btn" onclick="scrollToSection('tab3', this)">3. 各个位置年龄分层 Drill 大纲</button>
+  </div>
+
+  <!-- 内容区一: 3小时 4 区块流程 -->
+  <div id="tab1" class="tab-content">
+    <h2 class="section-title">⏱️ 3 小时（180 分钟）训练计划大纲  </h2>
+    <div class="blocks-grid">
+      <div class="block-card">
+        <div class="block-time">一：00 - 20 min (20分钟)</div>
+        <h3>神经激活与敏捷爆发</h3>
+        <p>全员统一集合。进行关节激活、绳梯/锥桶脚步、反应启动与抓尾巴/红绿灯趣味游戏，快速提高神经兴奋度并建立团队氛围。</p>
+      </div>
+
+      <div class="block-card">
+        <div class="block-time">二：20 - 140 min (120分钟)</div>
+        <h3>4 模块分层滚动轮转</h3>
+        <p>按到达队员划分 U6、U7-8、U9-10、10+ 四个梯队。在 4 个不同 Station 同步进行 30 min/模块的专项技术与球感与传球演练。</p>
+      </div>
+
+      <div class="block-card">
+        <div class="block-time">三：80 - 90 min (10分钟)</div>
+        <h3>补水与安排实战分组</h3>
+        <p>在大模块轮转中间安排 10 分钟集中补充能量与水，根据实际人数分配分组对抗，人少则强化训练效果较差内容</p>
+      </div>
+
+      <div class="block-card">
+        <div class="block-time">四：140 - 180 min (40分钟)</div>
+        <h3>全场战术合练与分组 Scrimmage</h3>
+        <p>进行同年龄段/同水平段 5v5 规则对抗赛（带裁判判罚）。最后 10 分钟进行静态拉伸、正向反馈与队形 Huddle 解散。</p>
+      </div>
+    </div>
+
+    <!-- <div class="tip-box">
+      <strong>💡 时间把控建议：</strong> 3 小时训练强度较高，建议主教练配备计时器，按 30 分钟节点准时吹哨进行 Station 轮转。
+    </div> -->
+  </div>
+
+  <!-- 内容区二: 4模块滚动轮转计划表 -->
+  <div id="tab2" class="tab-content">
+    <h2 class="section-title">🔄 120 分钟 4 组 4 模块轮转对照表</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 15%;">时间段</th>
+            <th style="width: 21%;">U6 组（启蒙）</th>
+            <th style="width: 21%;">U7 - U8 组（基础）</th>
+            <th style="width: 21%;">U9 - U10 组（进阶）</th>
+            <th style="width: 22%;">U10+ 组（竞技）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>20 - 50 min</strong><br>(第 1 轮)</td>
+            <td><strong>DB drill：</strong>防守与拔旗</td>
+            <td><strong>WR drill：</strong>接球与路线</td>
+            <td><strong>RB drill：</strong>持球与口袋</td>
+            <td><strong>QB drill：</strong>球感与传球</td>
+          </tr>
+          <tr>
+            <td><strong>50 - 80 min</strong><br>(第 2 轮)</td>
+            <td><strong>WR drill：</strong>接球与路线</td>
+            <td><strong>RB drill：</strong>持球与口袋</td>
+            <td><strong>QB drill：</strong>球感与传球</td>
+            <td><strong>DB drill：</strong>防守与拔旗</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+              ☕ 80 - 90 min (10分钟)：全员集中补水 + 图形化战术卡片讲解
+            </td>
+          </tr>
+          <tr>
+            <td><strong>90 - 115 min</strong><br>(第 3 轮)</td>
+            <td><strong>RB drill：</strong>持球与口袋</td>
+            <td><strong>QB drill：</strong>球感与传球</td>
+            <td><strong>DB drill：</strong>防守与拔旗</td>
+            <td><strong>WR drill：</strong>接球与路线</td>
+          </tr>
+          <tr>
+            <td><strong>115 - 140 min</strong><br>(第 4 轮)</td>
+            <td><strong>QB drill：</strong>球感与传球</td>
+            <td><strong>DB drill：</strong>防守与拔旗</td>
+            <td><strong>WR drill：</strong>接球与路线</td>
+            <td><strong>RB drill：</strong>持球与口袋</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip-box">
+      <strong>⚠️ 人数微调机制（动态合并）：</strong> 若某年龄段来人极少（如 U6 仅 2 人），可直接将 U6 并入 U7-U8 组，合并后变为 2 大组轮转（每站训练 45-50 分钟），保证训练密度。
+    </div>
+  </div>
+
+  <!-- 内容区三: 4大模块分层Drill大纲 -->
+  <div id="tab3" class="tab-content">
+    <h2 class="section-title">📌 四大模块分年龄层教学重点（Coaching Points）</h2>
+    <div class="stations-grid">
+
+      <!-- DB drill -->
+      <div class="station-card">
+        <h3>DB drill：防守与拔旗 (DB Station)</h3>
+        <div class="age-item">
+          <span class="age-tag tag-u6">U6</span> 静态“抓捏提”拔旗礼仪、拔尾巴大赛、镜子防守游戏。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u8">U7-U8</span> Breakdown 降重心控速、侧滑步封锁（禁止双脚交叉）。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u10">U9-U10</span> 追击角度（Pursuit Angle）斜向拦截、7码 Rusher 启动。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u12">U10+</span> 人盯人滑步压迫与打球（Deflection）、区域防守轮转。
+        </div>
+      </div>
+
+      <!-- WR drill -->
+      <div class="station-card">
+        <h3>WR drill：接球与路线 (WR Station)</h3>
+        <div class="age-item">
+          <span class="age-tag tag-u6">U6</span> 原地/慢跑“双手钻石手型”接球、双手合抱保护。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u8">U7-U8</span> 移动中接球不减速、基础 3 大路线（Hitch / Out / Go）。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u10">U9-U10</span> 切点骤停变向（Plant & Cut）、组合路线、接球后 Juke 变向。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u12">U10+</span> 进阶路线树（Post / Corner / Comeback）、抗干扰摘球。
+        </div>
+      </div>
+
+      <!-- RB drill -->
+      <div class="station-card">
+        <h3>RB drill：持球与口袋 (RB Station)</h3>
+        <div class="age-item">
+          <span class="age-tag tag-u6">U6</span> 单手/双手持球奔跑、静态与慢跑中 Handoff 交接。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u8">U7-U8</span> 持球“包、贴、夹”三点保护、Z字急停。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u10">U9-U10</span> 假交递（Fake Handoff），反向走位（Reverse）。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u12">U10+</span> 各种变相，转髋躲避拔旗技能。
+        </div>
+      </div>
+
+      <!-- QB drill -->
+      <div class="station-card">
+        <h3>QB drill：球感与传球 (Situational Station)</h3>
+        <div class="age-item">
+          <span class="age-tag tag-u6">U6</span> 双手抓球与近距离抛传，感受手指拨动发力。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u8">U7-U8</span> 握球手型与后撤步定向传球。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u10">U9-U10</span> 口袋内脚步调整与提前量传球。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u12">U10+</span> 阅读防守阵型（Read Defense）与二级决策（Option / Scramble）。
+        </div>
+      </div>
+
+      <!-- 实战演练 -->
+      <div class="station-card">
+        <h3>实战演练</h3>
+        <div class="age-item">
+          <span class="age-tag tag-u6">U6</span> 狭长走廊 1v1 持球闪避与迎面拔旗。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u8">U7-U8</span> 2v2 局部通道攻防（练习短传/交接与迎头拔旗）。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u10">U9-U10</span> 3v3 交叉路线攻防（Mesh Route）与防守呼应。
+        </div>
+        <div class="age-item">
+          <span class="age-tag tag-u12">U10+</span> 3v3 / 4v4 红区（Redzone）极窄空间攻防决策。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 点击按钮自动滑动定位到对应模块
+  function scrollToSection(sectionId, btn) {
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // 监听页面滚动，根据当前视野内的内容高亮顶部对应的 Tab 按钮
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    
+    let currentId = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120; // 这里的120为吸顶高度+缓冲偏移
+      if (window.scrollY >= sectionTop) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    buttons.forEach((btn, index) => {
+      btn.classList.remove('active');
+      if (currentId && btn.getAttribute('onclick').includes(currentId)) {
+        btn.classList.add('active');
+      } else if (!currentId && index === 0) {
+        // 处于页面顶部时高亮第1项
+        btn.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

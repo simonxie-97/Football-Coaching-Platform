@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腰旗橄榄球校队 - 单日基本功巩固与特训计划 (U6-U10 分龄方案)</title>
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --fun-color: #d69e2e;
+      --game-color: #805ad5;
+      --fix-color: #e53e3e;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+      --warning-bg: #fff5f5;
+      --warning-border: #feb2b2;
+      --warning-text: #c53030;
+      --tip-bg: #f0fff4;
+      --tip-border: #9ae6b4;
+      --tip-text: #276749;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* 顶栏看板 */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* 核心要领速查卡 */
+    .key-techniques {
+      background-color: #ebf8ff;
+      border: 1px solid #bee3f8;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 25px;
+    }
+
+    .key-techniques h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .tech-item {
+      background: white;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary-color);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    /* Tab 切换按钮 */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      background-color: #e2e8f0;
+      color: var(--text-color);
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* 训练卡片列表 (Drill Cards) */
+    .drill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .drill-time-box {
+      min-width: 120px;
+      text-align: center;
+      background: #edf2f7;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .drill-time {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    .drill-type-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: white;
+      background-color: var(--secondary-color);
+    }
+
+    .badge-warmup { background-color: #ed8936; }
+    .badge-fun { background-color: var(--fun-color); }
+    .badge-drill { background-color: #3182ce; }
+    .badge-game { background-color: var(--game-color); }
+    .badge-fix { background-color: var(--fix-color); }
+
+    .drill-main {
+      flex: 1;
+    }
+
+    .drill-main h3 {
+      margin: 0 0 8px 0;
+      color: var(--primary-color);
+      font-size: 1.15rem;
+    }
+
+    .drill-desc {
+      margin: 0 0 12px 0;
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+
+    .coaching-point {
+      background-color: var(--tip-bg);
+      border-left: 4px solid var(--tip-border);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: var(--tip-text);
+    }
+
+    .error-point {
+      background-color: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      padding: 10px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: var(--warning-text);
+    }
+
+    @media (max-width: 600px) {
+      .tabs { flex-direction: column; }
+      .drill-card {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .drill-time-box {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .drill-type-badge { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- 顶栏看板 -->
+  <!-- <header>
+    <span class="header-badge">校队单日精炼教案（90分钟/次）</span>
+    <h1>本周特训教案：基本功巩固、分级实战与缺陷补强</h1>
+    <p><strong>训练核心：</strong> 巩固基础（持球保护、Breakdown拔旗、Plant&Cut变向、防守侧滑步），引入 10 分钟缺陷补强专区[cite: 1, 2, 4]。</p>
+    <p><strong>分龄方案：</strong> U6-U7 启蒙趣味组 / U8-U9 技能进阶组 / U9-U10 竞技高压组[cite: 1, 5]</p>
+  </header> -->
+
+  <!-- 核心技术要领速查卡 -->
+  <!-- <div class="key-techniques">
+    <h3>📌 本周核心基本功口诀 (Coaching Cues)</h3>
+    <div class="tech-grid">
+      <div class="tech-item"><strong>持球（包贴夹）：</strong> 手掌包球尖，前臂贴球身，肘弯夹紧 。</div>
+      <div class="tech-item"><strong>拔旗（抓捏提）：</strong> 降重心看腰带，双手抓捏腰旗根部用力提拉 。</div>
+      <div class="tech-item"><strong>减速（Breakdown）：</strong> 距持球人1.5米极速小碎步减速，双臂展开  。</div>
+      <div class="tech-item"><strong>防守（侧滑步）：</strong> 低重心宽站姿，双脚推地不交叉、不碰撞  。</div>
+    </div>
+  </div> -->
+
+  <!-- Tab 切换按钮 -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('u6u7', event)">U6 - U7 启蒙组</button>
+    <button class="tab-btn" onclick="switchTab('u8u9', event)">U8 - U9 技能进阶组</button>
+    <!-- <button class="tab-btn" onclick="switchTab('u9u10', event)">U9 - U10 竞技高压组</button> -->
+  </div>
+
+  <!-- U6-U7 方案 -->
+  <div id="u6u7" class="tab-content active">
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">00-15 min</span>
+        <span class="drill-type-badge badge-warmup">动态热身</span>
+      </div>
+      <div class="drill-main">
+        <h3>【趣味热身】“夺宝奇兵”踩线与红绿灯急停</h3>
+        <p class="drill-desc">学员在场地内沿界线奔跑，听教练口令做出“绿灯（极速启动）”、“红灯（小青蛙落地急停降重心）”或 用标志盘来进行指令。</p>
+        <div class="coaching-point">
+          <strong>💡 教练指导重点：</strong> 急停时做“小青蛙落地”屈膝姿态，保持身体平衡；听指令瞬间双脚宽于肩屈膝急停 。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">15-35 min</span>
+        <span class="drill-type-badge badge-drill">基本功精炼</span>
+      </div>
+      <div class="drill-main">
+        <h3>【基本功组合】变相跑+侧滑步 + 拔旗 Drill</h3>
+        <p class="drill-desc">1. 1v1面对面站定拔旗；<br>2.  防守侧滑步 (Shuffle)“镜子模仿”游戏 摆两个间距 10码的标志盘，教练或者队员在区间左右走动，防守队员侧滑步跟随<br>3. 标志锥 Z 字形切入跑</p>
+        <div class="coaching-point">
+          <strong>💡 教练指导重点：</strong> 接球人等球塞入网兜再合拢；拔旗时眼睛死盯对方腰带而非脸部  。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">35-55 min</span>
+        <span class="drill-type-badge badge-fun">趣味竞赛</span>
+      </div>
+      <div class="drill-main">
+        <h3>【趣味对抗】“猫鼠游戏”狭长走廊 1v1 生存战</h3>
+        <p class="drill-desc">在 4x8 米狭长通道内，持球人（小老鼠）利用 Juke 变向闪避冲过终点，防守人（大灰狼）迎面降重心侧滑步拦截拔旗 。</p>
+        <div class="coaching-point">
+          <strong>💡 教练指导重点：</strong> 观察防守人是否主动降低重心迎上，靠近进攻人时提前减速控制身体 。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">55-70 min</span>
+        <span class="drill-type-badge badge-game">基本功小比赛</span>
+      </div>
+      <div class="drill-main">
+        <h3>接球基础</h3>
+        <p class="drill-desc">面对面接球，钻石手型（胸部以上），小指相连（碗状）（低位）。<br>分组比赛，或者所有人接到几个球才结束</p>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">70-80 min</span>
+        <span class="drill-type-badge badge-fix">缺点补充训练</span>
+      </div>
+      <div class="drill-main">
+        <h3>【针对性加练】基础薄弱点针对强化</h3>
+        <p class="drill-desc">根据实际情况调整训练时长：<br>
+       
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">80-90 min</span>
+        <span class="drill-type-badge badge-warmup">总结与复盘</span>
+      </div>
+      <div class="drill-main">
+        <h3>队形 Huddle、礼仪复习与表扬</h3>
+        <p class="drill-desc">全员队形 Huddle 集合，复习“包贴夹”与“抓捏提”口诀，总结积分并颁发今日“小 MVP”  。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- U8-U9 方案 -->
+  <div id="u8u9" class="tab-content">
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">00-15 min</span>
+        <span class="drill-type-badge badge-warmup">动态热身</span>
+      </div>
+      <div class="drill-main">
+        <h3>【敏捷激活】髋关节激活 + 视听反应起跑</h3>
+        <p class="drill-desc">行进间动态拉伸（侧向滑步、踢腿），背对教练听拍球声或看手势做 5 米极速转体爆发起跑[cite: 4]。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 强调髋关节充分激活，提升启动第一步的爆发力[cite: 4, 6]。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">15-35 min</span>
+        <span class="drill-type-badge badge-drill">基本功精炼</span>
+      </div>
+      <div class="drill-main">
+        <h3>【技能强化】钻石手接球 + Plant & Cut </h3>
+        <p class="drill-desc">1. 外接手启动接胸部以上“钻石手型”传球[cite: 2, 4]；<br>2. 基础路线，迅速向标志盘做单脚外侧蹬地（Plant & Cut）变向；<br>3. 分组小比赛。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 切入变向时单脚外侧大力蹬地，降重心，严禁交叉腿[cite: 1, 4]。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">35-55 min</span>
+        <span class="drill-type-badge badge-drill">局部攻防 Drill</span>
+      </div>
+      <div class="drill-main">
+        <h3>【追击与封堵】追击角度 (Pursuit Angle) 1v1 攻防 Drill</h3>
+        <p class="drill-desc">8x12 米区域，持球人沿边线推进，防守人从侧前方和水平方向出发，利用追击角度预测路线并切入封锁边线，完成拔旗，感受不同角度的追击效果。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 严禁直接追持球员后屁股，必须向持球员前方交汇点切入。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">55-70 min</span>
+        <span class="drill-type-badge badge-game">战术实战</span>
+      </div>
+      <div class="drill-main">
+        <h3>【半场实战】3v3战术路线与人盯人防守实战</h3>
+        <p class="drill-desc">3v3 简化情境对抗 进攻3人站开 相隔5码以上，3名防守队员站在离进攻队员10码位置。进攻跑简单的中短路线，防守端执行区域防守策略。</p>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">70-80 min</span>
+        <span class="drill-type-badge badge-fix">缺点补充训练</span>
+      </div>
+      <div class="drill-main">
+        <h3>【针对性加练】战术与动作缺陷纠正</h3>
+        <p class="drill-desc">根据实战阶段暴露问题进行微调：<br>
+        • <strong>防守交叉腿失位：</strong> 重新进行标志盘间低重心“推地侧滑步”强化训练 。<br>
+        • <strong>变向减速慢：</strong> 进行“5米冲刺-1.5米Breakdown急停”重复组加练  。</p>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">80-90 min</span>
+        <span class="drill-type-badge badge-warmup">总结与复盘</span>
+      </div>
+      <div class="drill-main">
+        <h3>复盘战术细节 (Coaching Points) & 静态拉伸</h3>
+        <p class="drill-desc">全员拉伸，复盘今日追击角度与 Breakdown 减速质量 。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- U9-U10 方案 -->
+  <div id="u9u10" class="tab-content">
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">00-15 min</span>
+        <span class="drill-type-badge badge-warmup">高强度热身</span>
+      </div>
+      <div class="drill-main">
+        <h3>【高压激活】高频脚步 + 快速姿态切换 (Breakdown 口令)</h3>
+        <p class="drill-desc">极速绳梯组合脚步后，听教练口令瞬间做出 0.5 秒极速 Breakdown 刹车降重心，前脚掌高频击地（Choppy Steps）[cite: 1, 4]。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 要求绝对的动作速率，降重心同时保持抬头观察前方[cite: 1, 4]。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">15-35 min</span>
+        <span class="drill-type-badge badge-drill">高阶专项 Drill</span>
+      </div>
+      <div class="drill-main">
+        <h3>【高压组合】复合 Route 跑位 + 移动中不降速接球 + 高压对抗拔旗</h3>
+        <p class="drill-desc">1. WR 执行 Slant-And-Go / Out-And-Up 组合变向路线[cite: 5]；<br>2. 结合 QB 3步退后传球，WR 移动中“不降速”完成钻石手型接球顺势推进[cite: 1, 5]；<br>3. 防守 DB 保持 Cushion 距离，做 Backpedal 转体（Hip Turn）紧跟并做干扰（Pass Deflection）或压迫拔旗[cite: 1, 5]。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 强调转体效率与接球后的瞬间爆发推进，防守端严禁手部犯规[cite: 1, 5]。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">35-55 min</span>
+        <span class="drill-type-badge badge-drill">高压攻防 Drill</span>
+      </div>
+      <div class="drill-main">
+        <h3>【竞技对抗】7码 Rusher 冲刷与 2v2 区域补防（Zone Help）Drill</h3>
+        <p class="drill-desc">模拟真实高压攻防：突击手（Rusher）进行 7 码爆发起跑冲刷 QB 视线[cite: 5]；后方 2 名防守者练习区域分工与沟通补位拔旗[cite: 5]。</p>
+        <div class="coaching-point">
+          <strong>💡 指导重点：</strong> 训练防守端的场上呼喊沟通与补防协作（Safety Help）[cite: 5]。
+        </div>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">55-70 min</span>
+        <span class="drill-type-badge badge-game">全真竞技对抗</span>
+      </div>
+      <div class="drill-main">
+        <h3>【高压实战】5v5 标准规则战术模拟赛</h3>
+        <p class="drill-desc">完全采用 5v5 标准比赛规则，包含 Blitz 冲刷与 Zone/Man 阵型切换[cite: 5]。引入裁判判罚（如遮挡腰旗 Flag Guarding、干扰传球 PI）[cite: 5]。  </p>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">70-80 min</span>
+        <span class="drill-type-badge badge-fix">缺点补充训练</span>
+      </div>
+      <div class="drill-main">
+        <h3>【针对性加练】比赛高频失误专项特训</h3>
+        <p class="drill-desc">复盘实战数据，针对高发问题专项加练：<br>
+        • <strong>高压下接球脱手：</strong> 抗干扰接球特训（教练在接球瞬间用软垫给予轻微身体对抗）[cite: 1, 5]。<br>
+        • <strong>Rusher 扑空/被假动作骗：</strong> 加练“冲刷过程中的 Breakdown 减速与判断路线”[cite: 1, 5]。</p>
+      </div>
+    </div>
+
+    <div class="drill-card">
+      <div class="drill-time-box">
+        <span class="drill-time">80-90 min</span>
+        <span class="drill-type-badge badge-warmup">总结与复盘</span>
+      </div>
+      <div class="drill-main">
+        <h3>战术录像式现场复盘 & 恢复拉伸</h3>
+        <p class="drill-desc">针对实战中的路线执行与防守站位做细节讲解，强调队员在场上的自我修正与决策能力[cite: 5]。</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabId, event) {
+    // 隐藏所有 tab 内容
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    // 移除所有按钮的 active 状态
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // 显示选中的 tab
+    document.getElementById(tabId).classList.add('active');
+
+    // 给当前点击的按钮添加 active 状态
+    event.currentTarget.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
