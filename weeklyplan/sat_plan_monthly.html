@@ -657,28 +657,108 @@
     </div>
   </div>
 
-</div><!-- 弹窗容器：最大高度 92vh，采用 Flex 布局 -->
-<dialog id="drillModal" style="display: none; position: fixed; inset: 0; margin: auto; width: 90%; max-width: 650px; max-height: 100vh; border: none; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.25); padding: 0; overflow: hidden; background: #fff;">
-  
-  <!-- 弹窗头部 -->
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: #f8f9fa; border-bottom: 1px solid #eee; flex-shrink: 0;">
-    <h3 id="modalTitle" style="margin: 0; font-size: 15px; color: #333; font-weight: 600;">训练详情</h3>
-    <button onclick="closeDrillModal()" style="background: none; border: none; font-size: 16px; cursor: pointer; color: #666; font-weight: bold; padding: 2px 6px;">✕</button>
-  </div>
+</div>
 
-  <!-- 弹窗内容主体：启用垂直滚动条 -->
-  <div style="width: 100%; flex: 1; overflow-y: auto; background: #fff;">
-    <!-- 关键改动：让 iframe 高度自适应内容，取消写死的 100% -->
-    <iframe id="modalIframe" src="" style="width: 100%; height: auto; border: none; display: block;" scrolling="no"></iframe>
-  </div>
+<div id="drillModal" class="drill-modal-overlay" aria-hidden="true">
+  <section class="drill-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="drill-modal-header">
+      <h3 id="modalTitle">训练详情</h3>
+      <button type="button" class="drill-modal-close" onclick="closeDrillModal()" aria-label="关闭训练详情">✕</button>
+    </div>
+    <div class="drill-modal-content">
+      <iframe id="modalIframe" src="" title="训练详情" scrolling="auto"></iframe>
+    </div>
+  </section>
+</div>
 
-</dialog>
-
-<!-- 弹窗展开时的 Flex 布局补丁 -->
 <style>
-  dialog[open] {
-    display: flex !important;
+  body.drill-modal-open { overflow: hidden; }
+
+  .drill-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 16px;
+    background: rgba(15, 23, 42, 0.58);
+  }
+
+  .drill-modal-overlay.is-open { display: flex; }
+
+  .drill-modal-panel {
+    display: flex;
     flex-direction: column;
+    width: min(650px, 100%);
+    height: min(92vh, 900px);
+    height: min(92dvh, 900px);
+    max-height: 92vh;
+    max-height: 92dvh;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .drill-modal-header {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 18px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+  }
+
+  .drill-modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .drill-modal-close {
+    flex: 0 0 auto;
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    color: #666;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .drill-modal-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .drill-modal-content iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .drill-modal-overlay { padding: 0; }
+
+    .drill-modal-panel {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      max-height: none;
+      border-radius: 0;
+    }
+
+    .drill-modal-header {
+      padding: calc(12px + env(safe-area-inset-top)) 16px 12px;
+    }
   }
 </style>
 
@@ -690,26 +770,30 @@
     
     titleEl.innerText = title;
     iframe.src = url + '?mode=modal';
-    modal.showModal();
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('drill-modal-open');
+    modal.querySelector('.drill-modal-close').focus();
   }
 
   function closeDrillModal() {
     const modal = document.getElementById('drillModal');
     const iframe = document.getElementById('modalIframe');
     
-    modal.close();
-    iframe.src = ''; 
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('drill-modal-open');
+    iframe.src = '';
   }
 
-  // 精准获取子页面高度并动态赋予 iframe，彻底解决显示不全或变小的问题
-  document.getElementById('modalIframe').addEventListener('load', function() {
-    try {
-      const iframeDoc = this.contentDocument || this.contentWindow.document;
-      // 获取子页面内容真正的总高度
-      const actualHeight = iframeDoc.documentElement.scrollHeight || iframeDoc.body.scrollHeight;
-      this.style.height = actualHeight + 'px';
-    } catch (e) {
-      this.style.height = '500px'; // 降级兜底高度
+  document.getElementById('drillModal').addEventListener('click', function(event) {
+    if (event.target === this) closeDrillModal();
+  });
+
+  document.addEventListener('keydown', function(event) {
+    const modal = document.getElementById('drillModal');
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeDrillModal();
     }
   });
 </script>
