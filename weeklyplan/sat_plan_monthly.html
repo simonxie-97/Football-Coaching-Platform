@@ -673,11 +673,12 @@
 
 <style>
   body.drill-modal-open { overflow: hidden; }
+  #page-security-watermark { z-index: 2147483646 !important; }
 
   .drill-modal-overlay {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 2147483647;
     display: none;
     align-items: center;
     justify-content: center;
@@ -721,7 +722,12 @@
 
   .drill-modal-close {
     flex: 0 0 auto;
-    padding: 4px 8px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
     border: 0;
     background: transparent;
     color: #666;
