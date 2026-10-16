@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腰旗橄榄球多位置综合训练计划（RB / WR / DB / QB 周计划）</title>
+  <link rel="stylesheet" href="../css/drillpage.css">
+  <link rel="stylesheet" href="../css/noprint.css">
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-color: #2d3748;
+      --border-color: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px 16px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 25px 30px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    header h1 { margin: 0 0 10px 0; font-size: 1.8rem; }
+    header p { margin: 4px 0; opacity: 0.95; font-size: 0.95rem; }
+    
+    .day-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      overflow: hidden;
+    }
+    .day-header {
+      background: #edf2f7;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .day-header h2 { margin: 0; color: var(--primary-color); font-size: 1.3rem; }
+    
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th, td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    th { background-color: #f8fafc; color: var(--primary-color); font-weight: bold; }
+    
+    .group-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: white;
+    }
+    .tag-rb { background-color: #dd6b20; }
+    .tag-wr { background-color: #3182ce; }
+    .tag-db { background-color: #38a169; }
+    .tag-qb { background-color: #805ad5; }
+    
+    .drill-action-btn {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      background-color: #edf2f7;
+      border: 1px solid #cbd5e0;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      color: #4a5568;
+    }
+    .drill-action-btn:hover { background-color: #cbd5e0; }
+    
+    .coaching-point {
+      background-color: #f0fff4;
+      border-left: 4px solid #9ae6b4;
+      padding: 12px 15px;
+      margin: 15px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: #276749;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <header>
+    <span class="header-badge">腰旗橄榄球多位置综合训练大纲</span>
+    <h1>🏈 各位置（RB / WR / DB / QB）四周循环训练计划与 Drill 索引</h1>
+    <p><strong>核心内容：</strong> 整合跑卫（RB）、外接手（WR）、防守后卫（DB）与四分卫（QB）的各阶段专项技术演练，点击各项右侧按钮可直接联动对应的 Drill 详情教案卡片[cite: 1, 2]。</p>
+  </header>
+
+  <!-- RB 模块周计划表 -->
+  <div class="day-card">
+    <div class="day-header">
+      <h2><span class="group-tag tag-rb">RB 组</span> 跑卫技术模块：交递球、变向与持球推进</h2>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">阶段 / 训练列 1</th>
+            <th style="width: 25%;">训练列 2</th>
+            <th style="width: 25%;">训练列 3</th>
+            <th style="width: 25%;">训练列 4 (11+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>交递球复习巩固</strong><br>
+              <a href="drills/rb-handoff-review.html" target="_blank" rel="noopener noreferrer">肚皮口袋规范与塞球</a>
+              <button onclick="openDrillModal('drills/rb-handoff-review.html', '交递球复习巩固')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>一步踏地边线</strong><br>
+              <a href="drills/rb-sideline-footwork.html" target="_blank" rel="noopener noreferrer">边线急停与单步内切</a>
+              <button onclick="openDrillModal('drills/rb-sideline-footwork.html', '一步踏地边线')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Jumpcut</strong><br>
+              <a href="drills/rb-jumpcut.html" target="_blank" rel="noopener noreferrer">横向跳切避开防守</a>
+              <button onclick="openDrillModal('drills/rb-jumpcut.html', 'Jumpcut')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>1/2 Spin & Fullspin</strong><br>
+              <a href="drills/rb-spin-moves.html" target="_blank" rel="noopener noreferrer">旋转过人动作细节</a>
+              <button onclick="openDrillModal('drills/rb-spin-moves.html', '1/2spin fullspin')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>身前身后交递</strong><br>
+              <a href="drills/rb-front-back-handoff.html" target="_blank" rel="noopener noreferrer">多角度交递球适应</a>
+              <button onclick="openDrillModal('drills/rb-front-back-handoff.html', '身前身后交递')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>变相前的假动作</strong><br>
+              <a href="drills/rb-pre-cut-feint.html" target="_blank" rel="noopener noreferrer">眼神与肩部假动作欺骗</a>
+              <button onclick="openDrillModal('drills/rb-pre-cut-feint.html', '变相前的假动作')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>后交叉 (Cross-over)</strong><br>
+              <a href="drills/rb-back-cross.html" target="_blank" rel="noopener noreferrer">后交叉步变向突破</a>
+              <button onclick="openDrillModal('drills/rb-back-cross.html', '后交叉')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>综合性持球推进训练</strong><br>
+              <a href="drills/rb-comprehensive-advancement.html" target="_blank" rel="noopener noreferrer">组合连招过人推进</a>
+              <button onclick="openDrillModal('drills/rb-comprehensive-advancement.html', '综合性持球推进训练')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>假交递教学</strong><br>
+              <a href="drills/rb-fake-handoff.html" target="_blank" rel="noopener noreferrer">Read Option 假交递</a>
+              <button onclick="openDrillModal('drills/rb-fake-handoff.html', '假交递教学')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>跨栏步步频提升</strong><br>
+              <a href="drills/rb-hurdle-step.html" target="_blank" rel="noopener noreferrer">高步频跨栏步敏捷</a>
+              <button onclick="openDrillModal('drills/rb-hurdle-step.html', '跨栏步步频提升')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- WR 模块周计划表 -->
+  <div class="day-card">
+    <div class="day-header">
+      <h2><span class="group-tag tag-wr">WR 组</span> 外接手模块：站姿、手眼协调、接球与路线细扣</h2>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">训练列 1</th>
+            <th style="width: 25%;">训练列 2</th>
+            <th style="width: 25%;">训练列 3</th>
+            <th style="width: 25%;">训练列 4 (11+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>巩固 WR 站姿</strong><br>
+              <a href="drills/wr-stance.html" target="_blank" rel="noopener noreferrer">三点/两点起跑低重心</a>
+              <button onclick="openDrillModal('drills/wr-stance.html', '巩固wr站姿')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>侧面接球</strong><br>
+              <a href="drills/wr-side-catch.html" target="_blank" rel="noopener noreferrer">侧身高低球摘取</a>
+              <button onclick="openDrillModal('drills/wr-side-catch.html', '侧面接球')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Deadeyes 各方面接球</strong><br>
+              <a href="drills/wr-deadeyes-catch.html" target="_blank" rel="noopener noreferrer">死锁球眼全方位接球</a>
+              <button onclick="openDrillModal('drills/wr-deadeyes-catch.html', 'deadeyes各方面接球')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Deadeyes 各方面接球（进阶）</strong><br>
+              <a href="drills/wr-deadeyes-adv.html" target="_blank" rel="noopener noreferrer">高强度对抗接球</a>
+              <button onclick="openDrillModal('drills/wr-deadeyes-adv.html', 'deadeyes各方面接球')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>手眼协调 网球</strong><br>
+              <a href="drills/wr-tennis-coord.html" target="_blank" rel="noopener noreferrer">网球反应训练手型</a>
+              <button onclick="openDrillModal('drills/wr-tennis-coord.html', '手眼协调 网球')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>复习一步踏地变相 Speedcut</strong><br>
+              <a href="drills/wr-speedcut.html" target="_blank" rel="noopener noreferrer">Speedcut 快速切割</a>
+              <button onclick="openDrillModal('drills/wr-speedcut.html', '复习一步踏地变相 speedcut')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>三步急停的路线细扣 Hitch & Comeback</strong><br>
+              <a href="drills/wr-hitch-comeback.html" target="_blank" rel="noopener noreferrer">急停甩臀与回头接球</a>
+              <button onclick="openDrillModal('drills/wr-hitch-comeback.html', '三步急停的路线细扣 hitch comeback')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>红区紧盯人 Outside 站位 如何 Release</strong><br>
+              <a href="drills/wr-redzone-release.html" target="_blank" rel="noopener noreferrer">紧逼防守下的摆脱起跑</a>
+              <button onclick="openDrillModal('drills/wr-redzone-release.html', '红区紧盯人 outside站位 如何release')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>正面接球</strong><br>
+              <a href="drills/wr-front-catch.html" target="_blank" rel="noopener noreferrer">钻石手正面迎球</a>
+              <button onclick="openDrillModal('drills/wr-front-catch.html', '正面接球')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>3步绕点</strong><br>
+              <a href="drills/wr-3step-cut.html" target="_blank" rel="noopener noreferrer">三步切入路线 Drill</a>
+              <button onclick="openDrillModal('drills/wr-3step-cut.html', '3步绕点')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DB 模块周计划表 -->
+  <div class="day-card">
+    <div class="day-header">
+      <h2><span class="group-tag tag-db">DB 组</span> 防守后卫模块：Shuffle、Breakdown、真假交递识别与防守</h2>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">训练列 1</th>
+            <th style="width: 25%;">训练列 2</th>
+            <th style="width: 25%;">训练列 3</th>
+            <th style="width: 25%;">训练列 4 (11+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Shuffle</strong><br>
+              <a href="drills/db-shuffle.html" target="_blank" rel="noopener noreferrer">侧向滑步卡位</a>
+              <button onclick="openDrillModal('drills/db-shuffle.html', 'shuffle')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>真假交递的识别</strong><br>
+              <a href="drills/db-read-handoff.html" target="_blank" rel="noopener noreferrer">防守阅读持球人与跑卫</a>
+              <button onclick="openDrillModal('drills/db-read-handoff.html', '真假交递的识别')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Backpedal 巩固</strong><br>
+              <a href="drills/db-backpedal.html" target="_blank" rel="noopener noreferrer">后退跑重心与平稳度</a>
+              <button onclick="openDrillModal('drills/db-backpedal.html', 'backpedal巩固')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Shuffleback 防 Hitch</strong><br>
+              <a href="drills/db-shuffleback-hitch.html" target="_blank" rel="noopener noreferrer">后撤滑步防守急停路线</a>
+              <button onclick="openDrillModal('drills/db-shuffleback-hitch.html', 'shuffleback 防hitch')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Breakdown</strong><br>
+              <a href="drills/db-breakdown.html" target="_blank" rel="noopener noreferrer">小碎步降重心刹车</a>
+              <button onclick="openDrillModal('drills/db-breakdown.html', 'breakdown')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Shuffle 组合应用</strong><br>
+              <a href="drills/db-shuffle-combo.html" target="_blank" rel="noopener noreferrer">多方向连贯滑步</a>
+              <button onclick="openDrillModal('drills/db-shuffle-combo.html', 'shuffle')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>传球破坏 (Pass Breakup)</strong><br>
+              <a href="drills/db-pbu.html" target="_blank" rel="noopener noreferrer">拍击与干扰传球时机</a>
+              <button onclick="openDrillModal('drills/db-pbu.html', '传球破坏')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>Shuffleback 防 Hitch & Go</strong><br>
+              <a href="drills/db-hitch-and-go.html" target="_blank" rel="noopener noreferrer">防范假急停真纵深反跑</a>
+              <button onclick="openDrillModal('drills/db-hitch-and-go.html', 'shuffleback 防hitch & go')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>1v1 对抗</strong><br>
+              <a href="drills/db-1v1.html" target="_blank" rel="noopener noreferrer">单兵跟防与拔旗</a>
+              <button onclick="openDrillModal('drills/db-1v1.html', '1v1')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>
+              <strong>区域的围堵</strong><br>
+              <a href="drills/db-zone-contain.html" target="_blank" rel="noopener noreferrer">区域联防合围协作</a>
+              <button onclick="openDrillModal('drills/db-zone-contain.html', '区域的围堵')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- QB 模块周计划表 -->
+  <div class="day-card">
+    <div class="day-header">
+      <h2><span class="group-tag tag-qb">QB 组</span> 四分卫模块：交递球组合与战术阅读传球</h2>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 25%;">训练列 1</th>
+            <th style="width: 25%;">训练列 2</th>
+            <th style="width: 25%;">训练列 3</th>
+            <th style="width: 25%;">训练列 4 (11+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>补充 RB 联动</strong><br>
+              <a href="drills/qb-rb-integration.html" target="_blank" rel="noopener noreferrer">QB 与 RB 节奏匹配</a>
+              <button onclick="openDrillModal('drills/qb-rb-integration.html', '补充rb')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+              <strong>补充 DB 视角</strong><br>
+              <a href="drills/qb-read-db.html" target="_blank" rel="noopener noreferrer">QB 阅读防守后卫站位</a>
+              <button onclick="openDrillModal('drills/qb-read-db.html', '补充db')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>QB 拿球做交递</strong><br>
+              <a href="drills/qb-handoff-mechanics.html" target="_blank" rel="noopener noreferrer">塞球手法与视线引导</a>
+              <button onclick="openDrillModal('drills/qb-handoff-mechanics.html', 'qb拿球做交递')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+              <strong>1v1 单挑传球</strong><br>
+              <a href="drills/qb-1v1-passing.html" target="_blank" rel="noopener noreferrer">压迫下精准连线</a>
+              <button onclick="openDrillModal('drills/qb-1v1-passing.html', '1v1单挑')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>QB 正假交递组合</strong><br>
+              <a href="drills/qb-fake-handoff-combo.html" target="_blank" rel="noopener noreferrer">Read Option 真实与假交递组合</a>
+              <button onclick="openDrillModal('drills/qb-fake-handoff-combo.html', 'qb正假交递组合')" class="drill-action-btn">查看Drill</button>
+            </td>
+            <td>-</td>
+            <td>-</td>
+            <td>
+              <strong>结合战术阅读的移动中传球</strong><br>
+              <a href="drills/qb-on-run-passing.html" target="_blank" rel="noopener noreferrer">滚动口袋与战术阅读传球</a>
+              <button onclick="openDrillModal('drills/qb-on-run-passing.html', '结合战术阅读的移动中传球')" class="drill-action-btn">查看Drill</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="coaching-point">
+    <strong>💡 教练提示：</strong> 上述表格中每一项训练均已挂载标准超链接与弹窗交互按钮。您可以根据此周计划为每一项训练内容独立调用 <code>@flag-football-drill-html-generator</code> 生成独立的 Drill 详尽教案卡片网页。
+  </div>
+
+</div>
+
+<script>
+  function openDrillModal(url, title) {
+    alert('即将加载训练 Drill 详尽教案：【 ' + title + ' 】\n（对应链接：' + url + '）');
+  }
+</script>
+<script src="../js/security.js"></script>
+</body>
+</html>

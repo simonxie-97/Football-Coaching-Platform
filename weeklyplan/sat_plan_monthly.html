@@ -460,71 +460,154 @@
   </div>
 
   <!-- ==================== WEEK 2 ==================== -->
-  <div id="week2" class="tab-content">
-    <div class="day-card">
-      <div class="day-header">
-        <h2>第 2 周</h2>
-        <!-- <span class="time-badge">轮转焦点：WR 专项率先切入</span> -->
+<div id="week2" class="tab-content">
+  <div class="day-card">
+    <div class="day-header">
+      <h2>本周训练计划 (按位置与年龄段)</h2>
+    </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="time-col">位置 / 年龄段</th>
+            <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
+            <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
+            <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
+            <th class="group-col"><span class="group-tag tag-u10p">U11+ 组</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- RB 模块 -->
+          <tr>
+            <td class="time-col"><strong>RB 模块</strong><br>(跑卫)</td>
+            <td>
+              <strong>交递球</strong><br>
+              <!-- <strong><a href="../rb/handoff_basics.html" target="_blank" rel="noopener noreferrer">交递球复习巩固</a></strong><br> -->
+              •  交递球基础 <button onclick="openDrillModal('../offense_drill/handoff/handoff_drill_02.html', '交递球基础')" class="drill-action-btn" aria-label="打开训练：交递球基础" title="打开训练"></button>
+              <br>• 身前身后交递<button onclick="openDrillModal('../offense_drill/handoff/handoff_drill_05.html', '交递球复习巩固')" class="drill-action-btn" aria-label="打开训练：交递球复习巩固" title="打开训练"></button>
+             
+            </td>
+            <td>
+              <strong>变向与脚步提升</strong><br>            
+              • 跨栏步步频提升 · <button onclick="openDrillModal('../offense_drill/rb/rb_quick_feet.html', '跨栏步步频提升')" class="drill-action-btn" aria-label="打开训练：跨栏步步频提升" title="打开训练"></button>
+           <br>• 变相前的假动作 <button onclick="openDrillModal('../offense_drill/rb/rb_mislead_cut.html', '变相前的假动作')" class="drill-action-btn" aria-label="打开训练：变相前的假动作" title="打开训练"></button>
+            </td>
+            <td>
+              <strong>切步与后交叉</strong><br>
+                • Jumpcut · <button onclick="openDrillModal('../offense_drill/rb/rb_jump_cut.html', 'Jumpcut 专项')" class="drill-action-btn" aria-label="打开训练：Jumpcut 专项" title="打开训练"></button>
+            </td>
+            <td>
+              <strong>转身与综合推进</strong><br>
+              • Jumpcut      <br>        
+              • 综合性持球推进训练 · <button onclick="openDrillModal('../offense_drill/rb/multi_step_combo_drill.html', '综合性持球推进训练')" class="drill-action-btn" aria-label="打开训练：综合性持球推进训练" title="打开训练"></button>
+            </td>
+          </tr>
+
+          <!-- WR 模块 -->
+          <tr>
+            <td class="time-col"><strong>WR 模块</strong><br>(外接手)</td>
+            <td>
+              <strong>站姿与基础接球</strong><br>
+               • 外接手站姿与看球动 （巩固）<button onclick="openDrillModal('../offense_drill/wr/ready_drill_01.html', '外接手站姿与启动')" class="drill-action-btn" aria-label="打开训练：外接手站姿" title="打开训练"></button>
+
+              <br>• 手眼协调（网球训练）<button onclick="openDrillModal('../offense_drill/wr/wr_eyes_drill.html', '手眼协调（网球训练）')" class="drill-action-btn" aria-label="打开训练：手眼协调（网球训练）" title="打开训练"></button>
+              <br>• 正面接球与接球手型
+            </td>
+            <td>
+              <strong>侧面接球与 脚步</strong><br>
+               <br> • 侧面接球<button onclick="openDrillModal('../offense_drill/wr/side_catch.html', '侧面接球')" class="drill-action-btn" aria-label="打开训练：侧面接球" title="打开训练"></button>
+              <br>• 复习一步踏地变相 speedcut<button onclick="openDrillModal('../offense_drill/wr/speedcut_drill_02.html', '一步踏地变相 speedcut')" class="drill-action-btn" aria-label="打开训练：一步踏地变相 speedcut" title="打开训练"></button>
+             <br> • 3步绕点 · <button onclick="openDrillModal('../offense_drill/wr/3steps_circle_02.html', '3步绕点')" class="drill-action-btn" aria-label="打开训练：3步绕点" title="打开训练"></button>
+            </td>
+            <td>
+              <strong>对抗下接球</strong><br>
+              • 干扰下接球 · <button onclick="openDrillModal('../offense_drill/wr/catching_disruption_drill_01.html', '干扰下接球')" class="drill-action-btn" aria-label="打开训练：干扰下接球" title="打开训练"></button>
+              
+              <br>• 三步急停路线细扣 (Hitch / Comeback) · <button onclick="openDrillModal('../offense_drill/wr/hitch_comeback_three_step_drill.html', '三步急停路线细扣 (Hitch / Comeback)')" class="drill-action-btn" aria-label="打开训练：三步急停路线细扣 (Hitch / Comeback) " title="打开训练"></button>
+            </td>
+            <td>
+              <strong>红区对抗与 Release</strong><br>
+              • 红区紧盯人 Outside 站位<br>
+              如何 Release摆脱 <button onclick="openDrillModal('../offense_drill/wr/level_cross_outside_shoulder_release_drill.html', 'Deadeyes 接球 & Release')" class="drill-action-btn" aria-label="打开训练：Deadeyes 接球 & Release" title="打开训练"></button>
+            </td>
+          </tr>
+
+          <!-- DB 模块 -->
+          <tr>
+            <td class="time-col"><strong>DB 模块</strong><br>(防守后卫)</td>
+            <td>
+              <strong>基础步伐</strong><br>              
+              •  Breakdown拔旗（巩固） <button onclick="openDrillModal('../defense_drill/flagpulling/flagpulling_drill_02.html', 'Breakdown拔旗')" class="drill-action-btn" aria-label="打开训练：Breakdown拔旗" title="打开训练"></button>
+              <br>  •  shuffle 侧滑步 <button onclick="openDrillModal('../defense_drill/db/shuffle.html', 'Shuffle 侧滑步')" class="drill-action-btn" aria-label="打开训练：Shuffle 侧滑步" title="打开训练"></button>
+              <br> •  shuffle game <button onclick="openDrillModal('../defense_drill/db/shuffle_game.html', 'Shuffle Game')" class="drill-action-btn" aria-label="打开训练：Shuffle Game" title="打开训练"></button>
+                
+            </td>
+            <td>
+              • Shuffle 步伐巩固<br>
+              <strong>识别与区域围堵</strong>
+             <br>• 真假交递的识别<button onclick="openDrillModal('../defense_drill/db/playaction.html', '真假交递的识别')" class="drill-action-btn" aria-label="打开训练：真假交递的识别" title="打开训练"></button>
+              
+              <br>• 区域的围堵 · <button onclick="openDrillModal('../defense_drill/db/zone_containment_01.html', '真假交递的识别')" class="drill-action-btn" aria-label="打开训练：真假交递的识别" title="打开训练"></button>
+            </td>
+            <td>
+              <strong>后退步与传球破坏</strong><br>
+             •后退步（Backpedal）巩固与交叉步· <button onclick="openDrillModal('../defense_drill/db/backpedal_drill_02.html', 'Backpedal 巩固')" class="drill-action-btn" aria-label="打开训练：Backpedal 巩固" title="打开训练"></button>
+             <br> • 传球破坏 (PBU) · <button onclick="openDrillModal('../defense_drill/db/backpedal_drill_03.html', '破坏传球 ')" class="drill-action-btn" aria-label="打开训练：破坏传球 " title="打开训练"></button>
+            </td>
+            <td>
+              <strong>Shuffleback 防守脚步</strong>
+             <br> • Shuffleback · <button onclick="openDrillModal('../defense_drill/db/db_basic_shuffleback_drill.html', 'Shuffleback ')" class="drill-action-btn" aria-label="打开训练：Shuffleback " title="打开训练"></button>
+             <br> • Shuffleback防hitch comeback · <button onclick="openDrillModal('../defense_drill/db/db_shuffleback_hitch_comeback_drill.html', 'Shuffleback ')" class="drill-action-btn" aria-label="打开训练：Shuffleback " title="打开训练"></button>
+              
+          </tr>
+
+          <!-- QB 模块 -->
+          <tr>
+            <td class="time-col"><strong>QB 模块</strong><br>(四分卫)</td>
+            <td>
+              <strong>交递组合与 RB</strong><br>
+               • 假交递教学/ QB 真假交递组合  <button onclick="openDrillModal('../offense_drill/handoff/handoff_drill_06.html', '假交递教学')" class="drill-action-btn" aria-label="打开训练：假交递教学" title="打开训练"></button>
+        
+            </td>
+            <td >中锋短开球 <button onclick="openDrillModal('../offense_drill/center/center_under_center_short_snap_drill.html', '中锋短开球')" class="drill-action-btn" aria-label="打开训练：中锋短开球" title="打开训练"></button></td>
+            <td >中锋长开球 <button onclick="openDrillModal('../offense_drill/center/center_shotgun_long_snap_drill.html', '中锋长开球')" class="drill-action-btn" aria-label="打开训练：中锋长开球" title="打开训练"></button></td>
+            <td>
+              <strong>战术阅读与移动传球</strong><br>
+              <strong>移动中传球与战术阅读</strong><br>
+              • 补充 DB 训练<br>
+              • 1v1 单挑对抗 
+            </td>
+          </tr>
+
+          <!-- 休息/补水 提示行 -->
+          <tr>
+            <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
+              ☕ 各组轮转间隙：全员集中补水与战术复盘 (5-10 分钟)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div style="padding: 15px;">
+      <div class="coaching-point">
+        <strong>💡 本周教学重点：</strong>
+        <ul>
+          <li><strong>低龄组 (U6 - U8)：</strong> 强化交递球细节（真假交递识别）以及外接手的站姿与 speedcut 急停变向。</li>
+          <li><strong>高龄组 (U9 - U11+)：</strong> 重点关注 WR 的 Deadeyes 接球与路线细扣（Hitch/Comeback/Release），以及 DB 的 Backpedal/Shuffleback 追击防守。</li>
+        </ul>
       </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th class="time-col">轮次与时间</th>
-              <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
-              <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
-              <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
-              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
-              <td><strong>WR 接球路线</strong><br>• 原地/慢跑钻石手接球<br>• 看球入怀双手盖紧</td>
-              <td><strong>RB 持球突破</strong><br>• “包、贴、夹”持球防护<br>• Z 字形慢跑避让</td>
-              <td><strong>QB 传球决策</strong><br>• 口袋内微动脚步<br>• 提前量子弹球投掷</td>
-              <td><strong>DB 防守拔旗</strong><br>• 人盯人转髋贴身压迫<br>• 防守打球（Deflection）</td>
-            </tr>
-            <tr>
-              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
-              <td><strong>RB 持球突破</strong><br>• 双手抱球奔跑防护<br>• 静态 Handoff 交接</td>
-              <td><strong>QB 传球决策</strong><br>• 握线手型与高位出手<br>• 3步 Dropback 撤步</td>
-              <td><strong>DB 防守拔旗</strong><br>• 追击角度斜向切断<br>• 7码 Rusher 启动</td>
-              <td><strong>WR 接球路线</strong><br>• 高位伸臂摘球<br>• Comeback 路线急停</td>
-            </tr>
-            <tr>
-              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
-                ☕ 80 - 90 min (10分钟)：全员集中补水 
-              </td>
-            </tr>
-            <tr>
-              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
-              <td><strong>QB 传球决策</strong><br>• 屈膝接 Snap 发球<br>• 近距离（3码）推抛</td>
-              <td><strong>DB 防守拔旗</strong><br>• Breakdown 小碎步降重心<br>• 侧滑步不交叉脚</td>
-              <td><strong>WR 接球路线</strong><br>• 路线切点急停变向<br>• Slant / Out 组合路线</td>
-              <td><strong>RB 持球突破</strong><br>• 观察 A/B Gap 缝隙<br>• 反向走位（Reverse）</td>
-            </tr>
-            <tr>
-              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
-              <td><strong>DB 防守拔旗</strong><br>• 游戏“镜子模仿”<br>• 静态双手拔旗</td>
-              <td><strong>WR 接球路线</strong><br>• 移动中接球不减速<br>• 跑通 Hitch / Out</td>
-              <td><strong>RB 持球突破</strong><br>• Juke 急停摆头<br>• Fake Handoff 配合</td>
-              <td><strong>QB 传球决策</strong><br>• 口袋侧移（Shuffle）<br>• 视线伪装与长短传</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="padding: 15px;">
-        <div class="coaching-point">
-          <strong>💡 第 2 周教学重点：</strong> WR 接球细节训练。低龄组强调“眼看球入怀”；高龄组强调路线转折点利用降重心、脚尖蹬地实现快速切入。
-        </div>
-        <div class="error-point">
-          <strong>⚠️ 易错点纠正：</strong> 高龄组跑 Out 路线时切忌大圈弧形转弯，要求脚尖扎实踩地切线。
-        </div>
+      <div class="error-point">
+        <strong>⚠️ 易错点纠正：</strong>
+        <ul>
+          <li><strong>RB/QB 交递：</strong> 提醒假交递时手臂伸出要自然，避免过早收回导致防守识别。</li>
+          <li><strong>WR 变向：</strong> 一步/三步降重心变向（Speedcut/Hitch）时避免减速过多，强调踩地发力切出。</li>
+          <li><strong>DB 防守：</strong> 后退 Shuffle/Backpedal 时重心不要过高，防止被 Hitch & Go 假动作晃开。</li>
+        </ul>
       </div>
     </div>
   </div>
-
+</div>
   <!-- ==================== WEEK 3 ==================== -->
   <div id="week3" class="tab-content">
     <div class="day-card">
