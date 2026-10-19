@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>腰旗橄榄球今日训练计划Tab总览表</title>
+  <link rel="stylesheet" href="../../css/drillpage.css">
+  <link rel="stylesheet" href="../../css/noprint1.css">
+  <style>
+    body { background-color: transparent; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    .container { max-width: 100% !important; padding: 0 !important; box-shadow: none !important; background: transparent !important; }
+    
+    /* Tab 切换栏样式 */
+    .tab-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0;
+    }
+    .tab-button {
+      padding: 10px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-button:hover {
+      background-color: #e2e8f0;
+      color: #1e293b;
+    }
+    .tab-button.active {
+      background-color: #ea580c; /* 活力橙主色 */
+      color: #ffffff;
+      border-color: #ea580c;
+    }
+
+    /* Tab 内容区域 */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* 模块计划表格样式 */
+    table.plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      table-layout: fixed;
+    }
+    table.plan-table th, table.plan-table td {
+      border: 1px solid #e2e8f0;
+      padding: 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    table.plan-table th {
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    table.plan-table td.row-header {
+      background-color: #f1f5f9;
+      font-weight: bold;
+      color: #334155;
+      text-align: center;
+      vertical-align: middle;
+      width: 140px;
+    }
+
+    /* Drill 槽位容器 */
+    .drill-slot {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+    .drill-slot:last-child {
+      margin-bottom: 0;
+    }
+    .drill-slot iframe {
+      display: block;
+      min-height: 350px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="drill-card" style="margin-top: 0;">
+  
+    <!-- Tab 导航栏（按年龄组） -->
+    <div class="tab-container">
+      <button class="tab-button active" onclick="switchTab('u6-tab', this)">U6 组</button>
+      <button class="tab-button" onclick="switchTab('u78-tab', this)">U7-8 组</button>
+      <button class="tab-button" onclick="switchTab('u910-tab', this)">U9-10 组</button>
+      <button class="tab-button" onclick="switchTab('u10plus-tab', this)">U10+ 组</button>
+    </div>
+
+    <!-- 1. U6 组面板 -->
+    <div id="u6-tab" class="tab-content active">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th style="width: 140px;">技术位 / 模块</th>
+            <th>今日训练 Drill 详情</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">RB 模块（跑卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/rb_stance_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/handoff/handoff_drill_02.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">QB 模块（四分卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/qb/qb_finger_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/handoff/handoff_drill_03.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">WR 模块（外接手）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/catching_handsharp/catching_handsharp_drill_03.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/ball_spot/ball_spot_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/ready_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">DB 模块（防守后卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/flagpulling/flagpulling_drill_01.html" style="width: 100%; border: none; height: 450px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/flagpulling/flagpulling_drill_02.html" style="width: 100%; border: none; height: 450px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2. U7-8 组面板 -->
+    <div id="u78-tab" class="tab-content">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th style="width: 140px;">技术位 / 模块</th>
+            <th>今日训练 Drill 详情</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">RB 模块（跑卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/handoff/handoff_drill_04.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/rb_cut_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">QB 模块（四分卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/qb/qb_Hip-Shoulder.html" style="width: 100%; border: none; height: 550px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/handoff_tf.html" style="width: 100%; border: none; height: 550px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">WR 模块（外接手）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/deadeyes.html" style="width: 100%; border: none; height: 550px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/slant_cut.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">DB 模块（防守后卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/backpedal_drill.html" style="width: 100%; border: none; height: 650px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/bp_to_shuffle.html" style="width: 100%; border: none; height: 600px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. U9-10 组面板 -->
+    <div id="u910-tab" class="tab-content">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th style="width: 140px;">技术位 / 模块</th>
+            <th>今日训练 Drill 详情</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">RB 模块（跑卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/rb_toss_reverse_drill.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/quarterspin_drill_01.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">QB 模块（四分卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/qb/qb_3stepsdrop_drill.html" style="width: 100%; border: none; height: 550px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">WR 模块（外接手）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/deadeyes.html" style="width: 100%; border: none; height: 550px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/3steps_cut.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/3steps_circle.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">DB 模块（防守后卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/backpedal_tstep.html" style="width: 100%; border: none; height: 650px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/d_passing.html" style="width: 100%; border: none; height: 650px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 4. U10+ 组面板 -->
+    <div id="u10plus-tab" class="tab-content">
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th style="width: 140px;">技术位 / 模块</th>
+            <th>今日训练 Drill 详情</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-header">RB 模块（跑卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/quarterspin_drill_02.html" style="width: 100%; border: none; height: 150px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/rb/quarterspin_drill_03.html" style="width: 100%; border: none; height: 450px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">QB 模块（四分卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/qb/qb_move_pass.html" style="width: 100%; border: none; height: 350px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">WR 模块（外接手）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/deadeyes.html" style="width: 100%; border: none; height:450px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../offense_drill/wr/sidelinefootwork_drill_01.html" style="width: 100%; border: none; height: 450px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="row-header">DB 模块（防守后卫）</td>
+            <td>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/crossstep_drill_01.html" style="width: 100%; border: none; height: 650px;" scrolling="no"></iframe>
+              </div>
+              <div class="drill-slot">
+                <iframe src="../defense_drill/db/crossstep_drill_02.html" style="width: 100%; border: none; height: 650px;" scrolling="no"></iframe>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const drillFrameObservers = new WeakMap();
+
+  function fitDrillFrameToContent(iframe) {
+    iframe.addEventListener('load', () => {
+      const doc = iframe.contentDocument;
+      if (!doc || !doc.documentElement) return;
+
+      const updateHeight = () => {
+        const root = doc.documentElement;
+        const body = doc.body;
+        
+        // 计算子页面内容的实际最大高度
+        const flowHeight = body ? Array.from(body.children).reduce((bottom, element) => {
+          if (doc.defaultView.getComputedStyle(element).position === 'fixed') return bottom;
+          return Math.max(bottom, element.getBoundingClientRect().bottom + doc.defaultView.scrollY);
+        }, 0) : 0;
+        
+        const overflowHeight = Math.max(
+          root.scrollHeight > root.clientHeight ? root.scrollHeight : 0,
+          body && body.scrollHeight > body.clientHeight ? body.scrollHeight : 0
+        );
+        
+        // 增加 30px 的安全余量，防止底部文字/边框被遮挡
+        const contentHeight = Math.ceil(Math.max(flowHeight, overflowHeight) + 30);
+        const targetHeight = Math.max(350, contentHeight);
+
+        if (Math.abs((parseFloat(iframe.style.height) || 350) - targetHeight) > 1) {
+          iframe.style.height = `${targetHeight}px`;
+        }
+      };
+
+      const scheduleUpdate = () => {
+        requestAnimationFrame(() => requestAnimationFrame(updateHeight));
+      };
+
+      const previousObserver = drillFrameObservers.get(iframe);
+      if (previousObserver) previousObserver.disconnect();
+
+      scheduleUpdate();
+      if ('ResizeObserver' in window) {
+        const observer = new ResizeObserver(scheduleUpdate);
+        observer.observe(iframe);
+        observer.observe(doc.documentElement);
+        if (doc.body) observer.observe(doc.body);
+        drillFrameObservers.set(iframe, observer);
+      }
+      if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(scheduleUpdate);
+      window.setTimeout(scheduleUpdate, 300);
+      window.setTimeout(scheduleUpdate, 1000);
+    });
+  }
+
+  document.querySelectorAll('.drill-slot iframe').forEach(fitDrillFrameToContent);
+</script>
+
+<!-- Tab 切换逻辑脚本 -->
+<script>
+  function switchTab(tabId, btnElement) {
+    // 隐藏所有 tab 内容
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => content.classList.remove('active'));
+
+    // 取消所有按钮的 active 状态
+    const buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+
+    // 显示当前点击的 tab 并高亮按钮
+    document.getElementById(tabId).classList.add('active');
+    btnElement.classList.add('active');
+  }
+</script>
+<script src="../../js/watermark.js"></script>
+</body>
+</html>
