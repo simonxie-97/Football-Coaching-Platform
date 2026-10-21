@@ -609,71 +609,141 @@
   </div>
 </div>
   <!-- ==================== WEEK 3 ==================== -->
-  <div id="week3" class="tab-content">
+ <div id="week3" class="tab-content">
     <div class="day-card">
       <div class="day-header">
-        <h2>第 3 周</h2>
-        <!-- <span class="time-badge">轮转焦点：RB 专项率先切入</span> -->
+        <h2>本周分位置与组别训练计划表</h2>
+        <p>针对 U6、U7-8、U9-10 及 U12 四个组别，涵盖 RB、WR、DB 与 QB 的专项技术与巩固练习。</p>
       </div>
       <div class="table-container">
         <table>
           <thead>
             <tr>
-              <th class="time-col">轮次与时间</th>
+              <th class="time-col">位置 / 模块</th>
               <th class="group-col"><span class="group-tag tag-u6">U6 组</span></th>
               <th class="group-col"><span class="group-tag tag-u8">U7 - U8 组</span></th>
               <th class="group-col"><span class="group-tag tag-u10">U9 - U10 组</span></th>
-              <th class="group-col"><span class="group-tag tag-u12">U10+ 组</span></th>
+              <th class="group-col"><span class="group-tag tag-u12">U12 组</span></th>
             </tr>
           </thead>
           <tbody>
+            <!-- RB 跑卫模块 -->
             <tr>
-              <td class="time-col">20 - 50 min<br>(第 1 轮)</td>
-              <td><strong>RB 持球突破</strong><br>• 夺宝奇兵：抱球避让<br>• 慢跑网兜式交接球</td>
-              <td><strong>QB 传球决策</strong><br>• 3步 Dropback 撤步<br>• 5码定向平稳抛传</td>
-              <td><strong>DB 防守拔旗</strong><br>• 7码 Rusher 冲刺启动<br>• 人盯人侧滑跟防</td>
-              <td><strong>WR 接球路线</strong><br>• 抗贴身压迫摘球<br>• 2人 Mesh 路线配合</td>
-            </tr>
-            <tr>
-              <td class="time-col">50 - 80 min<br>(第 2 轮)</td>
-              <td><strong>QB 传球决策</strong><br>• 听口令“Hut”发球<br>• 双手近距离送球</td>
-              <td><strong>DB 防守拔旗</strong><br>• Breakdown 降重心<br>• 走廊 1v1 迎面拔旗</td>
-              <td><strong>WR 接球路线</strong><br>• 移动中接球不减速<br>• 接球后第一步 Juke</td>
-              <td><strong>RB 持球突破</strong><br>• 极速 Spin Move 转体<br>• Reverse 反向走位</td>
-            </tr>
-            <tr>
-              <td colspan="5" style="background-color: #f0fff4; text-align: center; font-weight: bold; color: #276749;">
-                ☕ 80 - 90 min (10分钟)：全员集中补水
+              <td class="time-col">RB 跑卫模块</td>
+              <td>
+                <strong>RB 基础交递与变向</strong><br>
+                1. 交递球 <button onclick="openDrillModal('../offense_drill/handoff/handoff_drill_03.html', '交递球')" class="drill-action-btn" aria-label="打开训练：交递球" title="打开训练"></button><br>
+                <!-- 2. 一步变相 <button onclick="openDrillModal('', '一步变相')" class="drill-action-btn" aria-label="打开训练：一步变相" title="打开训练"></button> -->
+                2. 持球变相跑 <button onclick="openDrillModal('../offense_drill/rb/rb_cut_drill_01.html', '持球z字变相跑')" class="drill-action-btn" aria-label="打开训练：持球变相跑" title="打开训练"></button><br>
+
+              </td>
+              <td>
+                <strong>RB 进阶变向与 Toss</strong><br>
+                1. 连续一步变相 <button onclick="openDrillModal('../offense_drill/wr/alternating_left_right_speed_cut_drill.html', '连续一步变相')" class="drill-action-btn" aria-label="打开训练：连续一步变相" title="打开训练"></button><br>
+                2. 穿越车流游戏 <button onclick="openDrillModal('../offense_drill/rb/rb_beat_the_traffic_drill.html', '穿越车流游戏')" class="drill-action-btn" aria-label="打开训练：穿越车流游戏" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>RB 反应与冲刺</strong><br>
+                1. 多方向反应与冲刺 <button onclick="openDrillModal('../offense_drill/rb/rb_control_pad_drill.html', '多方向反应与冲刺')" class="drill-action-btn" aria-label="打开训练：多方向反应与冲刺" title="打开训练"></button><br>
+                2. Toss交递 <button onclick="openDrillModal('../offense_drill/rb/rb_toss_reverse_drill.html', 'toss交递')" class="drill-action-btn" aria-label="打开训练：toss交递" title="打开训练"></button><br>
+
+              </td>
+              <td>
+                <strong>RB 推进与转腕 Drill</strong><br>
+                1. 连续转髋drill <button onclick="openDrillModal('../offense_drill/rb/rb_hip_snap_drill.html', '连续转髋drill')" class="drill-action-btn" aria-label="打开训练：连续转髋drill" title="打开训练"></button><br>
+                2. 推进前观察 <button onclick="openDrillModal('../offense_drill/wr/wr_visual_callout_catch_drill.html', '推进前观察')" class="drill-action-btn" aria-label="打开训练：推进前观察" title="打开训练"></button>
               </td>
             </tr>
+
+            <!-- WR 外接手模块 -->
             <tr>
-              <td class="time-col">90 - 115 min<br>(第 3 轮)</td>
-              <td><strong>DB 防守拔旗</strong><br>• 静态双手提拉拔旗<br>• 归还腰旗礼仪</td>
-              <td><strong>WR 接球路线</strong><br>• 钻石手手型巩固<br>• 跑通 Hitch / Go</td>
-              <td><strong>RB 持球突破</strong><br>• Z 字形急停变向<br>• 严禁遮挡腰旗（FG）</td>
-              <td><strong>QB 传球决策</strong><br>• 面对 Blitz 2.5秒决策<br>• Scramble 跑投选择</td>
+              <td class="time-col">WR 外接手模块</td>
+              <td>
+                <strong>WR 基础接球与判断</strong><br>
+                1. 正面接球高球低球手型区分 <button onclick="openDrillModal('../offense_drill/catching_handsharp/catching_handsharp_drill_01.html', '正面接球高球低球手型区分')" class="drill-action-btn" aria-label="打开训练：正面接球高球低球手型区分" title="打开训练"></button><br>
+               
+                2. 原地摆臂正面接球 <br>
+                3. 落点判断 <button onclick="openDrillModal('../offense_drill/ball_spot/ball_spot_drill_01.html', '落点判断')" class="drill-action-btn" aria-label="打开训练：落点判断" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>WR 多方向接球与路线</strong><br>
+                1. 各方向接球 <button onclick="openDrillModal('../offense_drill/wr/deadeyes.html', '各方向接球')" class="drill-action-btn" aria-label="打开训练：deadeyes" title="打开训练"></button><br>
+                2. 路线树学习（in out） <button onclick="openDrillModal('../offense_drill/wr/beginner_in_and_out_route_drill.html', '路线树学习（in out）')" class="drill-action-btn" aria-label="打开训练：路线树学习（in out）" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>WR Deadeyes与边线控制</strong><br>
+                1. deadeyes <button onclick="openDrillModal('../offense_drill/wr/deadeyes.html', 'deadeyes')" class="drill-action-btn" aria-label="打开训练：deadeyes" title="打开训练"></button><br>
+
+                2. 边线脚步控制接球 <button onclick="openDrillModal('../offense_drill/wr/sidelinefootwork_drill_01.html', '边线脚步控制接球')" class="drill-action-btn" aria-label="打开训练：边线脚步控制接球" title="打开训练"></button><br>
+                3. E formation <button onclick="openDrillModal('../offense_drill/wr/wr_e_chase_down_drill.html', 'E formation')" class="drill-action-btn" aria-label="打开训练：E formation" title="打开训练"></button><br>
+
+              </td>
+              <td>
+                <strong>WR 组合路线树</strong><br>
+                1. deadeyes <button onclick="openDrillModal('../offense_drill/wr/deadeyes.html', 'deadeyes')" class="drill-action-btn" aria-label="打开训练：deadeyes" title="打开训练"></button><br>
+                2. 路线组合树 <button onclick="openDrillModal('../offense_drill/wr/wr_route_tree_combo_drill.html', '路线组合树')" class="drill-action-btn" aria-label="打开训练：路线组合树" title="打开训练"></button>
+
+              </td>
             </tr>
+
+
+            <!-- DB 防守后卫模块 -->
             <tr>
-              <td class="time-col">115 - 140 min<br>(第 4 轮)</td>
-              <td><strong>WR 接球路线</strong><br>• 双手怀抱接球<br>• 慢跑顺势向前推进</td>
-              <td><strong>RB 持球突破</strong><br>• 包贴夹三点保护<br>• 动态慢跑 Handoff</td>
-              <td><strong>QB 传球决策</strong><br>• 快速找缝线（Laces）<br>• 提前量领跑传球</td>
-              <td><strong>DB 防守拔旗</strong><br>• 2-3 区域防守轮转<br>• 红区（Redzone）防守</td>
+              <td class="time-col">DB 防守后卫模块</td>
+              <td>
+                <strong>DB 拔旗</strong><br>
+                1. 拔旗基础 <br>
+                2. 静态两侧腰旗 <button onclick="openDrillModal('../defense_drill/flagpulling/staggered_flag_pulls_drill.html', '静态两侧腰旗')" class="drill-action-btn" aria-label="打开训练：静态两侧腰旗" title="打开训练"></button><br>
+                3. 1v1反应拔旗 <button onclick="openDrillModal('../defense_drill/flagpulling/reaction_pulling_drill.html', '1v1反应拔旗')" class="drill-action-btn" aria-label="打开训练：1v1反应拔旗" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>DB 滑步与移动拔旗</strong><br>
+                1. shuffle breakdown巩固 <br>
+                2. 移动中拔旗 <button onclick="openDrillModal('../defense_drill/flagpulling/zigzag_flag_pulls_drill.html', '移动中拔旗')" class="drill-action-btn" aria-label="打开训练：移动中拔旗" title="打开训练"></button><br>
+                3. 1v1反应拔旗 <button onclick="openDrillModal('../defense_drill/flagpulling/reaction_pulling_drill.html', '1v1反应拔旗')" class="drill-action-btn" aria-label="打开训练：1v1反应拔旗" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>防守拔旗对抗  </strong><br>
+                1. 长开球接拔旗对抗 <button onclick="openDrillModal('../defense_drill/flagpulling/hole_angle_flag_pulling_drill.html', '长开球接拔旗对抗')" class="drill-action-btn" aria-label="打开训练：长开球接拔旗对抗" title="打开训练"></button>
+               <br> 2.追击与封堵角度 1<button onclick="openDrillModal('../defense_drill/lb/lb_pursuit_drill_segment1.html', '长开球接拔旗对抗')" class="drill-action-btn" aria-label="打开训练：长开球接拔旗对抗" title="打开训练"></button>
+             
+              </td>
+              <td>
+                <strong>防守拔旗对抗</strong><br>
+                1. 长开球接拔旗对抗 <button onclick="openDrillModal('../defense_drill/flagpulling/hole_angle_flag_pulling_drill.html', '长开球接拔旗对抗')" class="drill-action-btn" aria-label="打开训练：长开球接拔旗对抗" title="打开训练"></button>
+              <br>  2.追击与封堵角度 2<button onclick="openDrillModal('../defense_drill/lb/lb_pursuit_angles_drill.html', '长开球接拔旗对抗')" class="drill-action-btn" aria-label="打开训练：长开球接拔旗对抗" title="打开训练"></button>
+             
+              </td>
+            </tr>
+
+            <!-- QB 四分卫模块 -->
+            <tr>
+              <td class="time-col">QB 四分卫模块</td>
+              <td>
+                <strong>QB 基础开球与交递</strong><br>
+                1. 中锋开球 <button onclick="openDrillModal('../offense_drill/center/center_under_center_short_snap_drill.html', '中锋开球')" class="drill-action-btn" aria-label="打开训练：中锋开球" title="打开训练"></button><br>
+                2. 巩固多次交递 <button onclick="openDrillModal('../offense_drill/handoff/handoff_drill_05.html', '巩固多次交递')" class="drill-action-btn" aria-label="打开训练：巩固多次交递" title="打开训练"></button><br>
+                3. “出界”，“达阵”等概念
+              </td>
+              <td>
+                <strong>QB 侧开球与球感</strong><br>
+                111. 中锋侧开球 <button onclick="openDrillModal('', '中锋侧开球')" class="drill-action-btn" aria-label="打开训练：中锋侧开球" title="打开训练"></button><br>
+                2. 手指拨动，找球感 <button onclick="openDrillModal('../offense_drill/qb/qb_finger_drill_01.html', '手指拨动，找球感')" class="drill-action-btn" aria-label="打开训练：手指拨动，找球感" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>QB 旋转发力模式</strong><br>
+                1111. 感受旋转的发力模式 <button onclick="openDrillModal('', '感受旋转的发力模式')" class="drill-action-btn" aria-label="打开训练：感受旋转的发力模式" title="打开训练"></button>
+              </td>
+              <td>
+                <strong>QB 综合战术组网</strong><br>
+                1111. 进阶节奏与组合传球演练 <button onclick="openDrillModal('', '进阶节奏与组合传球演练')" class="drill-action-btn" aria-label="打开训练：进阶节奏与组合传球演练" title="打开训练"></button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div style="padding: 15px;">
-        <div class="coaching-point">
-          <strong>💡 第 3 周教学重点：</strong> RB 持球与变向摆脱。强调持球“包、贴、夹”三点保护；严禁使用非持球手拍打防守队员的拔旗手（Flag Guarding 犯规）。
-        </div>
-        <div class="error-point">
-          <strong>⚠️ 易错点纠正：</strong> Handoff 交接球时，接球人切忌过早合拢双手，需等 QB 将球塞入腹部后方可抱紧。
-        </div>
-      </div>
     </div>
   </div>
-
   <!-- ==================== WEEK 4 ==================== -->
   <div id="week4" class="tab-content">
     <div class="day-card">
