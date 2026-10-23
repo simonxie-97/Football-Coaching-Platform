@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>青少年腰旗橄榄球教练内训：战术设计与临场指挥</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Oswald:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      margin: 0;
+      padding: 20px 0;
+      font-family: 'Noto Sans SC', sans-serif;
+      background-color: #0b0f19;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .slide-container {
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .num-font { font-family: 'Oswald', sans-serif; }
+
+    /* Header Styling */
+    .slide-header {
+      padding: 36px 56px 0 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    
+    .slide-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: #16a34a;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    /* Body Layout */
+    .slide-body {
+      padding: 28px 56px 40px 56px;
+      height: 620px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Card System */
+    .card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 22px 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .card-accent-green {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+    }
+
+    .card-accent-blue {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .card-accent-amber {
+      background: #fffbebfb;
+      border: 1px solid #fde68a;
+    }
+
+    /* Script / Voiceover Box */
+    .script-box {
+      background: #1e293b;
+      border-left: 4px solid #22c55e;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #e2e8f0;
+      line-height: 1.5;
+      margin-top: auto;
+    }
+
+    .script-label {
+      font-weight: 700;
+      color: #4ade80;
+      font-size: 12px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid utilities */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Bullet Tag */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Tactical Line Items */
+    .tactical-item {
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== SLIDE 1: Title Slide (Dark Theme) ==================== -->
+  <div class="slide-container" id="slide1" style="background:#0f172a; justify-content:space-between; padding:64px;">
+    <div>
+      <div class="eyebrow" style="color:#22c55e;">
+        <i class="fa-solid fa-football"></i> 青少年腰旗橄榄球教练员内训
+      </div>
+      <h1 style="font-size:48px; font-weight:900; color:#ffffff; margin:24px 0 16px 0; line-height:1.2; max-width:960px;">
+        战术设计与临场指挥
+      </h1>
+      <p style="font-size:20px; color:#94a3b8; max-width:800px; line-height:1.6; font-weight: 400;">
+      
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; border-top:1px solid #334155; padding-top:32px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:40px; height:40px; border-radius:10px; background:#15803d; display:flex; align-items:center; justify-content:center; color:#fff;">
+          <i class="fa-solid fa-chess"></i>
+        </div>
+        <div>
+          <p style="font-size:12px; color:#64748b; margin:0;">第一板块</p>
+          <p style="font-size:15px; font-weight:700; color:#f8fafc; margin:0;">战术设计与标准化</p>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:40px; height:40px; border-radius:10px; background:#0284c7; display:flex; align-items:center; justify-content:center; color:#fff;">
+          <i class="fa-solid fa-clipboard-list"></i>
+        </div>
+        <div>
+          <p style="font-size:12px; color:#64748b; margin:0;">第二板块</p>
+          <p style="font-size:15px; font-weight:700; color:#f8fafc; margin:0;">赛前部署与拆解</p>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:40px; height:40px; border-radius:10px; background:#d97706; display:flex; align-items:center; justify-content:center; color:#fff;">
+          <i class="fa-solid fa-bullhorn"></i>
+        </div>
+        <div>
+          <p style="font-size:12px; color:#64748b; margin:0;">第三板块</p>
+          <p style="font-size:15px; font-weight:700; color:#f8fafc; margin:0;">临场指挥与应变</p>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:40px; height:40px; border-radius:10px; background:#7c3aed; display:flex; align-items:center; justify-content:center; color:#fff;">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div>
+          <p style="font-size:12px; color:#64748b; margin:0;">第四板块</p>
+          <p style="font-size:15px; font-weight:700; color:#f8fafc; margin:0;">赛后复盘与迭代</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 2: Core Philosophy ==================== -->
+  <div class="slide-container" id="slide2">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-lightbulb"></i> 一、 理念</span>
+        <h2 class="slide-title">战术与指挥的底层逻辑</h2>
+      </div>
+      <span class="slide-num num-font">01</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="align-items:stretch; flex-grow:1;">
+        <div class="card" style="background:#fef2f2; border-color:#fecaca; display:flex; flex-direction:column; justify-content:center;">
+          <div style="color:#dc2626; font-size:24px; margin-bottom:12px;"><i class="fa-solid fa-circle-xmark"></i> 常见误区 (Misconceptions)</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #fee2e2;">
+              <b style="color:#991b1b;">战术设计误区：</b> 追求繁琐复杂的跑位路线与多重交接，忽视孩子实际执行能力。
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #fee2e2;">
+              <b style="color:#991b1b;">临场指挥误区：</b> 站在场边盲目大声喊叫，缺乏系统性观察与降维指挥框架。
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-accent-green" style="display:flex; flex-direction:column; justify-content:center;">
+          <div style="color:#16a34a; font-size:24px; margin-bottom:12px;"><i class="fa-solid fa-circle-check"></i> 青少年核心指导原则</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #bbf7d0;">
+              <b style="color:#14532d;">听懂并执行：</b> 好的战术是能让队员听懂、记住并在比赛压力下精准落地的战术。
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #bbf7d0;">
+              <b style="color:#14532d;">降维解决问题：</b> 教练拆分战术细节，协助队员快速识别不同情况，辅助做出正确决策。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="script-box">
+        <div class="script-label"><i class="fa-solid fa-comment-dots"></i> 演讲串讲逐字稿：</div>
+        “各位教练，今天我们来聊聊很多新手教练觉得最神秘、但也最容易踩坑的两个环节——战术设计和临场指挥。很多教练以为战术设计就是画出花里胡哨的跑位线，临场指挥就是站在场边大声喊喊叫叫。但在青少年腰旗橄榄球的体系里，好的战术是能让孩子听懂并执行的战术，好的指挥是能帮孩子降维解决问题的决策。我们面对的是 U6 到 U12 的孩子，有精英梯队也有校队，如果用成年人的战术逻辑去教，孩子懵、教练急，最后场面一团糟。今天这堂课，我就手把手带大家建立一套标准化、能落地的战术设计与临场指挥体系！”
+      </div> -->
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3: Tactical Principles 1 & 2 ==================== -->
+  <div class="slide-container" id="slide3">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-chess-board"></i> 二、 板块一：战术设计（Tactical Design）</span>
+        <h2 class="slide-title">战术设计原则</h2>
+      </div>
+      <span class="slide-num num-font">02</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- Principle 1 -->
+        <div class="card" style="border-top:4px solid #d97706;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="font-size:18px; font-weight:700;">一：符合年龄认知 (Age-Appropriate)</h3>
+            <span class="tag" style="background:#fef3c7; color:#b45309;"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+              <span style="font-weight:700; color:#d97706;" class="num-font">U6 / U8 (启蒙期)：</span>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">逻辑必须极简！战术设计 <b>2-3 个动作分支</b>（如：直接 Hand-off 跑侧翼，或 1 个假交递 + QB 自行推进）。</p>
+            </div>
+            <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+              <span style="font-weight:700; color:#2563eb;" class="num-font">U10 / U12 (进阶/竞技期)：</span>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">引入<b>概念型路线 (Concept-Based)</b>，如 Mesh、Flood 、Dagger 、Levels 、Read Options、rpo。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principle 2 -->
+        <div class="card" style="border-top:4px solid #16a34a;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="font-size:18px; font-weight:700;">二：空间、节奏、顺序</h3>
+            <span class="tag" style="background:#dcfce7; color:#15803d;"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#16a34a;">空间 ：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">接球目标在不同空间位置的分布。</p>
+            </div>
+            <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#16a34a;">路线节奏：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">路线的启动、加速和停止时机，会影响战术效果。</p>
+            </div>
+            <div style="background:#fff; padding:12px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#16a34a;">阅读顺序 ：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">根据空间和节奏形成的机会，制定阅读顺序，帮助四分卫建立合理的阅读模式</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:12px 16px; border-radius:8px; display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-circle-info" style="color:#0284c7;"></i>
+        <span style="font-size:14px; color:#334155;"><b>核心考量：</b>战术设计的本质是“创造空间”与“简化决策”，切勿用成年人的复杂逻辑堆砌路线。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: Tactical Principles 3 & 4 ==================== -->
+  <div class="slide-container" id="slide4">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-chess-board"></i> 二、 板块一：战术设计（Tactical Design）</span>
+        <h2 class="slide-title">战术设计原则</h2>
+      </div>
+      <span class="slide-num num-font">03</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- Principle 3 -->
+        <div class="card" style="border-top:4px solid #0284c7;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="font-size:18px; font-weight:700;">三：战术欺骗性和战术组</h3>
+            <span class="tag" style="background:#e0f2fe; color:#0369a1;"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#0284c7;">统一起手动作 (Play-Action Fake)：</b>
+              <p style="font-size:14px; color:#475569; margin-top:6px;">让跑球战术与传球战术的起手式完全一致（如相同 Fake Handoff），增加防守端（尤其是 Rusher 和 Linebacker）的判断迟钝时间。</p>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#0284c7;">战术组：</b>
+              <p style="font-size:14px; color:#475569; margin-top:6px;">通过预设的战术组合，提高球队在不同情况下的应对能力和执行效率。以及相同阵型不同战术思路的战术组</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principle 4 -->
+        <div class="card" style="border-top:4px solid #7c3aed;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <h3 style="font-size:18px; font-weight:700;">四：定位区分（梯队 vs 校队）</h3>
+            <span class="tag" style="background:#f3e8ff; color:#6b21a8;"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <b style="color:#7c3aed;">校园队战术（普及型）：</b>
+                <span class="num-font" style="font-weight:700; color:#7c3aed;">4 - 6 套通用战术</span>
+              </div>
+              <p style="font-size:14px; color:#475569;">精简易记，降低理解门槛，强调<b>全员参与度</b>与低失误率。</p>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <b style="color:#7c3aed;">俱乐部梯队（竞技型）：</b>
+                <span class="num-font" style="font-weight:700; color:#7c3aed;">10 - 15 套战术册</span>
+              </div>
+              <p style="font-size:14px; color:#475569;">包含变化（Audible / Motion），强调特定位置能力爆发与针对性破防。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 5: Standardization & Playbook ==================== -->
+  <div class="slide-container" id="slide5">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-pen-ruler"></i> 二、 板块一：战术设计（Tactical Design）</span>
+        <h2 class="slide-title">战术册 (Playbook) 的标准化制定与画板规范</h2>
+      </div>
+      <span class="slide-num num-font">04</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- Standard Positions -->
+        <div class="card">
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+            <i class="fa-solid fa-users" style="color:#16a34a; margin-right:8px;"></i> 标准位置代号
+          </h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div class="tactical-item"><b class="num-font" style="color:#15803d;">QB</b> <span>四分卫</span></div>
+            <div class="tactical-item"><b class="num-font" style="color:#15803d;">WR</b> <span>接球手</span></div>
+            <div class="tactical-item"><b class="num-font" style="color:#15803d;">C</b> <span>中锋</span></div>
+            <div class="tactical-item"><b class="num-font" style="color:#15803d;">RB</b> <span>跑卫</span></div>
+            <div class="tactical-item"><b class="num-font" style="color:#0284c7;">Rusher</b> <span>突击手</span></div>
+            <div class="tactical-item"><b class="num-font" style="color:#0284c7;">DB</b> <span>后卫</span></div>
+          </div>
+        </div>
+
+        <!-- Standard Drawing Lines -->
+        <div class="card">
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:14px; color:#0f172a;">
+            <i class="fa-solid fa-route" style="color:#2563eb; margin-right:8px;"></i> 标准线条绘制规范
+          </h3>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="tactical-item">
+              <span style="font-weight:700; color:#16a34a; width:110px;">实线 + 箭号</span>
+              <span style="font-size:14px; color:#475569;">跑路线 / 跑球路径</span>
+            </div>
+            <div class="tactical-item">
+              <span style="font-weight:700; color:#2563eb; width:110px;">虚线 + 箭号</span>
+              <span style="font-size:14px; color:#475569;">二次路线、选择路线</span>
+            </div>
+            <div class="tactical-item">
+              <span style="font-weight:700; color:#d97706; width:110px;">波浪线</span>
+              <span style="font-size:14px; color:#475569;">开球前位移 (Motion)</span>
+            </div>
+            <div class="tactical-item">
+              <span style="font-weight:700; color:#dc2626; width:110px;">短横线/角度</span>
+              <span style="font-size:14px; color:#475569;">折返点 (Break Point) 明确切变 (Cut) 坚决度</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-label"><i class="fa-solid fa-comment-dots"></i> </div>
+        “拿战术板画图是教练的日常，但如果每个教练画法不一样，孩子换个教练就看不懂战术图了。我们要统一战术板的符号语言！无论是实线、虚线还是波浪线，全俱乐部统一标准，才能让战术无缝传承。”
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6: Pre-Game Teaching Methods ==================== -->
+  <div class="slide-container" id="slide6">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-chalkboard-user"></i> 三、 板块二：战术部署与赛前准备（Pre-Game Execution）</span>
+        <h2 class="slide-title">分龄战术拆解教学法</h2>
+      </div>
+      <span class="slide-num num-font">05</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- U6/U8 Method -->
+        <div class="card card-accent-amber">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="font-size:20px; font-weight:700; color:#b45309;">U6 / U8：具象场景法</h3>
+            <span class="tag" style="background:#fef3c7; color:#92400e;">具象视觉化</span>
+          </div>
+          <p style="font-size:15px; color:#78350f; margin-bottom:16px;">拒绝抽象概念，采用“场地颜色/道具”与口诀式教学。</p>
+          
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #fde68a;">
+              <b style="color:#b45309;">道具引导：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">“小明跑向红锥桶，小红跑向蓝锥桶”</p>
+            </div>
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #fde68a;">
+              <b style="color:#b45309;">口诀化动作：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">“一夹、二转、三观察”的 Handoff 标准流程</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- U10/U12 Method -->
+        <div class="card card-accent-blue">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h3 style="font-size:20px; font-weight:700; color:#1e40af;">U10 / U12：情境决策法</h3>
+            <span class="tag" style="background:#dbeafe; color:#1e40af;">逻辑读解</span>
+          </div>
+          <p style="font-size:15px; color:#1e3a8a; margin-bottom:16px;">培养场上观察能力，建立条件反射式决策机制。</p>
+          
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #bfdbfe;">
+              <b style="color:#1d4ed8;">Primary Read vs Checkdown：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">教 QB 如果一号目标被盯死，眼神立刻转移至二号安全点。</p>
+            </div>
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #bfdbfe;">
+              <b style="color:#1d4ed8;">防守阵型识破：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">识别人盯人 (Man) 或区域 (Zone: 2-3 / 1-3-1)，直接调用相克战术。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-label"><i class="fa-solid fa-comment-dots"></i> </div>
+        “战术设计好了，怎么让孩子在场上跑出来？不同年龄段的战术传授方式完全不同。对小孩子不能讲路线概念，要用锥桶颜色；对大孩子要教 Read 机制，让他们学会根据防守做出正确选择。”
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 7: Personnel Rotation ==================== -->
+  <div class="slide-container" id="slide7">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-sliders"></i> 三、 板块二：战术部署与赛前准备（Pre-Game Execution）</span>
+        <h2 class="slide-title">赛前战术部署与人员轮换规划 (Personnel Rotation)</h2>
+      </div>
+      <span class="slide-num num-font">06</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- School Team Strategy -->
+        <div class="card" style="border-left:6px solid #64748b;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <div style="width:40px; height:40px; border-radius:50%; background:#f1f5f9; color:#475569; display:flex; align-items:center; justify-content:center; font-size:20px;">
+              <i class="fa-solid fa-school"></i>
+            </div>
+            <div>
+              <h3 style="font-size:18px; font-weight:700;">校园队轮换策略（普及/育人导向）</h3>
+              <span style="font-size:13px; color:#64748b;">强调公平参与与体验</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#334155;">等额出场时间计划表 (Depth Chart)：</b>
+              <p style="font-size:14px; color:#64748b; margin-top:4px;">赛前制定严格的轮换表，确保每位队员都有均等实战机会。</p>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#334155;">位置多体验：</b>
+              <p style="font-size:14px; color:#64748b; margin-top:4px;">鼓励孩子在不同比赛中尝试攻防多个位置，提升综合球感。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elite Team Strategy -->
+        <div class="card card-accent-green" style="border-left:6px solid #16a34a;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <div style="width:40px; height:40px; border-radius:50%; background:#dcfce7; color:#15803d; display:flex; align-items:center; justify-content:center; font-size:20px;">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div>
+              <h3 style="font-size:18px; font-weight:700; color:#14532d;">梯队竞技赛策略（胜负/竞技导向）</h3>
+              <span style="font-size:13px; color:#15803d;">强调针对性与效率</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #bbf7d0;">
+              <b style="color:#14532d;">主力阵容 + 情境组 (Special Packages)：</b>
+              <p style="font-size:14px; color:#166534; margin-top:4px;">划分红区短距离强攻组、防长传防守组等专项小组。</p>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:8px; border:1px solid #bbf7d0;">
+              <b style="color:#14532d;">体能与针对性换人：</b>
+              <p style="font-size:14px; color:#166534; margin-top:4px;">根据场上体能消耗与对方核心对位，实施精准轮换。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 8: In-Game Observation ==================== -->
+  <div class="slide-container" id="slide8">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-eye"></i> 四、 板块三：临场指挥与应变（In-Game Coaching）</span>
+        <h2 class="slide-title">临场指挥核心：分层扫描观察法</h2>
+      </div>
+      <span class="slide-num num-font">07</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- Offense Observation -->
+        <div class="card" style="border-top:4px solid #16a34a;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+            <i class="fa-solid fa-football" style="font-size:20px; color:#16a34a;"></i>
+            <h3 style="font-size:18px; font-weight:700;">进攻端临场观察点 (Offense Scan)</h3>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#15803d;">1. Rusher 冲刷特征：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">观察启动速度、习惯路线，是否易被 Fake 吸引或频繁越位。</p>
+            </div>
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#15803d;">2. 防守阵型漏洞：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">Zone 防守的短缝中路是否有空当？单侧防守能力是否失衡？</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Defense Observation -->
+        <div class="card" style="border-top:4px solid #0284c7;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+            <i class="fa-solid fa-shield-halved" style="font-size:20px; color:#0284c7;"></i>
+            <h3 style="font-size:18px; font-weight:700;">防守端临场观察点 (Defense Scan)</h3>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#0369a1;">1. 对方 QB 习惯：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">确认惯用手，观察压力下是习惯向右躲避还是向左出球。</p>
+            </div>
+            <div style="background:#fff; padding:12px 16px; border-radius:8px; border:1px solid #e2e8f0;">
+              <b style="color:#0369a1;">2. 核心得分手锁定：</b>
+              <p style="font-size:14px; color:#475569; margin-top:4px;">锁定对方 WR/RB 强点，评估是否需要单人贴身或双人包夹。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-label"><i class="fa-solid fa-comment-dots"></i> </div>
+        “比赛开打后，教练在场边到底看什么？很多新手教练眼睛只盯着球跑，结果球落下了才跟着喊。比赛中，教练的眼睛要像摄像机一样进行分层扫描，找到对方死角并进行精准打击！”
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 9: Three Weapons ==================== -->
+  <div class="slide-container" id="slide9">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> 四、 板块三：临场指挥与应变（In-Game Coaching）</span>
+        <h2 class="slide-title">临场应变“三大武器”的使用规范</h2>
+      </div>
+      <span class="slide-num num-font">08</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-3" style="flex-grow:1;">
+        <!-- Weapon 1 -->
+        <div class="card" style="border-top:4px solid #dc2626;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <i class="fa-solid fa-stopwatch" style="color:#dc2626; font-size:20px;"></i>
+            <h3 style="font-size:16px; font-weight:700;">1. 暂停 (Time-outs)</h3>
+          </div>
+          <ul style="font-size:13px; color:#475569; display:flex; flex-direction:column; gap:8px; padding-left:16px;">
+            <li><b>打乱节奏：</b>连续失误或对方连续得分时果断叫停。</li>
+            <li><b>关键布置：</b>4th Down 或红区得分画板部署。</li>
+            <li><b>争议缓冲：</b>隔绝情绪，避免孩子受裁判影响。</li>
+          </ul>
+        </div>
+
+        <!-- Weapon 2 -->
+        <div class="card" style="border-top:4px solid #d97706;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <i class="fa-solid fa-bullhorn" style="color:#d97706; font-size:20px;"></i>
+            <h3 style="font-size:16px; font-weight:700;">2. Audible 战术微调</h3>
+          </div>
+          <ul style="font-size:13px; color:#475569; display:flex; flex-direction:column; gap:8px; padding-left:16px;">
+            <li><b>极简喊话：</b>预设 2-3 个代号（如“颜色”=变向，“数字”=变节奏）。</li>
+            <li><b>开球前变轨：</b>U10/U12 梯队根据防守阵型开球前直接改路线破防。</li>
+          </ul>
+        </div>
+
+        <!-- Weapon 3 -->
+        <div class="card" style="border-top:4px solid #2563eb;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+            <i class="fa-solid fa-heart-pulse" style="color:#2563eb; font-size:20px;"></i>
+            <h3 style="font-size:16px; font-weight:700;">3. 队员情绪管理</h3>
+          </div>
+          <ul style="font-size:13px; color:#475569; display:flex; flex-direction:column; gap:8px; padding-left:16px;">
+            <li><b>三秒原则：</b>失误后第一声喊话必须是正向鼓励（“补回来！”）。</li>
+            <li><b>情绪锚定：</b>落后时转移至具体小目标（如“先拿下首攻”）。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 10: Emotional Management Deep Dive ==================== -->
+  <div class="slide-container" id="slide10">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-heart"></i> 四、 板块三：临场指挥与应变（In-Game Coaching）</span>
+        <h2 class="slide-title">队员心理与情绪管理 (Emotional Management)</h2>
+      </div>
+      <span class="slide-num num-font">09</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1; align-items:center;">
+        <!-- 3-Second Rule Card -->
+        <div class="card card-accent-blue" style="height:100%; display:flex; flex-direction:column; justify-content:center;">
+          <div class="num-font" style="font-size:36px; font-weight:700; color:#2563eb; margin-bottom:8px;">01 / 3-Sec Rule</div>
+          <h3 style="font-size:22px; font-weight:700; color:#1e3a8a; margin-bottom:12px;">失误后的“三秒原则”</h3>
+          <p style="font-size:15px; color:#1e40af; line-height:1.6;">
+            孩子掉球或被拦截后，教练的第一声喊话<b>必须是正向鼓励</b>（例如：“没关系，下一档补回来！”）。<br><br>
+            <i class="fa-solid fa-triangle-exclamation" style="color:#dc2626;"></i> 严禁在场边当场呵斥，避免彻底摧毁孩子的信心。
+          </p>
+        </div>
+
+        <!-- Anchor Target Card -->
+        <div class="card card-accent-green" style="height:100%; display:flex; flex-direction:column; justify-content:center;">
+          <div class="num-font" style="font-size:36px; font-weight:700; color:#16a34a; margin-bottom:8px;">02 / Anchor Target</div>
+          <h3 style="font-size:22px; font-weight:700; color:#14532d; margin-bottom:12px;">落后时的“情绪锚定”</h3>
+          <p style="font-size:15px; color:#166534; line-height:1.6;">
+            当比分落后队员产生焦虑时，教练要将队员的注意力从“大比分差距”转移到<b>“可完成的具体小目标”</b>上。<br><br>
+            <i class="fa-solid fa-bullseye" style="color:#16a34a;"></i> 示例：“我们不看比分，接下来的目标是先连续完成两次首攻！”
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 11: Post-Game Review ==================== -->
+  <div class="slide-container" id="slide11">
+    <div class="slide-header">
+      <div class="slide-title-group">
+        <span class="eyebrow"><i class="fa-solid fa-rotate-left"></i> 五、 第四板块：赛后复盘与战术迭代（Post-Game Review）</span>
+        <h2 class="slide-title">标准化复盘流程：三明治沟通与录像分析</h2>
+      </div>
+      <span class="slide-num num-font">10</span>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-2" style="flex-grow:1;">
+        <!-- Sandwich Communication -->
+        <div class="card">
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">10 分钟场边正向总结 (Sandwich 沟通法)</h3>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:6px; color:#166534; font-size:14px;">
+              <b>1. 肯定 (Positive)：</b> 赞赏今天的拼搏精神与亮点表现。
+            </div>
+            <div style="background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:6px; color:#9f1239; font-size:14px;">
+              <b>2. 纠错 (Constructive)：</b> 精准指出 1-2 个最关键的战术执行问题。
+            </div>
+            <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px; border-radius:6px; color:#1e40af; font-size:14px;">
+              <b>3. 展望 (Forward-looking)：</b> 给予信心，明确下一阶段提升目标。
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Analysis -->
+        <div class="card">
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">视频录像复盘法（U10/12梯队与教练组）</h3>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:#fff; padding:12px 14px; border-radius:6px; border:1px solid #e2e8f0; font-size:14px;">
+              <b style="color:#0f172a;">战术成功率评估 (Play Success Rate)：</b><br>
+              <span style="color:#64748b;">统计各项战术在实战中的成功率，淘汰低效战术。</span>
+            </div>
+            <div style="background:#fff; padding:12px 14px; border-radius:6px; border:1px solid #e2e8f0; font-size:14px;">
+              <b style="color:#0f172a;">战术册动态优化：</b><br>
+              <span style="color:#64748b;">剔除“设计完美但孩子跑不出来”的过度复杂战术。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-box">
+        <div class="script-label"><i class="fa-solid fa-comment-dots"></i> </div>
+        “比赛结束并不意味着教学结束，真正的成长发生在赛后的复盘阶段。我们将把复盘分为‘现场复盘’与‘录像复盘’两步，不断优化战术册。”
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 12: Closing & Q&A (Dark Theme) ==================== -->
+  <div class="slide-container" id="slide12" style="background:#0f172a; justify-content:center; align-items:center; text-align:center; padding:64px;">
+    <div style="width:72px; height:72px; border-radius:50%; background:#15803d; display:flex; align-items:center; justify-content:center; color:#fff; font-size:32px; margin-bottom:24px;">
+      <i class="fa-solid fa-trophy"></i>
+    </div>
+    
+    <h2 style="font-size:42px; font-weight:800; color:#ffffff; margin-bottom:16px; max-width:860px; line-height:1.25;">
+      战术与指挥的终极目标
+    </h2>
+    
+    <p style="font-size:22px; color:#94a3b8; max-width:760px; margin-bottom:40px; line-height:1.6;">
+      不是为了展示教练有多聪明，而是为了帮助场上的孩子们更轻松、更快乐地赢得比赛！
+    </p>
+
+    <div style="background:#1e293b; padding:20px 40px; border-radius:12px; border:1px solid #334155; display:inline-flex; align-items:center; gap:12px;">
+      <i class="fa-solid fa-comments" style="color:#22c55e; font-size:20px;"></i>
+      <span style="font-size:16px; color:#f8fafc; font-weight:500;">
+        下一环节：模拟战术画板演练 · 场边叫暂停实战 Q&amp;A
+      </span>
+    </div>
+  </div>
+
+</body>
+</html>
